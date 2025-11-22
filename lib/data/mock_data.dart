@@ -67,3 +67,22 @@ final List<Spot> mockSpots = [
     ],
   ),
 ];
+
+// --- NOUVEAUTÉ : SIMULATION UTILISATEUR ---
+
+class UserProfile {
+  final String id;
+  final String name;
+  // Les atouts de l'utilisateur (ex: Il a un chien ET il joue de la guitare)
+  final List<BeggarAttribute> myAttributes; 
+
+  UserProfile({required this.id, required this.name, required this.myAttributes});
+}
+
+// L'utilisateur actuel (Changez les attributs ici pour tester l'algorithme)
+final currentUser = UserProfile(
+  id: 'me_8492', 
+  name: 'StreetSurvivor', 
+  // Exemple : Cet utilisateur est musicien et a un chien
+  myAttributes: [BeggarAttribute.music, BeggarAttribute.dog] 
+);

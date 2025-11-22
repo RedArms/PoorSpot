@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../models/spot_models.dart';
+import '../data/mock_data.dart'; // Import nécessaire pour accéder à currentUser
 
 class SidePanel extends StatelessWidget {
   final Spot spot;
@@ -16,6 +17,12 @@ class SidePanel extends StatelessWidget {
     
     // Calcul Occupation
     bool isCrowded = spot.currentActiveUsers >= 2;
+
+    // --- NOUVEAU : Calcul du conseil intelligent ---
+    final smartAdvice = spot.getSmartAdvice(currentUser.myAttributes);
+    // Couleur dynamique selon si c'est un "Bon plan" ou un "Warning"
+    final bool isWarning = smartAdvice.contains("ATTENTION");
+    final Color adviceColor = isWarning ? Colors.orangeAccent : const Color(0xFF00E5FF);
     
     return SafeArea(
       child: ClipRRect(
@@ -84,10 +91,50 @@ class SidePanel extends StatelessWidget {
                       
                       const SizedBox(height: 20),
 
-                      // 2. L'OPTIMISATION (Quel attribut ?)
+                      // 2. LE CONSEIL INTELLIGENT (NOUVEAU BLOC)
+                      Container(
+                        padding: const EdgeInsets.all(16),
+                        decoration: BoxDecoration(
+                          color: adviceColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                          border: Border.all(color: adviceColor.withOpacity(0.5)),
+                        ),
+                        child: Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(
+                              isWarning ? Icons.warning_amber : Icons.auto_awesome, 
+                              color: adviceColor, 
+                              size: 28
+                            ),
+                            const SizedBox(width: 15),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "ANALYSE POORSPOT™", 
+                                    style: TextStyle(color: adviceColor, fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 1.5)
+                                  ),
+                                  const SizedBox(height: 4),
+                                  Text(
+                                    smartAdvice,
+                                    style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+                                  ),
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+
+                      const SizedBox(height: 30),
+
+                      // 3. L'OPTIMISATION (Quel attribut ?)
                       if (spot.bestAttribute != BeggarAttribute.none)
                         Container(
                           padding: const EdgeInsets.all(16),
+                          margin: const EdgeInsets.only(bottom: 20),
                           decoration: BoxDecoration(color: Colors.white10, borderRadius: BorderRadius.circular(10)),
                           child: Row(
                             children: [
@@ -97,9 +144,9 @@ class SidePanel extends StatelessWidget {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    const Text("CONSEIL D'OPTIMISATION", style: TextStyle(color: Colors.grey, fontSize: 10)),
+                                    const Text("CONSEIL GÉNÉRAL", style: TextStyle(color: Colors.grey, fontSize: 10)),
                                     Text(
-                                      "Utilisez l'attribut: ${_getAttributeName(spot.bestAttribute)}",
+                                      "Meilleur attribut: ${_getAttributeName(spot.bestAttribute)}",
                                       style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
                                     ),
                                   ],
@@ -109,7 +156,6 @@ class SidePanel extends StatelessWidget {
                           ),
                         ),
 
-                      const SizedBox(height: 30),
                       const Text("DERNIERS RAPPORTS", style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 10),
                       

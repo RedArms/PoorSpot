@@ -54,6 +54,47 @@ class Spot {
     final bestReview = reviews.reduce((curr, next) => curr.hourlyRate > next.hourlyRate ? curr : next);
     return bestReview.attribute;
   }
+
+  // --- ALGORYTHME DE CONSEIL INTELLIGENT ---
+  
+  String getSmartAdvice(List<BeggarAttribute> userSkills) {
+    if (reviews.isEmpty) return "Pas assez de données. Soyez le premier !";
+
+    final bestAttr = bestAttribute;
+    final avgRate = averageHourlyRate;
+
+    // 1. Si le lieu performe mieux avec un attribut que l'utilisateur possède
+    if (userSkills.contains(bestAttr)) {
+      return "🔥 FONCEZ ! Ce spot rapporte un max avec : ${_formatAttr(bestAttr)}.";
+    }
+
+    // 2. Si le lieu demande un attribut que l'utilisateur N'A PAS
+    if (bestAttr != BeggarAttribute.none && !userSkills.contains(bestAttr)) {
+      return "⚠️ ATTENTION. Ici, ce sont les ${_formatAttr(bestAttr)}s qui gagnent (${avgRate.toInt()}€/h). Vous risquez de gagner moins.";
+    }
+
+    // 3. Analyse par catégorie (Bonus contextuel)
+    if (category == 'Business' && userSkills.contains(BeggarAttribute.music)) {
+      return "✅ BON PLAN. Les zones Business paient bien pour la musique.";
+    }
+    
+    if (category == 'Shopping' && userSkills.contains(BeggarAttribute.dog)) {
+      return "🐕 EFFICACE. Les zones Shopping marchent fort avec les animaux.";
+    }
+
+    return "ℹ️ Zone standard. Le rendement moyen est de ${avgRate.toInt()}€/h.";
+  }
+
+  String _formatAttr(BeggarAttribute attr) {
+    switch (attr) {
+      case BeggarAttribute.dog: return "ANIMAUX";
+      case BeggarAttribute.music: return "MUSICIENS";
+      case BeggarAttribute.circus: return "ACROBATES";
+      case BeggarAttribute.disability: return "PERSONNES HANDICAPÉES";
+      case BeggarAttribute.family: return "FAMILLES";
+      default: return "MENDIANTS SOLOS";
+    }
+  }
 }
 
 class Review {
