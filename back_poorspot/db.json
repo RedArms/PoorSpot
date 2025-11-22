@@ -1,0 +1,3407 @@
+{
+    "users": [
+        {
+            "id": "admin_user",
+            "name": "Admin",
+            "password_hash": "8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918",
+            "attributes": [
+                "music",
+                "disability",
+                "family"
+            ],
+            "favorites": [],
+            "createdAt": "2025-01-01T12:00:00"
+        },
+        {
+            "id": "f30a85a3-2b22-4a2e-8db6-0b5c69195c8d",
+            "name": "caca",
+            "password_hash": "26429a356b1d25b7d57c0f9a6d5fed8a290cb42374185887dcd2874548df0779",
+            "attributes": [
+                "dog",
+                "music",
+                "disability"
+            ],
+            "favorites": [
+                "89012345-003b-7908-c43b-00000000003b",
+                "01234567-0009-4709-9209-000000000009",
+                "456789ab-001d-5b3d-a61d-00000000001d"
+            ],
+            "createdAt": "2025-11-22T21:31:57.581454"
+        },
+        {
+            "id": "user_jeanmarc",
+            "name": "JeanMarc",
+            "password_hash": "7b3c5b7f9b7d0b121f1bd7729e8fbf21d78fa234e99d8f361fad102cfa991002",
+            "attributes": [
+                "circus",
+                "music"
+            ],
+            "favorites": [],
+            "createdAt": "2025-02-14T10:22:00"
+        },
+        {
+            "id": "user_lolita",
+            "name": "Lolita",
+            "password_hash": "44cfe71299771ae20bbe13d8f843f612e309b6bd59ab2baa9a3a4dd1b13c3570",
+            "attributes": [
+                "family",
+                "student"
+            ],
+            "favorites": [],
+            "createdAt": "2025-04-03T09:00:00"
+        },
+        {
+            "id": "user_cobra",
+            "name": "Cobra",
+            "password_hash": "899dc655419fe47133ecf6c4a7c980ac023c8b0428b87430a995f76df8db1328",
+            "attributes": [
+                "security",
+                "circus",
+                "music"
+            ],
+            "favorites": [],
+            "createdAt": "2025-05-01T18:15:00"
+        }
+    ],
+    "spots": [
+        {
+            "id": "d0f1a3b2-0001-4e1a-8a01-000000000001",
+            "name": "Grand-Place",
+            "description": "Le cœur touristique de Bruxelles. Beaucoup de passage.",
+            "latitude": 50.8467,
+            "longitude": 4.3524,
+            "category": "Tourisme",
+            "createdAt": "2025-01-01T12:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 8,
+            "reviews": [
+                {
+                    "id": "rev-d0f1a3b2-0001-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "circus",
+                    "comment": "Toujours beaucoup de monde, public généreux.",
+                    "createdAt": "2025-01-05T14:10:00"
+                },
+                {
+                    "id": "rev-d0f1a3b2-0001-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "family",
+                    "comment": "Bon spot pour la journée, sécurisant le soir.",
+                    "createdAt": "2025-02-10T11:00:00"
+                },
+                {
+                    "id": "rev-d0f1a3b2-0001-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "music",
+                    "comment": "Très rentable mais attention aux pickpockets.",
+                    "createdAt": "2025-03-03T18:30:00"
+                },
+                {
+                    "id": "rev-d0f1a3b2-0001-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "dog",
+                    "comment": "Beaucoup d'espace, mais pas idéal pour chiens.",
+                    "createdAt": "2025-03-20T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "e7b2c4d5-0002-4f2b-9b02-000000000002",
+            "name": "Gare du Midi",
+            "description": "Grosse affluence, spot rentable mais parfois tendu.",
+            "latitude": 50.8369,
+            "longitude": 4.335,
+            "category": "Transport",
+            "createdAt": "2025-01-10T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 6,
+            "reviews": [
+                {
+                    "id": "rev-e7b2c4d5-0002-1",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "student",
+                    "comment": "Beaucoup de passage, bon pour jouer rapidement.",
+                    "createdAt": "2025-02-02T16:00:00"
+                },
+                {
+                    "id": "rev-e7b2c4d5-0002-2",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Public variable, parfois généreux.",
+                    "createdAt": "2025-02-18T12:30:00"
+                },
+                {
+                    "id": "rev-e7b2c4d5-0002-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 1.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "security",
+                    "comment": "Peu sûr tard le soir, faire attention.",
+                    "createdAt": "2025-03-10T20:45:00"
+                },
+                {
+                    "id": "rev-e7b2c4d5-0002-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "dog",
+                    "comment": "Pas top pour promener le chien, trop de monde.",
+                    "createdAt": "2025-03-25T10:15:00"
+                }
+            ]
+        },
+        {
+            "id": "a1b2c3d4-0003-41a3-8c03-000000000003",
+            "name": "Place du Sablon",
+            "description": "Quartier chic, touristes et locaux aisés.",
+            "latitude": 50.8401,
+            "longitude": 4.3564,
+            "category": "Tourisme",
+            "createdAt": "2025-02-01T13:22:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-a1b2c3d4-0003-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Public attentif, bon pour performances calmes.",
+                    "createdAt": "2025-02-05T10:22:00"
+                },
+                {
+                    "id": "rev-a1b2c3d4-0003-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Ambiance agréable, sécurisé.",
+                    "createdAt": "2025-03-01T14:00:00"
+                },
+                {
+                    "id": "rev-a1b2c3d4-0003-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "music",
+                    "comment": "Bon public mais moins fréquenté que la Grand-Place.",
+                    "createdAt": "2025-03-15T11:30:00"
+                },
+                {
+                    "id": "rev-a1b2c3d4-0003-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Calme, agréable avec un chien.",
+                    "createdAt": "2025-04-02T09:45:00"
+                }
+            ]
+        },
+        {
+            "id": "b4c5d6e7-0004-42b4-8d04-000000000004",
+            "name": "Mont des Arts",
+            "description": "Vue emblématique, parfait pour spectacles.",
+            "latitude": 50.8444,
+            "longitude": 4.3561,
+            "category": "Culture",
+            "createdAt": "2025-04-01T14:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-b4c5d6e7-0004-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "circus",
+                    "comment": "Très bon spot pour acrobaties et musique.",
+                    "createdAt": "2025-04-02T12:00:00"
+                },
+                {
+                    "id": "rev-b4c5d6e7-0004-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "family",
+                    "comment": "Beau cadre, public réceptif.",
+                    "createdAt": "2025-05-01T10:00:00"
+                },
+                {
+                    "id": "rev-b4c5d6e7-0004-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "music",
+                    "comment": "Bon flux pour sets acoustiques.",
+                    "createdAt": "2025-05-12T16:00:00"
+                },
+                {
+                    "id": "rev-b4c5d6e7-0004-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Plutôt calme, pas idéal pour vendre.",
+                    "createdAt": "2025-06-03T09:30:00"
+                }
+            ]
+        },
+        {
+            "id": "c8d9e0f1-0005-43c5-8e05-000000000005",
+            "name": "Place Rogier",
+            "description": "Business + centre commercial, flux constant.",
+            "latitude": 50.854,
+            "longitude": 4.3573,
+            "category": "Shopping",
+            "createdAt": "2025-04-20T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 5,
+            "reviews": [
+                {
+                    "id": "rev-c8d9e0f1-0005-1",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "student",
+                    "comment": "Bon flux pour distributions et musique.",
+                    "createdAt": "2025-04-21T16:00:00"
+                },
+                {
+                    "id": "rev-c8d9e0f1-0005-2",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Flux régulier, public moyen.",
+                    "createdAt": "2025-05-02T11:00:00"
+                },
+                {
+                    "id": "rev-c8d9e0f1-0005-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "security",
+                    "comment": "Efficace mais attention aux contrôles la nuit.",
+                    "createdAt": "2025-05-20T19:00:00"
+                },
+                {
+                    "id": "rev-c8d9e0f1-0005-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "dog",
+                    "comment": "Beaucoup de bruit pour les chiens.",
+                    "createdAt": "2025-06-05T09:10:00"
+                }
+            ]
+        },
+        {
+            "id": "d9e0f1a2-0006-44d6-8f06-000000000006",
+            "name": "Parc Royal",
+            "description": "Familial, calme, idéal en journée.",
+            "latitude": 50.8463,
+            "longitude": 4.3632,
+            "category": "Parc",
+            "createdAt": "2025-05-02T12:30:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-d9e0f1a2-0006-1",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Sympa avec un chien mais peu rentable.",
+                    "createdAt": "2025-05-03T09:00:00"
+                },
+                {
+                    "id": "rev-d9e0f1a2-0006-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Calme, plutôt familial.",
+                    "createdAt": "2025-05-10T11:00:00"
+                },
+                {
+                    "id": "rev-d9e0f1a2-0006-3",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "circus",
+                    "comment": "Bien pour répétitions, moins pour collecte.",
+                    "createdAt": "2025-06-01T13:30:00"
+                },
+                {
+                    "id": "rev-d9e0f1a2-0006-4",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Très sûr, peu d'opportunités monétaires.",
+                    "createdAt": "2025-06-15T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "e0f1a2b3-0007-45e7-9007-000000000007",
+            "name": "Atomium",
+            "description": "Très touristique, surtout l'été.",
+            "latitude": 50.8949,
+            "longitude": 4.341,
+            "category": "Tourisme",
+            "createdAt": "2025-06-01T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 7,
+            "reviews": [
+                {
+                    "id": "rev-e0f1a2b3-0007-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Touristes généreux, bon spot.",
+                    "createdAt": "2025-06-05T13:00:00"
+                },
+                {
+                    "id": "rev-e0f1a2b3-0007-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "family",
+                    "comment": "Très touristique, bien encadré.",
+                    "createdAt": "2025-06-10T11:30:00"
+                },
+                {
+                    "id": "rev-e0f1a2b3-0007-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "music",
+                    "comment": "Gros potentiel en été.",
+                    "createdAt": "2025-07-01T17:00:00"
+                },
+                {
+                    "id": "rev-e0f1a2b3-0007-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "dog",
+                    "comment": "Beaucoup de marche pour les chiens.",
+                    "createdAt": "2025-07-10T10:15:00"
+                }
+            ]
+        },
+        {
+            "id": "f1a2b3c4-0008-46f8-9108-000000000008",
+            "name": "Parvis de Saint-Gilles",
+            "description": "Quartier vivant, bars et marchés.",
+            "latitude": 50.8274,
+            "longitude": 4.3438,
+            "category": "Nightlife",
+            "createdAt": "2025-03-10T11:20:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-f1a2b3c4-0008-1",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "music",
+                    "comment": "Ambiance chill, pas le meilleur spot mais safe.",
+                    "createdAt": "2025-03-12T14:00:00"
+                },
+                {
+                    "id": "rev-f1a2b3c4-0008-2",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Bien pour tester nouveaux numéros.",
+                    "createdAt": "2025-03-22T18:00:00"
+                },
+                {
+                    "id": "rev-f1a2b3c4-0008-3",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Suffisamment sûr pour venir en famille en début de soirée.",
+                    "createdAt": "2025-04-03T20:00:00"
+                },
+                {
+                    "id": "rev-f1a2b3c4-0008-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Beaucoup de bars, bruyant pour chiens.",
+                    "createdAt": "2025-04-14T09:20:00"
+                }
+            ]
+        },
+        {
+            "id": "01234567-0009-4709-9209-000000000009",
+            "name": "Rue Neuve",
+            "description": "Shopping de masse. Foule compacte.",
+            "latitude": 50.852,
+            "longitude": 4.356,
+            "category": "Shopping",
+            "createdAt": "2025-01-01T12:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 6,
+            "reviews": [
+                {
+                    "id": "rev-01234567-0009-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "circus",
+                    "comment": "Clientèle nombreuse mais pressée.",
+                    "createdAt": "2025-02-11T13:00:00"
+                },
+                {
+                    "id": "rev-01234567-0009-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "student",
+                    "comment": "Flux constant, efficace pour flyers.",
+                    "createdAt": "2025-02-20T12:15:00"
+                },
+                {
+                    "id": "rev-01234567-0009-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "security",
+                    "comment": "Foule dense, attention aux incidents.",
+                    "createdAt": "2025-03-05T15:30:00"
+                },
+                {
+                    "id": "rev-01234567-0009-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "dog",
+                    "comment": "Pas top pour chien, trop de monde.",
+                    "createdAt": "2025-03-17T10:00:00"
+                }
+            ]
+        },
+        {
+            "id": "89abcdef-000a-480a-930a-00000000000a",
+            "name": "Bourse",
+            "description": "Centre-ville, beaucoup de jeunes et soirées.",
+            "latitude": 50.8485,
+            "longitude": 4.3517,
+            "category": "Nightlife",
+            "createdAt": "2025-02-10T15:22:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 7,
+            "reviews": [
+                {
+                    "id": "rev-89abcdef-000a-1",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "music",
+                    "comment": "Très rentable pour jouer de la guitare.",
+                    "createdAt": "2025-03-01T19:45:00"
+                },
+                {
+                    "id": "rev-89abcdef-000a-2",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Bonne ambiance, beaucoup d'étudiants.",
+                    "createdAt": "2025-03-12T21:00:00"
+                },
+                {
+                    "id": "rev-89abcdef-000a-3",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "family",
+                    "comment": "Plus vivant la nuit, garde tes affaires.",
+                    "createdAt": "2025-04-02T22:30:00"
+                },
+                {
+                    "id": "rev-89abcdef-000a-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "dog",
+                    "comment": "Ok pour jouer mais bruyant pour un chien.",
+                    "createdAt": "2025-04-15T20:00:00"
+                }
+            ]
+        },
+        {
+            "id": "11111111-000b-491b-940b-00000000000b",
+            "name": "Galeries Royales Saint-Hubert",
+            "description": "Passage couvert, clientèle touristique et élégante.",
+            "latitude": 50.846,
+            "longitude": 4.357,
+            "category": "Shopping",
+            "createdAt": "2025-02-25T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-11111111-000b-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Public chic, mieux pour prestations calmes.",
+                    "createdAt": "2025-03-05T12:00:00"
+                },
+                {
+                    "id": "rev-11111111-000b-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Belle architecture, peu d'espace pour s'installer.",
+                    "createdAt": "2025-03-20T15:30:00"
+                },
+                {
+                    "id": "rev-11111111-000b-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "music",
+                    "comment": "Cadre agréable, mais pas toujours adapté aux instruments.",
+                    "createdAt": "2025-04-05T11:00:00"
+                },
+                {
+                    "id": "rev-11111111-000b-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Très propre, chien autorisé mais discret.",
+                    "createdAt": "2025-04-25T09:10:00"
+                }
+            ]
+        },
+        {
+            "id": "22222222-000c-4a2c-950c-00000000000c",
+            "name": "Parc de la Cinquantenaire",
+            "description": "Grand parc, événements et musées à proximité.",
+            "latitude": 50.8429,
+            "longitude": 4.3959,
+            "category": "Parc",
+            "createdAt": "2025-03-01T09:30:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-22222222-000c-1",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Beau parc, bonne ambiance le week-end.",
+                    "createdAt": "2025-03-10T11:00:00"
+                },
+                {
+                    "id": "rev-22222222-000c-2",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Espaces larges, pratique pour spectacles.",
+                    "createdAt": "2025-04-01T12:00:00"
+                },
+                {
+                    "id": "rev-22222222-000c-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Assez sûr, mais éloigné du centre.",
+                    "createdAt": "2025-04-18T09:30:00"
+                },
+                {
+                    "id": "rev-22222222-000c-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Parfait pour promener le chien, moins rentable.",
+                    "createdAt": "2025-05-02T10:00:00"
+                }
+            ]
+        },
+        {
+            "id": "33333333-000d-4b3d-960d-00000000000d",
+            "name": "Bois de la Cambre",
+            "description": "Grand espace vert, idéal pour après-midi détendus.",
+            "latitude": 50.809,
+            "longitude": 4.372,
+            "category": "Parc",
+            "createdAt": "2025-03-15T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-33333333-000d-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "circus",
+                    "comment": "Parfait pour répéter, pas pour gagner beaucoup.",
+                    "createdAt": "2025-04-10T14:00:00"
+                },
+                {
+                    "id": "rev-33333333-000d-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Très agréable en journée.",
+                    "createdAt": "2025-05-01T10:00:00"
+                },
+                {
+                    "id": "rev-33333333-000d-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Sécurisé, idéal pour répétitions privées.",
+                    "createdAt": "2025-05-12T11:30:00"
+                },
+                {
+                    "id": "rev-33333333-000d-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Super pour balades canines.",
+                    "createdAt": "2025-05-20T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "44444444-000e-4c4e-970e-00000000000e",
+            "name": "Place Sainte-Catherine",
+            "description": "Proche des restaurants et marchés de poisson.",
+            "latitude": 50.8503,
+            "longitude": 4.3515,
+            "category": "Nightlife",
+            "createdAt": "2025-03-20T12:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 5,
+            "reviews": [
+                {
+                    "id": "rev-44444444-000e-1",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "music",
+                    "comment": "Beaucoup de restaurants, bon flux piéton.",
+                    "createdAt": "2025-04-01T18:00:00"
+                },
+                {
+                    "id": "rev-44444444-000e-2",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Public touristique, assez réceptif.",
+                    "createdAt": "2025-04-12T20:30:00"
+                },
+                {
+                    "id": "rev-44444444-000e-3",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "family",
+                    "comment": "Bien pour une performance en soirée.",
+                    "createdAt": "2025-04-25T19:00:00"
+                },
+                {
+                    "id": "rev-44444444-000e-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "dog",
+                    "comment": "Pas beaucoup d'espace pour chien.",
+                    "createdAt": "2025-05-10T10:00:00"
+                }
+            ]
+        },
+        {
+            "id": "55555555-000f-4d5f-980f-00000000000f",
+            "name": "Place Flagey",
+            "description": "Bobo et détendu près des étangs.",
+            "latitude": 50.828,
+            "longitude": 4.372,
+            "category": "Nightlife",
+            "createdAt": "2025-01-01T12:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-55555555-000f-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Bon pour musiciens et artistes de rue.",
+                    "createdAt": "2025-02-14T17:00:00"
+                },
+                {
+                    "id": "rev-55555555-000f-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "family",
+                    "comment": "Ambiance détendue, bon pour tests de set.",
+                    "createdAt": "2025-03-01T16:30:00"
+                },
+                {
+                    "id": "rev-55555555-000f-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "music",
+                    "comment": "Régulier mais pas exceptionnel.",
+                    "createdAt": "2025-03-20T19:00:00"
+                },
+                {
+                    "id": "rev-55555555-000f-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Plutôt agréable pour une balade.",
+                    "createdAt": "2025-04-05T10:00:00"
+                }
+            ]
+        },
+        {
+            "id": "66666666-0010-4e60-9910-000000000010",
+            "name": "Quartier des Marolles",
+            "description": "Ambiance populaire, marché aux puces, bon pour busking.",
+            "latitude": 50.8475,
+            "longitude": 4.349,
+            "category": "Culture",
+            "createdAt": "2025-04-10T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 5,
+            "reviews": [
+                {
+                    "id": "rev-66666666-0010-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Public local généreux le week-end.",
+                    "createdAt": "2025-04-15T11:00:00"
+                },
+                {
+                    "id": "rev-66666666-0010-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "student",
+                    "comment": "Bonne ambiance, beaucoup de touristes parfois.",
+                    "createdAt": "2025-05-02T10:30:00"
+                },
+                {
+                    "id": "rev-66666666-0010-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "security",
+                    "comment": "Contrôles variables, rester vigilant.",
+                    "createdAt": "2025-05-20T15:00:00"
+                },
+                {
+                    "id": "rev-66666666-0010-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "dog",
+                    "comment": "Cool pour une promenade, bon flux le dimanche.",
+                    "createdAt": "2025-06-01T09:40:00"
+                }
+            ]
+        },
+        {
+            "id": "77777777-0011-4f71-9a11-000000000011",
+            "name": "Place Saint-Géry",
+            "description": "Bars et terrasses, beaucoup de vie nocturne.",
+            "latitude": 50.8488,
+            "longitude": 4.354,
+            "category": "Nightlife",
+            "createdAt": "2025-05-01T18:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 6,
+            "reviews": [
+                {
+                    "id": "rev-77777777-0011-1",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "music",
+                    "comment": "Super flux pour busking nocturne.",
+                    "createdAt": "2025-05-05T22:00:00"
+                },
+                {
+                    "id": "rev-77777777-0011-2",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Bonne ambiance jeune et détendue.",
+                    "createdAt": "2025-05-20T20:00:00"
+                },
+                {
+                    "id": "rev-77777777-0011-3",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "family",
+                    "comment": "Très vivant le soir, attention aux pickpockets.",
+                    "createdAt": "2025-06-01T21:00:00"
+                },
+                {
+                    "id": "rev-77777777-0011-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "dog",
+                    "comment": "Ambiance sympa mais bruyante pour chien.",
+                    "createdAt": "2025-06-10T19:30:00"
+                }
+            ]
+        },
+        {
+            "id": "88888888-0012-5072-9b12-000000000012",
+            "name": "Place Jourdan",
+            "description": "Restauration, frites et terrasses populaires.",
+            "latitude": 50.841,
+            "longitude": 4.36,
+            "category": "Nightlife",
+            "createdAt": "2025-05-15T12:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-88888888-0012-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Beaucoup de passants pour une représentation rapide.",
+                    "createdAt": "2025-05-20T13:00:00"
+                },
+                {
+                    "id": "rev-88888888-0012-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "family",
+                    "comment": "Ambiance conviviale.",
+                    "createdAt": "2025-06-02T14:10:00"
+                },
+                {
+                    "id": "rev-88888888-0012-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "security",
+                    "comment": "Assez sûr, bon pour petites prestations.",
+                    "createdAt": "2025-06-12T18:00:00"
+                },
+                {
+                    "id": "rev-88888888-0012-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Pas top pour chien, odeurs de restauration.",
+                    "createdAt": "2025-06-22T11:00:00"
+                }
+            ]
+        },
+        {
+            "id": "99999999-0013-5183-9c13-000000000013",
+            "name": "Place du Châtelain",
+            "description": "Terrasses chics, marché local le dimanche.",
+            "latitude": 50.8245,
+            "longitude": 4.369,
+            "category": "Nightlife",
+            "createdAt": "2025-06-01T08:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-99999999-0013-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Bon public le week-end.",
+                    "createdAt": "2025-06-05T11:00:00"
+                },
+                {
+                    "id": "rev-99999999-0013-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Assez calme et sûr.",
+                    "createdAt": "2025-06-20T10:00:00"
+                },
+                {
+                    "id": "rev-99999999-0013-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "music",
+                    "comment": "Ambiance agréable pour sets acoustiques.",
+                    "createdAt": "2025-07-01T18:00:00"
+                },
+                {
+                    "id": "rev-99999999-0013-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Calme, agréable pour promener.",
+                    "createdAt": "2025-07-10T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "aaaaaaaa-0014-5294-9d14-000000000014",
+            "name": "Place Fernand Cocq",
+            "description": "Centre de Saint-Gilles, bons flux de soirée.",
+            "latitude": 50.8279,
+            "longitude": 4.3465,
+            "category": "Nightlife",
+            "createdAt": "2025-06-10T12:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-aaaaaaaa-0014-1",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "music",
+                    "comment": "Traffic intéressant la soirée.",
+                    "createdAt": "2025-06-15T21:00:00"
+                },
+                {
+                    "id": "rev-aaaaaaaa-0014-2",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Assez polyvalent pour différents arts de rue.",
+                    "createdAt": "2025-06-25T17:00:00"
+                },
+                {
+                    "id": "rev-aaaaaaaa-0014-3",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "family",
+                    "comment": "Correct pour tester de nouveaux morceaux.",
+                    "createdAt": "2025-07-05T19:00:00"
+                },
+                {
+                    "id": "rev-aaaaaaaa-0014-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Sympa mais bruyant parfois.",
+                    "createdAt": "2025-07-16T10:00:00"
+                }
+            ]
+        },
+        {
+            "id": "bbbbbbbb-0015-53a5-9e15-000000000015",
+            "name": "Avenue Louise",
+            "description": "Rue commerçante haut de gamme, passants aisés.",
+            "latitude": 50.8204,
+            "longitude": 4.3646,
+            "category": "Shopping",
+            "createdAt": "2025-06-20T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-bbbbbbbb-0015-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Public aisé, possibilité de bon revenu.",
+                    "createdAt": "2025-06-25T12:00:00"
+                },
+                {
+                    "id": "rev-bbbbbbbb-0015-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Plutôt calme, clientèle habituée.",
+                    "createdAt": "2025-07-02T11:00:00"
+                },
+                {
+                    "id": "rev-bbbbbbbb-0015-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "music",
+                    "comment": "Propre et sécurisé, bonne image.",
+                    "createdAt": "2025-07-15T16:00:00"
+                },
+                {
+                    "id": "rev-bbbbbbbb-0015-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Beaux trottoirs pour promener un chien.",
+                    "createdAt": "2025-07-25T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "cccccccc-0016-54b6-9f16-000000000016",
+            "name": "Place des Palais",
+            "description": "Proche du palais de justice, flux variable.",
+            "latitude": 50.842,
+            "longitude": 4.3575,
+            "category": "Tourisme",
+            "createdAt": "2025-07-01T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-cccccccc-0016-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Lieu solennel, public calme.",
+                    "createdAt": "2025-07-05T12:00:00"
+                },
+                {
+                    "id": "rev-cccccccc-0016-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Très calme, pas beaucoup d'opportunités.",
+                    "createdAt": "2025-07-20T10:00:00"
+                },
+                {
+                    "id": "rev-cccccccc-0016-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Très sûr mais faible revenu.",
+                    "createdAt": "2025-08-01T09:30:00"
+                },
+                {
+                    "id": "rev-cccccccc-0016-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Tout petit flux, mieux pour une promenade.",
+                    "createdAt": "2025-08-10T08:45:00"
+                }
+            ]
+        },
+        {
+            "id": "dddddddd-0017-55c7-a017-000000000017",
+            "name": "Place de la Monnaie",
+            "description": "Proche des théâtres et commerces, passage régulier.",
+            "latitude": 50.8462,
+            "longitude": 4.3526,
+            "category": "Culture",
+            "createdAt": "2025-07-10T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-dddddddd-0017-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Public culturel, plutôt généreux après les spectacles.",
+                    "createdAt": "2025-07-15T18:00:00"
+                },
+                {
+                    "id": "rev-dddddddd-0017-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "family",
+                    "comment": "Bien placé pour capter le public de théâtre.",
+                    "createdAt": "2025-07-25T17:00:00"
+                },
+                {
+                    "id": "rev-dddddddd-0017-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "music",
+                    "comment": "Bon flux le soir après les représentations.",
+                    "createdAt": "2025-08-05T20:00:00"
+                },
+                {
+                    "id": "rev-dddddddd-0017-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Sympa mais pas beaucoup d'espace.",
+                    "createdAt": "2025-08-20T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "eeeeeeee-0018-56d8-a118-000000000018",
+            "name": "Porte de Hal",
+            "description": "Monument historique, passage mais espace réduit.",
+            "latitude": 50.8367,
+            "longitude": 4.343,
+            "category": "Tourisme",
+            "createdAt": "2025-07-20T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-eeeeeeee-0018-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Intéressant pour décor visuel, peu d'espace.",
+                    "createdAt": "2025-07-25T12:00:00"
+                },
+                {
+                    "id": "rev-eeeeeeee-0018-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Bien pour photos, pas pour spectacles bruyants.",
+                    "createdAt": "2025-08-05T11:00:00"
+                },
+                {
+                    "id": "rev-eeeeeeee-0018-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "security",
+                    "comment": "Sécurisé et respectueux du site.",
+                    "createdAt": "2025-08-15T10:00:00"
+                },
+                {
+                    "id": "rev-eeeeeeee-0018-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Lieu historique, moins adapté aux chiens.",
+                    "createdAt": "2025-08-25T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "ffffffff-0019-57e9-a219-000000000019",
+            "name": "Quartier Européen",
+            "description": "Bureaucratie et touristes, flux régulier en journée.",
+            "latitude": 50.8459,
+            "longitude": 4.3774,
+            "category": "Tourisme",
+            "createdAt": "2025-08-01T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-ffffffff-0019-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Bon public pendant les événements.",
+                    "createdAt": "2025-08-05T12:00:00"
+                },
+                {
+                    "id": "rev-ffffffff-0019-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Sûr mais pas très festif.",
+                    "createdAt": "2025-08-15T11:00:00"
+                },
+                {
+                    "id": "rev-ffffffff-0019-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "security",
+                    "comment": "Bien encadré, idéal pour événements professionnels.",
+                    "createdAt": "2025-08-25T10:00:00"
+                },
+                {
+                    "id": "rev-ffffffff-0019-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Calme mais peu réactif pour donations.",
+                    "createdAt": "2025-09-05T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "12345678-001a-580a-a31a-00000000001a",
+            "name": "Marché du Midi",
+            "description": "Marché populaire, bons flux matinaux.",
+            "latitude": 50.8365,
+            "longitude": 4.3338,
+            "category": "Market",
+            "createdAt": "2025-08-10T07:30:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-12345678-001a-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "circus",
+                    "comment": "Très bon le matin, clientèle locale généreuse.",
+                    "createdAt": "2025-08-15T08:30:00"
+                },
+                {
+                    "id": "rev-12345678-001a-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "student",
+                    "comment": "Flux constant, bon pour démonstrations.",
+                    "createdAt": "2025-08-20T09:00:00"
+                },
+                {
+                    "id": "rev-12345678-001a-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "security",
+                    "comment": "Parfois désordonné, rester vigilant.",
+                    "createdAt": "2025-09-01T10:00:00"
+                },
+                {
+                    "id": "rev-12345678-001a-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "dog",
+                    "comment": "Bon pour la promesse du dimanche matin.",
+                    "createdAt": "2025-09-10T08:00:00"
+                }
+            ]
+        },
+        {
+            "id": "23456789-001b-591b-a41b-00000000001b",
+            "name": "Canal de Bruxelles",
+            "description": "Balades, pistes cyclables, événements ponctuels.",
+            "latitude": 50.877,
+            "longitude": 4.334,
+            "category": "Nature",
+            "createdAt": "2025-08-20T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-23456789-001b-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Calme, plaisant pour small performances.",
+                    "createdAt": "2025-08-25T11:00:00"
+                },
+                {
+                    "id": "rev-23456789-001b-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Parfait pour promenades en journée.",
+                    "createdAt": "2025-09-05T10:00:00"
+                },
+                {
+                    "id": "rev-23456789-001b-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Sécurisé mais faible affluence.",
+                    "createdAt": "2025-09-15T12:00:00"
+                },
+                {
+                    "id": "rev-23456789-001b-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Excellent pour chiens, pas pour gagner de l'argent.",
+                    "createdAt": "2025-09-25T09:30:00"
+                }
+            ]
+        },
+        {
+            "id": "3456789a-001c-5a2c-a51c-00000000001c",
+            "name": "Place Anneessens",
+            "description": "Point de rencontre, proche commerces et trams.",
+            "latitude": 50.845,
+            "longitude": 4.352,
+            "category": "Transport",
+            "createdAt": "2025-09-01T08:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-3456789a-001c-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Bonne visibilité, bon flux local.",
+                    "createdAt": "2025-09-05T10:00:00"
+                },
+                {
+                    "id": "rev-3456789a-001c-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "student",
+                    "comment": "Assez correct pour petites prestations.",
+                    "createdAt": "2025-09-12T11:00:00"
+                },
+                {
+                    "id": "rev-3456789a-001c-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "security",
+                    "comment": "Flux irrégulier selon l'heure.",
+                    "createdAt": "2025-09-20T09:30:00"
+                },
+                {
+                    "id": "rev-3456789a-001c-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Pratique d'accès mais pas top pour chiens.",
+                    "createdAt": "2025-10-01T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "456789ab-001d-5b3d-a61d-00000000001d",
+            "name": "Place du Jeu de Balle",
+            "description": "Marché aux puces quotidien, flux constant.",
+            "latitude": 50.8478,
+            "longitude": 4.3492,
+            "category": "Market",
+            "createdAt": "2025-09-10T07:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 5,
+            "reviews": [
+                {
+                    "id": "rev-456789ab-001d-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "circus",
+                    "comment": "Excellent le matin, public généreux.",
+                    "createdAt": "2025-09-15T08:30:00"
+                },
+                {
+                    "id": "rev-456789ab-001d-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "family",
+                    "comment": "Atmosphère de marché, sympa pour artistes.",
+                    "createdAt": "2025-09-25T09:00:00"
+                },
+                {
+                    "id": "rev-456789ab-001d-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "security",
+                    "comment": "Beaucoup de flux, rester attentif aux vols.",
+                    "createdAt": "2025-10-05T10:00:00"
+                },
+                {
+                    "id": "rev-456789ab-001d-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "dog",
+                    "comment": "Ambiance vivante, ok pour chiens tenus en laisse.",
+                    "createdAt": "2025-10-15T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "56789abc-001e-5c4e-a71e-00000000001e",
+            "name": "Sablon - Antique District",
+            "description": "Antiquaires et chocolateries, clientèle aisée.",
+            "latitude": 50.8405,
+            "longitude": 4.3568,
+            "category": "Shopping",
+            "createdAt": "2025-09-20T10:30:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-56789abc-001e-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Clientèle prête à dépenser.",
+                    "createdAt": "2025-09-25T11:00:00"
+                },
+                {
+                    "id": "rev-56789abc-001e-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Parfait pour prestations élégantes.",
+                    "createdAt": "2025-10-02T10:00:00"
+                },
+                {
+                    "id": "rev-56789abc-001e-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "music",
+                    "comment": "Bonne image, public réceptif.",
+                    "createdAt": "2025-10-12T15:00:00"
+                },
+                {
+                    "id": "rev-56789abc-001e-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Beaux trottoirs, chien accepté mais discret.",
+                    "createdAt": "2025-10-22T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "6789abcd-001f-5d5f-a81f-00000000001f",
+            "name": "Gare Centrale",
+            "description": "Carrefour de voyageurs, passage quasi permanent.",
+            "latitude": 50.8455,
+            "longitude": 4.357,
+            "category": "Transport",
+            "createdAt": "2025-01-01T12:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 8,
+            "reviews": [
+                {
+                    "id": "rev-6789abcd-001f-1",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "student",
+                    "comment": "Flux constant, idéal pour routines courtes.",
+                    "createdAt": "2025-02-18T08:30:00"
+                },
+                {
+                    "id": "rev-6789abcd-001f-2",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "circus",
+                    "comment": "Très rentable mais attention à la sécurité.",
+                    "createdAt": "2025-03-01T17:00:00"
+                },
+                {
+                    "id": "rev-6789abcd-001f-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "security",
+                    "comment": "Beaucoup de monde, risque de vols.",
+                    "createdAt": "2025-03-15T18:00:00"
+                },
+                {
+                    "id": "rev-6789abcd-001f-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "dog",
+                    "comment": "Très fréquenté, pas idéal pour chien.",
+                    "createdAt": "2025-04-01T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "789abcd0-0020-5e60-a920-000000000020",
+            "name": "Square Ambiorix",
+            "description": "Quartier européen, parcs et cafés.",
+            "latitude": 50.847,
+            "longitude": 4.369,
+            "category": "Tourisme",
+            "createdAt": "2025-08-05T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-789abcd0-0020-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Calme, utile pour répétitions privées.",
+                    "createdAt": "2025-08-10T11:00:00"
+                },
+                {
+                    "id": "rev-789abcd0-0020-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Idéal pour se poser, pas pour collecter.",
+                    "createdAt": "2025-08-20T10:00:00"
+                },
+                {
+                    "id": "rev-789abcd0-0020-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Sûr mais peu de passants pertinents.",
+                    "createdAt": "2025-09-01T09:30:00"
+                },
+                {
+                    "id": "rev-789abcd0-0020-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Bon pour chiens, calme.",
+                    "createdAt": "2025-09-10T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "89abcdef-0021-5f71-aa21-000000000021",
+            "name": "Espace Louise (Place Stéphanie)",
+            "description": "Commerces et terrasses, clientèle diverse.",
+            "latitude": 50.8249,
+            "longitude": 4.3639,
+            "category": "Shopping",
+            "createdAt": "2025-06-25T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-89abcdef-0021-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Clientèle mélangée, parfait pour tests.",
+                    "createdAt": "2025-07-01T12:00:00"
+                },
+                {
+                    "id": "rev-89abcdef-0021-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "family",
+                    "comment": "Assez agréable pour se tester.",
+                    "createdAt": "2025-07-10T11:00:00"
+                },
+                {
+                    "id": "rev-89abcdef-0021-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "security",
+                    "comment": "Correct globalement.",
+                    "createdAt": "2025-07-20T15:00:00"
+                },
+                {
+                    "id": "rev-89abcdef-0021-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Beaux trottoirs, chien ok.",
+                    "createdAt": "2025-08-01T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "90abcdef-0022-6072-ab22-000000000022",
+            "name": "Halles Saint-Géry",
+            "description": "Lieu culturel et marché, activité continue.",
+            "latitude": 50.8486,
+            "longitude": 4.3522,
+            "category": "Culture",
+            "createdAt": "2025-07-05T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-90abcdef-0022-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Public culturel, intéressé par nouvelles performances.",
+                    "createdAt": "2025-07-10T12:30:00"
+                },
+                {
+                    "id": "rev-90abcdef-0022-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "family",
+                    "comment": "Atmosphère agréable et dynamique.",
+                    "createdAt": "2025-07-20T14:00:00"
+                },
+                {
+                    "id": "rev-90abcdef-0022-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "music",
+                    "comment": "Bon spot pour événements ponctuels.",
+                    "createdAt": "2025-08-01T18:00:00"
+                },
+                {
+                    "id": "rev-90abcdef-0022-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Sympa mais bruit parfois fort.",
+                    "createdAt": "2025-08-10T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "a0b1c2d3-0023-6173-ac23-000000000023",
+            "name": "Porte de Namur",
+            "description": "Rond-point animé, proche commerces.",
+            "latitude": 50.8448,
+            "longitude": 4.3658,
+            "category": "Transport",
+            "createdAt": "2025-07-20T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-a0b1c2d3-0023-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Flux intéressant, bon pour shorts sets.",
+                    "createdAt": "2025-07-25T16:00:00"
+                },
+                {
+                    "id": "rev-a0b1c2d3-0023-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "family",
+                    "comment": "Accessible et assez sûr.",
+                    "createdAt": "2025-08-05T13:00:00"
+                },
+                {
+                    "id": "rev-a0b1c2d3-0023-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "security",
+                    "comment": "Variable selon horaires.",
+                    "createdAt": "2025-08-20T10:00:00"
+                },
+                {
+                    "id": "rev-a0b1c2d3-0023-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Bon accès mais peu de place pour chien.",
+                    "createdAt": "2025-09-01T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "b1c2d3e4-0024-6274-ad24-000000000024",
+            "name": "Place Van Meenen",
+            "description": "Carrefour calme, bureaux à proximité.",
+            "latitude": 50.8385,
+            "longitude": 4.38,
+            "category": "Transport",
+            "createdAt": "2025-08-01T08:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-b1c2d3e4-0024-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Calme, utile pour répétitions.",
+                    "createdAt": "2025-08-05T11:00:00"
+                },
+                {
+                    "id": "rev-b1c2d3e4-0024-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Endroit sûr mais peu d'opportunités.",
+                    "createdAt": "2025-08-20T10:30:00"
+                },
+                {
+                    "id": "rev-b1c2d3e4-0024-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Sûr mais désert hors heures de bureau.",
+                    "createdAt": "2025-09-01T09:30:00"
+                },
+                {
+                    "id": "rev-b1c2d3e4-0024-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Calme et agréable pour chiens.",
+                    "createdAt": "2025-09-10T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "c2d3e4f5-0025-6375-ae25-000000000025",
+            "name": "Parc de Bruxelles (Parc Royal - autre entrée)",
+            "description": "Entrée alternative, calme et arbres.",
+            "latitude": 50.847,
+            "longitude": 4.362,
+            "category": "Parc",
+            "createdAt": "2025-05-10T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-c2d3e4f5-0025-1",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Bonne entrée pour balade canine.",
+                    "createdAt": "2025-05-12T09:00:00"
+                },
+                {
+                    "id": "rev-c2d3e4f5-0025-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Très agréable en matinée.",
+                    "createdAt": "2025-05-20T10:00:00"
+                },
+                {
+                    "id": "rev-c2d3e4f5-0025-3",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "circus",
+                    "comment": "Bien pour échauffement, pas pour collecter.",
+                    "createdAt": "2025-06-05T11:00:00"
+                },
+                {
+                    "id": "rev-c2d3e4f5-0025-4",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Assez sûr, peu d'opportunités monétaires.",
+                    "createdAt": "2025-06-15T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "d3e4f506-0026-6476-af26-000000000026",
+            "name": "Musées Royaux des Beaux-Arts",
+            "description": "Zone culturelle, visiteurs attentifs.",
+            "latitude": 50.8421,
+            "longitude": 4.359,
+            "category": "Culture",
+            "createdAt": "2025-06-05T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-d3e4f506-0026-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Public artistique, bon pour numéros calmes.",
+                    "createdAt": "2025-06-10T12:00:00"
+                },
+                {
+                    "id": "rev-d3e4f506-0026-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Calme et culturel, peu d'opportunités pour collecter.",
+                    "createdAt": "2025-06-25T11:00:00"
+                },
+                {
+                    "id": "rev-d3e4f506-0026-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Très encadré, respecter les règles.",
+                    "createdAt": "2025-07-05T10:00:00"
+                },
+                {
+                    "id": "rev-d3e4f506-0026-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Lieu calme mais pas chien-friendly partout.",
+                    "createdAt": "2025-07-15T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "e4f50617-0027-6577-b027-000000000027",
+            "name": "Square des Martyrs",
+            "description": "Place intimiste, clientèle locale.",
+            "latitude": 50.844,
+            "longitude": 4.3565,
+            "category": "Culture",
+            "createdAt": "2025-07-01T09:30:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-e4f50617-0027-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Calme, public local sympathique.",
+                    "createdAt": "2025-07-10T12:00:00"
+                },
+                {
+                    "id": "rev-e4f50617-0027-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Atmosphère reposante.",
+                    "createdAt": "2025-07-20T11:00:00"
+                },
+                {
+                    "id": "rev-e4f50617-0027-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Sûr mais faible affluence.",
+                    "createdAt": "2025-08-01T10:00:00"
+                },
+                {
+                    "id": "rev-e4f50617-0027-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Bon pour se poser avec un chien.",
+                    "createdAt": "2025-08-10T09:30:00"
+                }
+            ]
+        },
+        {
+            "id": "f5061728-0028-6678-b128-000000000028",
+            "name": "Marché du Parvis",
+            "description": "Marché local, flux matinaux intéressants.",
+            "latitude": 50.8468,
+            "longitude": 4.354,
+            "category": "Market",
+            "createdAt": "2025-08-15T07:30:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-f5061728-0028-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Bon flux matinal, clientèle locale généreuse.",
+                    "createdAt": "2025-08-20T08:30:00"
+                },
+                {
+                    "id": "rev-f5061728-0028-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "family",
+                    "comment": "Ambiance conviviale et détendue.",
+                    "createdAt": "2025-08-30T09:00:00"
+                },
+                {
+                    "id": "rev-f5061728-0028-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "security",
+                    "comment": "Correct, rester attentif aux heures creuses.",
+                    "createdAt": "2025-09-10T10:00:00"
+                },
+                {
+                    "id": "rev-f5061728-0028-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Marché sympa, chien possible mais surveillé.",
+                    "createdAt": "2025-09-20T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "07172930-0029-6779-b229-000000000029",
+            "name": "Place du Luxembourg",
+            "description": "Proche institutions européennes, flux de bureau.",
+            "latitude": 50.8426,
+            "longitude": 4.381,
+            "category": "Tourisme",
+            "createdAt": "2025-08-25T08:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-07172930-0029-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Bon pour le midi, public professionnel.",
+                    "createdAt": "2025-09-01T12:00:00"
+                },
+                {
+                    "id": "rev-07172930-0029-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Sûr mais assez formel.",
+                    "createdAt": "2025-09-10T11:00:00"
+                },
+                {
+                    "id": "rev-07172930-0029-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "security",
+                    "comment": "Bien encadré, opportunités limités.",
+                    "createdAt": "2025-09-20T10:30:00"
+                },
+                {
+                    "id": "rev-07172930-0029-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Calme le week-end, pas rentable.",
+                    "createdAt": "2025-10-01T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "18293a4b-002a-688a-b32a-00000000002a",
+            "name": "Avenue de la Toison d'Or",
+            "description": "Boutiques chics et bureaux, passants solvables.",
+            "latitude": 50.8428,
+            "longitude": 4.3652,
+            "category": "Shopping",
+            "createdAt": "2025-09-01T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-18293a4b-002a-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Clientèle aisée, bon pour prestations soignées.",
+                    "createdAt": "2025-09-05T11:00:00"
+                },
+                {
+                    "id": "rev-18293a4b-002a-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Assez calme et propre.",
+                    "createdAt": "2025-09-20T10:00:00"
+                },
+                {
+                    "id": "rev-18293a4b-002a-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "music",
+                    "comment": "Image propre, public respectueux.",
+                    "createdAt": "2025-10-05T15:00:00"
+                },
+                {
+                    "id": "rev-18293a4b-002a-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Beaux trottoirs, dog-friendly.",
+                    "createdAt": "2025-10-15T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "293a4b5c-002b-699b-b42b-00000000002b",
+            "name": "Place du Luxembourg (côté parc)",
+            "description": "Coin vert, bancs et déjeuner des fonctionnaires.",
+            "latitude": 50.8427,
+            "longitude": 4.3815,
+            "category": "Parc",
+            "createdAt": "2025-08-15T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-293a4b5c-002b-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Bien pour petits sets acoustiques.",
+                    "createdAt": "2025-08-20T12:00:00"
+                },
+                {
+                    "id": "rev-293a4b5c-002b-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Calme, idéal pour déjeuner.",
+                    "createdAt": "2025-09-01T11:00:00"
+                },
+                {
+                    "id": "rev-293a4b5c-002b-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Sûr et propre.",
+                    "createdAt": "2025-09-10T09:30:00"
+                },
+                {
+                    "id": "rev-293a4b5c-002b-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Top pour chien, calme.",
+                    "createdAt": "2025-09-20T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "3a4b5c6d-002c-6aab-b52c-00000000002c",
+            "name": "La Bourse (petite place)",
+            "description": "Espace secondaire, moins fréquenté que la grande place.",
+            "latitude": 50.8486,
+            "longitude": 4.352,
+            "category": "Nightlife",
+            "createdAt": "2025-06-30T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-3a4b5c6d-002c-1",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "music",
+                    "comment": "Ok pour tests rapides.",
+                    "createdAt": "2025-07-05T19:00:00"
+                },
+                {
+                    "id": "rev-3a4b5c6d-002c-2",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Espace utile pour répétitions courtes.",
+                    "createdAt": "2025-07-15T20:00:00"
+                },
+                {
+                    "id": "rev-3a4b5c6d-002c-3",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "family",
+                    "comment": "Assez tranquille.",
+                    "createdAt": "2025-07-25T18:00:00"
+                },
+                {
+                    "id": "rev-3a4b5c6d-002c-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Petit mais correct.",
+                    "createdAt": "2025-08-05T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "4b5c6d7e-002d-6bbc-b62d-00000000002d",
+            "name": "Pont de la Porte de Ninove",
+            "description": "Passage piéton important, flux de quartier.",
+            "latitude": 50.848,
+            "longitude": 4.3,
+            "category": "Transport",
+            "createdAt": "2025-09-15T08:30:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-4b5c6d7e-002d-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Flux correct mais peu de temps d'arrêt des passants.",
+                    "createdAt": "2025-09-20T09:00:00"
+                },
+                {
+                    "id": "rev-4b5c6d7e-002d-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Pratique pour déplacement, pas pour performances longues.",
+                    "createdAt": "2025-10-01T10:00:00"
+                },
+                {
+                    "id": "rev-4b5c6d7e-002d-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "security",
+                    "comment": "Assez sûr mais passants pressés.",
+                    "createdAt": "2025-10-10T11:30:00"
+                },
+                {
+                    "id": "rev-4b5c6d7e-002d-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Accessible pour chien, mais peu d'espace.",
+                    "createdAt": "2025-10-20T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "5c6d7e8f-002e-6ccd-b72e-00000000002e",
+            "name": "Place du Béguinage",
+            "description": "Petite place tranquille, proche centre.",
+            "latitude": 50.8469,
+            "longitude": 4.3529,
+            "category": "Culture",
+            "createdAt": "2025-08-01T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-5c6d7e8f-002e-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Atmosphère paisible, bon pour numéros intimes.",
+                    "createdAt": "2025-08-05T12:00:00"
+                },
+                {
+                    "id": "rev-5c6d7e8f-002e-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Calme et charmant.",
+                    "createdAt": "2025-08-25T11:00:00"
+                },
+                {
+                    "id": "rev-5c6d7e8f-002e-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Très sûr, peu d'opportunités.",
+                    "createdAt": "2025-09-05T10:30:00"
+                },
+                {
+                    "id": "rev-5c6d7e8f-002e-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Un peu caché, parfait pour calme.",
+                    "createdAt": "2025-09-15T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "6d7e8f90-002f-6dde-b82f-00000000002f",
+            "name": "Place Fontainas",
+            "description": "Place animée, bars et commerces à proximité.",
+            "latitude": 50.8472,
+            "longitude": 4.3546,
+            "category": "Nightlife",
+            "createdAt": "2025-07-20T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 5,
+            "reviews": [
+                {
+                    "id": "rev-6d7e8f90-002f-1",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "music",
+                    "comment": "Flux intéressant en soirée.",
+                    "createdAt": "2025-07-25T21:00:00"
+                },
+                {
+                    "id": "rev-6d7e8f90-002f-2",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Bien pour artistes itinérants.",
+                    "createdAt": "2025-08-05T18:00:00"
+                },
+                {
+                    "id": "rev-6d7e8f90-002f-3",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "family",
+                    "comment": "Assez festif, attention la nuit.",
+                    "createdAt": "2025-08-20T20:30:00"
+                },
+                {
+                    "id": "rev-6d7e8f90-002f-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Ambiance ok pour court passage.",
+                    "createdAt": "2025-09-01T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "7e8f9012-0030-6eef-b930-000000000030",
+            "name": "Quai aux Briques",
+            "description": "Côté canal, bars et activités culturelles.",
+            "latitude": 50.8482,
+            "longitude": 4.342,
+            "category": "Nightlife",
+            "createdAt": "2025-06-08T12:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-7e8f9012-0030-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Cadre sympa pour sets en été.",
+                    "createdAt": "2025-06-15T19:00:00"
+                },
+                {
+                    "id": "rev-7e8f9012-0030-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "family",
+                    "comment": "Plutôt agréable, brise-canal.",
+                    "createdAt": "2025-06-25T20:00:00"
+                },
+                {
+                    "id": "rev-7e8f9012-0030-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "music",
+                    "comment": "Bon pour soirées détendues.",
+                    "createdAt": "2025-07-05T21:00:00"
+                },
+                {
+                    "id": "rev-7e8f9012-0030-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Beau coin mais parfois humide pour chiens.",
+                    "createdAt": "2025-07-20T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "8f901234-0031-6ffe-ba31-000000000031",
+            "name": "Place Constantin Meunier",
+            "description": "Quartier calme, habitants locaux.",
+            "latitude": 50.8395,
+            "longitude": 4.375,
+            "category": "Culture",
+            "createdAt": "2025-07-15T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 1,
+            "reviews": [
+                {
+                    "id": "rev-8f901234-0031-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "circus",
+                    "comment": "Calme, idéal pour répétitions privées.",
+                    "createdAt": "2025-07-20T12:00:00"
+                },
+                {
+                    "id": "rev-8f901234-0031-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Quartier résidentiel, respectueux.",
+                    "createdAt": "2025-08-01T11:00:00"
+                },
+                {
+                    "id": "rev-8f901234-0031-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Sûr mais pas d'intérêt commercial.",
+                    "createdAt": "2025-08-10T09:30:00"
+                },
+                {
+                    "id": "rev-8f901234-0031-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Calme et ombragé, parfait pour chiens.",
+                    "createdAt": "2025-08-20T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "90123456-0032-70ff-bb32-000000000032",
+            "name": "Esplanade du Cinquantenaire",
+            "description": "Grand espace, événements occasionnels.",
+            "latitude": 50.843,
+            "longitude": 4.398,
+            "category": "Event",
+            "createdAt": "2025-06-01T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 6,
+            "reviews": [
+                {
+                    "id": "rev-90123456-0032-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "circus",
+                    "comment": "Parfait lors des gros événements.",
+                    "createdAt": "2025-06-10T14:00:00"
+                },
+                {
+                    "id": "rev-90123456-0032-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "family",
+                    "comment": "Bons événements publics.",
+                    "createdAt": "2025-06-20T11:00:00"
+                },
+                {
+                    "id": "rev-90123456-0032-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "security",
+                    "comment": "Très rentable pendant festivals.",
+                    "createdAt": "2025-07-01T16:00:00"
+                },
+                {
+                    "id": "rev-90123456-0032-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Beaucoup d'espace mais parfois bondé.",
+                    "createdAt": "2025-07-10T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "01234567-0033-7100-bc33-000000000033",
+            "name": "Place du Châtelain (marché)",
+            "description": "Marché du dimanche, clientèle locale et branchée.",
+            "latitude": 50.8246,
+            "longitude": 4.3688,
+            "category": "Market",
+            "createdAt": "2025-09-05T08:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-01234567-0033-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Très bon marché pour buskers le dimanche.",
+                    "createdAt": "2025-09-10T09:00:00"
+                },
+                {
+                    "id": "rev-01234567-0033-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "family",
+                    "comment": "Ambiance conviviale, public généreux.",
+                    "createdAt": "2025-09-20T10:00:00"
+                },
+                {
+                    "id": "rev-01234567-0033-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "music",
+                    "comment": "Bon pour sets acoustiques.",
+                    "createdAt": "2025-10-01T11:00:00"
+                },
+                {
+                    "id": "rev-01234567-0033-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Chien toléré, marché sympa.",
+                    "createdAt": "2025-10-10T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "12345678-0034-7201-bd34-000000000034",
+            "name": "Boulevard Anspach",
+            "description": "Axe central piéton, nombreux passants.",
+            "latitude": 50.8465,
+            "longitude": 4.3518,
+            "category": "Shopping",
+            "createdAt": "2025-01-15T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 7,
+            "reviews": [
+                {
+                    "id": "rev-12345678-0034-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "circus",
+                    "comment": "Flux énorme, très rentable si tu tiens l'espace.",
+                    "createdAt": "2025-02-01T12:00:00"
+                },
+                {
+                    "id": "rev-12345678-0034-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "family",
+                    "comment": "Idéal pour performances courtes.",
+                    "createdAt": "2025-02-20T13:00:00"
+                },
+                {
+                    "id": "rev-12345678-0034-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "security",
+                    "comment": "Très rentable mais attention à la sécurité tard.",
+                    "createdAt": "2025-03-10T18:00:00"
+                },
+                {
+                    "id": "rev-12345678-0034-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "dog",
+                    "comment": "Beaucoup de monde, peu adapté aux chiens.",
+                    "createdAt": "2025-03-25T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "23456789-0035-7302-be35-000000000035",
+            "name": "Place Royale",
+            "description": "Proche musées et institutions, public culturel.",
+            "latitude": 50.8442,
+            "longitude": 4.3578,
+            "category": "Culture",
+            "createdAt": "2025-04-01T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-23456789-0035-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Public attentif, idéal après expositions.",
+                    "createdAt": "2025-04-10T12:00:00"
+                },
+                {
+                    "id": "rev-23456789-0035-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Calme et classe, valeur esthétique.",
+                    "createdAt": "2025-04-25T11:00:00"
+                },
+                {
+                    "id": "rev-23456789-0035-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "music",
+                    "comment": "Sympa pour sets acoustiques.",
+                    "createdAt": "2025-05-05T15:00:00"
+                },
+                {
+                    "id": "rev-23456789-0035-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "dog",
+                    "comment": "Lieu élégant, calme.",
+                    "createdAt": "2025-05-20T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "34567890-0036-7403-bf36-000000000036",
+            "name": "Place du Sablon (côté chocolatiers)",
+            "description": "Zones très touristiques, chocolateries et galeries.",
+            "latitude": 50.8403,
+            "longitude": 4.3566,
+            "category": "Tourisme",
+            "createdAt": "2025-02-10T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-34567890-0036-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Touristes généreux surtout en après-midi.",
+                    "createdAt": "2025-02-15T14:00:00"
+                },
+                {
+                    "id": "rev-34567890-0036-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "family",
+                    "comment": "Parfait pour prestations propres.",
+                    "createdAt": "2025-03-01T13:30:00"
+                },
+                {
+                    "id": "rev-34567890-0036-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "music",
+                    "comment": "Très bon potentiel commercial.",
+                    "createdAt": "2025-03-10T16:00:00"
+                },
+                {
+                    "id": "rev-34567890-0036-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Beaux alentours mais pas beaucoup d'espace.",
+                    "createdAt": "2025-03-25T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "45678901-0037-7504-c036-000000000037",
+            "name": "Rue des Bouchers",
+            "description": "Rue touristique pleine de restaurants.",
+            "latitude": 50.8466,
+            "longitude": 4.3512,
+            "category": "Tourisme",
+            "createdAt": "2025-02-20T10:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 5,
+            "reviews": [
+                {
+                    "id": "rev-45678901-0037-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "circus",
+                    "comment": "Touristes nombreux et souvent généreux.",
+                    "createdAt": "2025-02-25T13:00:00"
+                },
+                {
+                    "id": "rev-45678901-0037-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "family",
+                    "comment": "Très animé, idéal en soirée.",
+                    "createdAt": "2025-03-05T18:00:00"
+                },
+                {
+                    "id": "rev-45678901-0037-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "security",
+                    "comment": "Gros flux mais vigilance requise.",
+                    "createdAt": "2025-03-20T19:00:00"
+                },
+                {
+                    "id": "rev-45678901-0037-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "dog",
+                    "comment": "Odeur forte parfois, pas top pour chien.",
+                    "createdAt": "2025-04-01T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "56789012-0038-7605-c137-000000000038",
+            "name": "Place de Brouckère",
+            "description": "Nœud central de la ville, tram et piétons.",
+            "latitude": 50.847,
+            "longitude": 4.3522,
+            "category": "Transport",
+            "createdAt": "2025-03-01T08:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 7,
+            "reviews": [
+                {
+                    "id": "rev-56789012-0038-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "circus",
+                    "comment": "Flux constant, bon pour visibilité.",
+                    "createdAt": "2025-03-10T10:00:00"
+                },
+                {
+                    "id": "rev-56789012-0038-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "family",
+                    "comment": "Parfait pour sets courts, beaucoup de monde.",
+                    "createdAt": "2025-03-20T12:00:00"
+                },
+                {
+                    "id": "rev-56789012-0038-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "security",
+                    "comment": "Très rentable mais risque de vol la nuit.",
+                    "createdAt": "2025-04-05T19:00:00"
+                },
+                {
+                    "id": "rev-56789012-0038-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 5.0,
+                    "attribute": "dog",
+                    "comment": "Beaucoup de passage, pas idéal pour chien.",
+                    "createdAt": "2025-04-20T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "67890123-0039-7706-c238-000000000039",
+            "name": "Parvis Notre-Dame",
+            "description": "Proche cathédrale, touristes et offices religieux.",
+            "latitude": 50.8461,
+            "longitude": 4.353,
+            "category": "Culture",
+            "createdAt": "2025-04-10T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 3,
+            "reviews": [
+                {
+                    "id": "rev-67890123-0039-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "circus",
+                    "comment": "Public respectueux, bon pour musiques douces.",
+                    "createdAt": "2025-04-15T11:00:00"
+                },
+                {
+                    "id": "rev-67890123-0039-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "family",
+                    "comment": "Lieu spirituel, rester discret.",
+                    "createdAt": "2025-05-01T10:00:00"
+                },
+                {
+                    "id": "rev-67890123-0039-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "security",
+                    "comment": "Respecter les règles locales.",
+                    "createdAt": "2025-05-15T10:30:00"
+                },
+                {
+                    "id": "rev-67890123-0039-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Lieu sacré, peu adapté aux chiens.",
+                    "createdAt": "2025-05-25T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "78901234-003a-7807-c339-00000000003a",
+            "name": "Parc du Cinquantenaire (petite esplanade)",
+            "description": "Espace secondaire du parc, souvent calme.",
+            "latitude": 50.8435,
+            "longitude": 4.3965,
+            "category": "Parc",
+            "createdAt": "2025-06-15T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 1,
+            "reviews": [
+                {
+                    "id": "rev-78901234-003a-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "circus",
+                    "comment": "Très calme, idéal pour répétitions.",
+                    "createdAt": "2025-06-20T10:00:00"
+                },
+                {
+                    "id": "rev-78901234-003a-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Paisible et agréable.",
+                    "createdAt": "2025-07-01T11:00:00"
+                },
+                {
+                    "id": "rev-78901234-003a-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Sûr mais faible affluence.",
+                    "createdAt": "2025-07-15T09:30:00"
+                },
+                {
+                    "id": "rev-78901234-003a-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Parfait pour une promenade tranquille.",
+                    "createdAt": "2025-07-25T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "89012345-003b-7908-c43b-00000000003b",
+            "name": "Rue du Marché aux Herbes",
+            "description": "Rue commerçante proche centre-ville.",
+            "latitude": 50.8469,
+            "longitude": 4.3535,
+            "category": "Shopping",
+            "createdAt": "2025-03-01T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 4,
+            "reviews": [
+                {
+                    "id": "rev-89012345-003b-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 4.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "circus",
+                    "comment": "Bon flux de touristes.",
+                    "createdAt": "2025-03-10T12:00:00"
+                },
+                {
+                    "id": "rev-89012345-003b-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "family",
+                    "comment": "Beaucoup de boutiques, public attentif.",
+                    "createdAt": "2025-03-20T11:00:00"
+                },
+                {
+                    "id": "rev-89012345-003b-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 3.0,
+                    "ratingSecurity": 2.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "security",
+                    "comment": "Flux correct mais risque de pickpockets.",
+                    "createdAt": "2025-04-01T18:00:00"
+                },
+                {
+                    "id": "rev-89012345-003b-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 3.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "dog",
+                    "comment": "Beaucoup de monde, pas idéal pour chien.",
+                    "createdAt": "2025-04-20T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "90123456-003c-7a09-c53c-00000000003c",
+            "name": "Square de Meeûs",
+            "description": "Quartier résidentiel cossu, calme.",
+            "latitude": 50.8424,
+            "longitude": 4.3626,
+            "category": "Nature",
+            "createdAt": "2025-08-01T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 1,
+            "reviews": [
+                {
+                    "id": "rev-90123456-003c-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "circus",
+                    "comment": "Très calme, pas d'opportunités commerciales.",
+                    "createdAt": "2025-08-05T12:00:00"
+                },
+                {
+                    "id": "rev-90123456-003c-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Endroit paisible, idéal pour se détendre.",
+                    "createdAt": "2025-08-15T11:30:00"
+                },
+                {
+                    "id": "rev-90123456-003c-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Sûr mais très calme.",
+                    "createdAt": "2025-08-25T09:30:00"
+                },
+                {
+                    "id": "rev-90123456-003c-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Super pour promenade canine.",
+                    "createdAt": "2025-09-05T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "01234567-003d-7b1a-c63d-00000000003d",
+            "name": "Place Emile Dupont",
+            "description": "Place de quartier, cafés et petits commerces.",
+            "latitude": 50.8408,
+            "longitude": 4.3572,
+            "category": "Culture",
+            "createdAt": "2025-07-01T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 2,
+            "reviews": [
+                {
+                    "id": "rev-01234567-003d-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 2.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 2.0,
+                    "attribute": "circus",
+                    "comment": "Bon pour s'entraîner, peu rentable.",
+                    "createdAt": "2025-07-10T12:00:00"
+                },
+                {
+                    "id": "rev-01234567-003d-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Calme et agréable.",
+                    "createdAt": "2025-07-20T11:00:00"
+                },
+                {
+                    "id": "rev-01234567-003d-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Sûr mais faible flux.",
+                    "createdAt": "2025-08-01T10:00:00"
+                },
+                {
+                    "id": "rev-01234567-003d-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 4.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Sympathique mais discret.",
+                    "createdAt": "2025-08-10T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "12345678-003e-7c2b-c73e-00000000003e",
+            "name": "Parc Elisabeth",
+            "description": "Petit parc de quartier, tranquille.",
+            "latitude": 50.827,
+            "longitude": 4.341,
+            "category": "Parc",
+            "createdAt": "2025-06-01T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 1,
+            "reviews": [
+                {
+                    "id": "rev-12345678-003e-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "circus",
+                    "comment": "Idéal pour répétitions privées.",
+                    "createdAt": "2025-06-05T11:00:00"
+                },
+                {
+                    "id": "rev-12345678-003e-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Calme et sûr.",
+                    "createdAt": "2025-06-20T10:00:00"
+                },
+                {
+                    "id": "rev-12345678-003e-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Très sûr, peu d'affluence.",
+                    "createdAt": "2025-07-01T09:30:00"
+                },
+                {
+                    "id": "rev-12345678-003e-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Super pour chiens, calme.",
+                    "createdAt": "2025-07-10T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "23456789-003f-7d3c-c83f-00000000003f",
+            "name": "Parc Duden",
+            "description": "Grand parc au sud, coin nature apprécié.",
+            "latitude": 50.8085,
+            "longitude": 4.346,
+            "category": "Nature",
+            "createdAt": "2025-06-15T09:00:00",
+            "createdBy": "Admin",
+            "currentActiveUsers": 1,
+            "reviews": [
+                {
+                    "id": "rev-23456789-003f-1",
+                    "authorName": "JeanMarc",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "circus",
+                    "comment": "Très nature, pas pour la performance commerciale.",
+                    "createdAt": "2025-06-20T10:00:00"
+                },
+                {
+                    "id": "rev-23456789-003f-2",
+                    "authorName": "Lolita",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "family",
+                    "comment": "Endroit parfait pour pique-nique.",
+                    "createdAt": "2025-07-01T11:00:00"
+                },
+                {
+                    "id": "rev-23456789-003f-3",
+                    "authorName": "Cobra",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "security",
+                    "comment": "Sûr et agréable.",
+                    "createdAt": "2025-07-15T09:30:00"
+                },
+                {
+                    "id": "rev-23456789-003f-4",
+                    "authorName": "caca",
+                    "ratingRevenue": 1.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Excellent pour chiens, beaucoup d'espace.",
+                    "createdAt": "2025-07-25T09:00:00"
+                }
+            ]
+        }
+    ]
+}
