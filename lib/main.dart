@@ -17,15 +17,14 @@ class PoorSpotApp extends StatelessWidget {
       themeMode: ThemeMode.dark,
       darkTheme: ThemeData(
         brightness: Brightness.dark,
-        // Fond "Slate" (Gris Ardoise Profond)
         scaffoldBackgroundColor: const Color(0xFF0F172A), 
-        primaryColor: const Color(0xFF38BDF8), // Light Blue Sky
+        primaryColor: const Color(0xFF00C853), 
         
         colorScheme: const ColorScheme.dark(
-          primary: Color(0xFF38BDF8),
-          secondary: Color(0xFFFB7185), // Rose pastel
-          surface: Color(0xFF1E293B), // Slate 800 pour les cartes
-          onSurface: Color(0xFFE2E8F0), // Blanc cassé pour le texte
+          primary: Color(0xFF00C853),
+          secondary: Color(0xFFFB7185),
+          surface: Color(0xFF1E293B),
+          onSurface: Color(0xFFE2E8F0),
         ),
         
         useMaterial3: true,

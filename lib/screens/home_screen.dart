@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:latlong2/latlong.dart';
 import '../models/spot_models.dart';
-import '../data/mock_data.dart'; 
+import '../data/current_session.dart'; 
+import '../services/api_service.dart'; 
 import '../widgets/map_view.dart';
 import '../widgets/side_panel.dart';
 import '../widgets/profile_drawer.dart';
@@ -15,9 +16,33 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  final ApiService _api = ApiService();
+  
+  List<Spot> _spots = [];
+  bool _isLoading = true;
   Spot? _selectedSpot;
   LatLng? _tempNewSpotPosition;
-  final List<Spot> _spots = [...mockSpots];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadSpots();
+  }
+
+  Future<void> _loadSpots() async {
+    final fetchedSpots = await _api.fetchSpots();
+    if (mounted) {
+      setState(() {
+        _spots = fetchedSpots;
+        _isLoading = false;
+        if (_selectedSpot != null) {
+          try {
+            _selectedSpot = _spots.firstWhere((s) => s.id == _selectedSpot!.id);
+          } catch (e) {}
+        }
+      });
+    }
+  }
 
   void _onSpotSelected(Spot spot) {
     setState(() {
@@ -33,18 +58,29 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  // --- VERIFICATION AUTH ---
+  bool _checkAuth() {
+    if (!CurrentSession().isLoggedIn) {
+      _scaffoldKey.currentState?.openDrawer();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Connectez-vous pour contribuer !"), duration: Duration(seconds: 2))
+      );
+      return false;
+    }
+    return true;
+  }
+
   void _openCreateDialog() {
+    if (!_checkAuth()) return;
     if (_tempNewSpotPosition == null) return;
     showDialog(
       context: context,
       builder: (ctx) => _CreateSpotDialog(
         position: _tempNewSpotPosition!,
-        onSubmit: (Spot newSpot) {
-          setState(() {
-            _spots.add(newSpot);
-            _tempNewSpotPosition = null;
-            _selectedSpot = newSpot;
-          });
+        onSubmit: (Spot newSpot) async {
+          await _api.createSpot(newSpot);
+          await _loadSpots();
+          setState(() { _tempNewSpotPosition = null; });
           Navigator.of(ctx).pop();
         },
       ),
@@ -52,31 +88,15 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   void _onAddReview() {
+    if (!_checkAuth()) return;
     if (_selectedSpot == null) return;
     showDialog(
       context: context,
       builder: (ctx) => _AddReviewDialog(
         spotName: _selectedSpot!.name,
-        onSubmit: (Review newReview) {
-          setState(() {
-            final updatedSpot = Spot(
-              id: _selectedSpot!.id,
-              name: _selectedSpot!.name,
-              description: _selectedSpot!.description,
-              position: _selectedSpot!.position,
-              category: _selectedSpot!.category,
-              createdAt: _selectedSpot!.createdAt,
-              createdBy: _selectedSpot!.createdBy,
-              currentActiveUsers: _selectedSpot!.currentActiveUsers,
-              reviews: [newReview, ..._selectedSpot!.reviews],
-            );
-
-            final index = _spots.indexWhere((s) => s.id == updatedSpot.id);
-            if (index != -1) {
-              _spots[index] = updatedSpot;
-            }
-            _selectedSpot = updatedSpot;
-          });
+        onSubmit: (Review newReview) async {
+          await _api.addReview(_selectedSpot!.id, newReview);
+          await _loadSpots();
           Navigator.of(ctx).pop();
         },
       ),
@@ -95,17 +115,21 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
-      drawer: const ProfileDrawer(),
+      drawer: ProfileDrawer(
+        onLoginSuccess: () => setState(() {}),
+      ),
       body: Stack(
         children: [
           Positioned.fill(
-            child: PoorSpotMap(
-              spots: _spots,
-              selectedSpotId: _selectedSpot?.id,
-              tempPosition: _tempNewSpotPosition,
-              onSpotTap: _onSpotSelected,
-              onMapLongPress: _onMapLongPress,
-            ),
+            child: _isLoading 
+              ? const Center(child: CircularProgressIndicator())
+              : PoorSpotMap(
+                  spots: _spots,
+                  selectedSpotId: _selectedSpot?.id,
+                  tempPosition: _tempNewSpotPosition,
+                  onSpotTap: _onSpotSelected,
+                  onMapLongPress: _onMapLongPress,
+                ),
           ),
           
           Positioned(
@@ -115,6 +139,17 @@ class _HomeScreenState extends State<HomeScreen> {
               child: IconButton(
                 icon: const Icon(Icons.menu, color: Colors.white), 
                 onPressed: () => _scaffoldKey.currentState?.openDrawer()
+              ),
+            ),
+          ),
+          
+          Positioned(
+            top: 50, right: 20,
+            child: CircleAvatar(
+              backgroundColor: Colors.black87,
+              child: IconButton(
+                icon: const Icon(Icons.refresh, color: Colors.white), 
+                onPressed: _loadSpots
               ),
             ),
           ),
@@ -150,11 +185,7 @@ class _HomeScreenState extends State<HomeScreen> {
             right: _selectedSpot != null ? 0 : -450,
             width: MediaQuery.of(context).size.width > 600 ? 400 : MediaQuery.of(context).size.width,
             child: _selectedSpot != null 
-              ? SidePanel(
-                  spot: _selectedSpot!, 
-                  onClose: _closePanel,
-                  onAddReview: _onAddReview,
-                ) 
+              ? SidePanel(spot: _selectedSpot!, onClose: _closePanel, onAddReview: _onAddReview) 
               : const SizedBox.shrink(),
           ),
         ],
@@ -163,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-// --- CRÉATION DE SPOT ---
+// --- DIALOGS ---
 class _CreateSpotDialog extends StatefulWidget {
   final LatLng position;
   final Function(Spot) onSubmit;
@@ -236,7 +267,6 @@ class _CreateSpotDialogState extends State<_CreateSpotDialog> {
   }
 
   Widget _buildSlider(String label, double value, Function(double) onChanged) {
-    // Couleur dynamique ROUGE -> VERT
     final color = _getGraduatedColor(value);
     return Row(
       children: [
@@ -244,9 +274,7 @@ class _CreateSpotDialogState extends State<_CreateSpotDialog> {
         Expanded(
           child: Slider(
             value: value, min: 1, max: 5, divisions: 4,
-            activeColor: color, 
-            thumbColor: color,
-            inactiveColor: Colors.white10,
+            activeColor: color, thumbColor: color, inactiveColor: Colors.white10,
             label: value.toStringAsFixed(0), onChanged: onChanged,
           ),
         ),
@@ -257,27 +285,27 @@ class _CreateSpotDialogState extends State<_CreateSpotDialog> {
 
   Color _getGraduatedColor(double rating) {
     double t = (rating / 5.0).clamp(0.0, 1.0);
-    if (t < 0.5) {
-      return Color.lerp(const Color(0xFFFF3D00), const Color(0xFFFFEA00), t * 2)!;
-    } else {
-      return Color.lerp(const Color(0xFFFFEA00), const Color(0xFF00C853), (t - 0.5) * 2)!;
-    }
+    if (t < 0.5) return Color.lerp(const Color(0xFFFF3D00), const Color(0xFFFFEA00), t * 2)!;
+    return Color.lerp(const Color(0xFFFFEA00), const Color(0xFF00C853), (t - 0.5) * 2)!;
   }
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      final userAttribute = currentUser.myAttributes.isNotEmpty ? currentUser.myAttributes.first : BeggarAttribute.none;
+      final user = CurrentSession().user;
+      if (user == null) return;
+
+      final userAttribute = user.attributes.isNotEmpty ? user.attributes.first : BeggarAttribute.none;
       final newSpot = Spot(
-        id: DateTime.now().toString(),
+        id: '', 
         name: _nameController.text,
         description: _descController.text,
         position: widget.position,
         category: _selectedCategory,
         createdAt: DateTime.now(),
-        createdBy: currentUser.name,
+        createdBy: user.name,
         reviews: [
           Review(
-            id: 'init', authorName: currentUser.name,
+            id: DateTime.now().toString(), authorName: user.name,
             ratingRevenue: _revenue, ratingSecurity: _security, ratingTraffic: _traffic,
             attribute: userAttribute, comment: _descController.text, createdAt: DateTime.now(),
           )
@@ -288,7 +316,6 @@ class _CreateSpotDialogState extends State<_CreateSpotDialog> {
   }
 }
 
-// --- AJOUT D'AVIS ---
 class _AddReviewDialog extends StatefulWidget {
   final String spotName;
   final Function(Review) onSubmit;
@@ -356,9 +383,7 @@ class _AddReviewDialogState extends State<_AddReviewDialog> {
         Expanded(
           child: Slider(
             value: value, min: 1, max: 5, divisions: 4,
-            activeColor: color,
-            thumbColor: color,
-            inactiveColor: Colors.white10,
+            activeColor: color, thumbColor: color, inactiveColor: Colors.white10,
             label: value.toStringAsFixed(0), onChanged: onChanged,
           ),
         ),
@@ -369,19 +394,19 @@ class _AddReviewDialogState extends State<_AddReviewDialog> {
 
   Color _getGraduatedColor(double rating) {
     double t = (rating / 5.0).clamp(0.0, 1.0);
-    if (t < 0.5) {
-      return Color.lerp(const Color(0xFFFF3D00), const Color(0xFFFFEA00), t * 2)!;
-    } else {
-      return Color.lerp(const Color(0xFFFFEA00), const Color(0xFF00C853), (t - 0.5) * 2)!;
-    }
+    if (t < 0.5) return Color.lerp(const Color(0xFFFF3D00), const Color(0xFFFFEA00), t * 2)!;
+    return Color.lerp(const Color(0xFFFFEA00), const Color(0xFF00C853), (t - 0.5) * 2)!;
   }
 
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      final userAttribute = currentUser.myAttributes.isNotEmpty ? currentUser.myAttributes.first : BeggarAttribute.none;
+      final user = CurrentSession().user;
+      if (user == null) return;
+
+      final userAttribute = user.attributes.isNotEmpty ? user.attributes.first : BeggarAttribute.none;
       final newReview = Review(
         id: DateTime.now().toString(),
-        authorName: currentUser.name,
+        authorName: user.name,
         ratingRevenue: _revenue,
         ratingSecurity: _security,
         ratingTraffic: _traffic,

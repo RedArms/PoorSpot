@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart'; // Nécessaire pour les Icons/Colors si besoin, ici pour la logique
 import 'package:latlong2/latlong.dart';
 
 enum BeggarAttribute {
@@ -9,6 +8,9 @@ enum BeggarAttribute {
   circus,     
   family      
 }
+
+// The `name` property is natively supported in Dart enums. 
+// The compatibility extension has been removed.
 
 class Spot {
   final String id;
@@ -33,13 +35,48 @@ class Spot {
     this.currentActiveUsers = 0,
   });
 
-  // --- MOYENNES DES CRITÈRES (SUR 5) ---
+  // --- JSON SERIALIZATION ---
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'latitude': position.latitude,
+      'longitude': position.longitude,
+      'category': category,
+      'createdAt': createdAt.toIso8601String(),
+      'createdBy': createdBy,
+      'currentActiveUsers': currentActiveUsers,
+      'reviews': reviews.map((x) => x.toJson()).toList(),
+    };
+  }
+
+  factory Spot.fromJson(Map<String, dynamic> json) {
+    return Spot(
+      id: json['id'] ?? '',
+      name: json['name'] ?? '',
+      description: json['description'] ?? '',
+      position: LatLng(
+        (json['latitude'] as num).toDouble(),
+        (json['longitude'] as num).toDouble()
+      ),
+      category: json['category'] ?? 'Autre',
+      createdAt: DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
+      createdBy: json['createdBy'] ?? 'Inconnu',
+      currentActiveUsers: json['currentActiveUsers'] ?? 0,
+      reviews: List<Review>.from(
+        (json['reviews'] as List<dynamic>? ?? []).map((x) => Review.fromJson(x)),
+      ),
+    );
+  }
+
+  // --- CALCULS MÉTIER ---
 
   double get avgRevenue => _calcAvg((r) => r.ratingRevenue);
   double get avgSecurity => _calcAvg((r) => r.ratingSecurity);
   double get avgTraffic => _calcAvg((r) => r.ratingTraffic);
 
-  // Note Globale (Moyenne des 3 critères)
   double get globalRating {
     if (reviews.isEmpty) return 0.0;
     return (avgRevenue + avgSecurity + avgTraffic) / 3;
@@ -50,24 +87,18 @@ class Spot {
     return reviews.map(selector).reduce((a, b) => a + b) / reviews.length;
   }
 
-  // --- CONSEIL COMPARATIF ---
-  
   String getSmartAdvice(List<BeggarAttribute> userSkills) {
     if (reviews.isEmpty) return "Pas encore d'infos. Soyez le premier !";
 
-    // On cherche quel attribut performe le mieux (basé sur le revenu)
     Map<BeggarAttribute, List<double>> stats = {};
     for (var r in reviews) {
       stats.putIfAbsent(r.attribute, () => []).add(r.ratingRevenue);
     }
 
-    if (stats.isEmpty) return "Données insuffisantes pour le profilage.";
+    if (stats.isEmpty) return "Données insuffisantes.";
 
-    // Calcul des moyennes par attribut
     var bestAttr = BeggarAttribute.none;
     var bestScore = -1.0;
-    var worstAttr = BeggarAttribute.none;
-    var worstScore = 6.0;
 
     stats.forEach((key, values) {
       double avg = values.reduce((a, b) => a + b) / values.length;
@@ -75,29 +106,13 @@ class Spot {
         bestScore = avg;
         bestAttr = key;
       }
-      if (avg < worstScore) {
-        worstScore = avg;
-        worstAttr = key;
-      }
     });
 
     String advice = "";
-    
-    // Construction de la phrase
     if (bestAttr != BeggarAttribute.none) {
       advice += "💡 Les ${_formatAttr(bestAttr)}s gagnent mieux ici.";
     }
-    
-    if (worstAttr != BeggarAttribute.none && worstAttr != bestAttr) {
-      advice += " Les ${_formatAttr(worstAttr)}s galèrent un peu plus.";
-    }
-
-    // Petit check perso
-    bool userHasBest = userSkills.contains(bestAttr);
-    if (userHasBest) {
-      advice += " (C'est bon pour vous !)";
-    }
-
+    if (userSkills.contains(bestAttr)) advice += " (C'est bon pour vous !)";
     return advice;
   }
 
@@ -106,7 +121,7 @@ class Spot {
       case BeggarAttribute.dog: return "maîtres chiens";
       case BeggarAttribute.music: return "musiciens";
       case BeggarAttribute.circus: return "acrobates";
-      case BeggarAttribute.disability: return "personnes handicapées";
+      case BeggarAttribute.disability: return "handicapés";
       case BeggarAttribute.family: return "familles";
       default: return "solos";
     }
@@ -116,12 +131,9 @@ class Spot {
 class Review {
   final String id;
   final String authorName;
-  
-  // Les 3 critères sur 5
   final double ratingRevenue;
   final double ratingSecurity;
   final double ratingTraffic;
-
   final BeggarAttribute attribute;
   final String comment;
   final DateTime createdAt;
@@ -136,4 +148,32 @@ class Review {
     required this.comment,
     required this.createdAt,
   });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'authorName': authorName,
+      'ratingRevenue': ratingRevenue,
+      'ratingSecurity': ratingSecurity,
+      'ratingTraffic': ratingTraffic,
+      'attribute': attribute.name, // Utilise l'extension ou la propriété native
+      'comment': comment,
+      'createdAt': createdAt.toIso8601String(),
+    };
+  }
+
+  factory Review.fromJson(Map<String, dynamic> json) {
+    return Review(
+      id: json['id'] ?? '',
+      authorName: json['authorName'] ?? 'Anonyme',
+      ratingRevenue: (json['ratingRevenue'] as num).toDouble(),
+      ratingSecurity: (json['ratingSecurity'] as num).toDouble(),
+      ratingTraffic: (json['ratingTraffic'] as num).toDouble(),
+      attribute: BeggarAttribute.values.firstWhere(
+        (e) => e.name == json['attribute'], orElse: () => BeggarAttribute.none
+      ),
+      comment: json['comment'] ?? '',
+      createdAt: DateTime.tryParse(json['createdAt'] ?? '') ?? DateTime.now(),
+    );
+  }
 }

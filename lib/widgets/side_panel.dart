@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../models/spot_models.dart';
 import '../data/mock_data.dart';
+import '../data/current_session.dart';
 
 class SidePanel extends StatelessWidget {
   final Spot spot;
@@ -19,7 +20,7 @@ class SidePanel extends StatelessWidget {
   Widget build(BuildContext context) {
     final globalRating = spot.globalRating;
     final themeColor = _getGraduatedColor(globalRating);
-    final advice = spot.getSmartAdvice(currentUser.myAttributes);
+    final advice = spot.getSmartAdvice(CurrentSession().user?.attributes ?? []);
     
     return SafeArea(
       child: ClipRRect(
