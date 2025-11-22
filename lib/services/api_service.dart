@@ -17,7 +17,7 @@ class ApiService {
       final body = {
         "username": username,
         "password": password,
-        "attributes": attributes.map((e) => e.name).toList()
+        "attributes": attributes.map((e) => e.toString().split('.').last).toList()
       };
       
       final response = await http.post(
@@ -66,10 +66,50 @@ class ApiService {
       final response = await http.put(
         Uri.parse('$baseUrl/users/$userId/attributes'),
         headers: {'Content-Type': 'application/json'},
-        body: json.encode(attributes.map((e) => e.name).toList()),
+        body: json.encode(attributes.map((e) => e.toString().split('.').last).toList()),
       );
       return response.statusCode == 200;
     } catch (e) { return false; }
+  }
+
+  // --- FAVORITES ---
+
+  Future<bool> addFavorite(String userId, String spotId) async {
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/users/$userId/favorites/$spotId'),
+      );
+      return response.statusCode == 200;
+    } catch (e) {
+      print("Exception addFavorite: $e");
+      return false;
+    }
+  }
+
+  Future<bool> removeFavorite(String userId, String spotId) async {
+    try {
+      final response = await http.delete(
+        Uri.parse('$baseUrl/users/$userId/favorites/$spotId'),
+      );
+      return response.statusCode == 200;
+    } catch (e) {
+      print("Exception removeFavorite: $e");
+      return false;
+    }
+  }
+
+  Future<List<String>> getFavorites(String userId) async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/users/$userId/favorites'),
+      );
+      if (response.statusCode == 200) {
+        return List<String>.from(json.decode(utf8.decode(response.bodyBytes)));
+      }
+    } catch (e) {
+      print("Exception getFavorites: $e");
+    }
+    return [];
   }
 
   // --- DATA ---

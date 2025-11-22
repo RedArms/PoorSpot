@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:latlong2/latlong.dart';
 import '../models/spot_models.dart';
 import '../data/current_session.dart'; 
@@ -38,7 +37,9 @@ class _HomeScreenState extends State<HomeScreen> {
         if (_selectedSpot != null) {
           try {
             _selectedSpot = _spots.firstWhere((s) => s.id == _selectedSpot!.id);
-          } catch (e) {}
+          } catch (e) {
+            _selectedSpot = null;
+          }
         }
       });
     }
@@ -58,7 +59,6 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
-  // --- VERIFICATION AUTH ---
   bool _checkAuth() {
     if (!CurrentSession().isLoggedIn) {
       _scaffoldKey.currentState?.openDrawer();
@@ -111,12 +111,18 @@ class _HomeScreenState extends State<HomeScreen> {
     setState(() { _selectedSpot = null; });
   }
 
+  void _onFavoriteChanged() {
+    setState(() {}); // Refresh to update UI
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       drawer: ProfileDrawer(
         onLoginSuccess: () => setState(() {}),
+        allSpots: _spots,
+        onSpotTap: _onSpotSelected, // Navigate to spot when tapped in favorites
       ),
       body: Stack(
         children: [
@@ -185,7 +191,12 @@ class _HomeScreenState extends State<HomeScreen> {
             right: _selectedSpot != null ? 0 : -450,
             width: MediaQuery.of(context).size.width > 600 ? 400 : MediaQuery.of(context).size.width,
             child: _selectedSpot != null 
-              ? SidePanel(spot: _selectedSpot!, onClose: _closePanel, onAddReview: _onAddReview) 
+              ? SidePanel(
+                  spot: _selectedSpot!, 
+                  onClose: _closePanel, 
+                  onAddReview: _onAddReview,
+                  onFavoriteChanged: _onFavoriteChanged,
+                ) 
               : const SizedBox.shrink(),
           ),
         ],

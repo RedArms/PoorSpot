@@ -9,9 +9,9 @@ enum BeggarAttribute {
   family      
 }
 
-// The `name` property is natively supported in Dart enums. 
-// The compatibility extension has been removed.
-
+// FIX: Réintégration de l'extension pour la compatibilité avec les versions de Dart // qui ne supportent pas nativement .name sur les enums. 
+//
+extension BeggarAttributeExtension on BeggarAttribute { String get name => toString().split('.').last; }
 class Spot {
   final String id;
   final String name;
