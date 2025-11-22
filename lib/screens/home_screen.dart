@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:latlong2/latlong.dart';
 import '../models/spot_models.dart';
-import '../data/mock_data.dart';
+import '../data/mock_data.dart'; 
 import '../widgets/map_view.dart';
 import '../widgets/side_panel.dart';
 import '../widgets/profile_drawer.dart';
@@ -51,6 +51,38 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  void _onAddReview() {
+    if (_selectedSpot == null) return;
+    showDialog(
+      context: context,
+      builder: (ctx) => _AddReviewDialog(
+        spotName: _selectedSpot!.name,
+        onSubmit: (Review newReview) {
+          setState(() {
+            final updatedSpot = Spot(
+              id: _selectedSpot!.id,
+              name: _selectedSpot!.name,
+              description: _selectedSpot!.description,
+              position: _selectedSpot!.position,
+              category: _selectedSpot!.category,
+              createdAt: _selectedSpot!.createdAt,
+              createdBy: _selectedSpot!.createdBy,
+              currentActiveUsers: _selectedSpot!.currentActiveUsers,
+              reviews: [newReview, ..._selectedSpot!.reviews],
+            );
+
+            final index = _spots.indexWhere((s) => s.id == updatedSpot.id);
+            if (index != -1) {
+              _spots[index] = updatedSpot;
+            }
+            _selectedSpot = updatedSpot;
+          });
+          Navigator.of(ctx).pop();
+        },
+      ),
+    );
+  }
+
   void _cancelCreation() {
     setState(() { _tempNewSpotPosition = null; });
   }
@@ -76,7 +108,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           
-          // Bouton Menu
           Positioned(
             top: 50, left: 20,
             child: CircleAvatar(
@@ -88,7 +119,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
 
-          // Création de spot
           if (_tempNewSpotPosition != null)
              Positioned(
               bottom: 40, left: 20, right: 20,
@@ -98,13 +128,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(16),
                   child: Row(
                     children: [
-                      const Icon(Icons.add_location, color: Color(0xFF00E5FF)),
+                      const Icon(Icons.add_location, color: Color(0xFF00C853)),
                       const SizedBox(width: 12),
                       const Expanded(child: Text("DÉCLARER ZONE ?", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold))),
                       TextButton(onPressed: _cancelCreation, child: const Text("ANNULER", style: TextStyle(color: Colors.redAccent))),
                       ElevatedButton(
                         onPressed: _openCreateDialog,
-                        style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF00E5FF), foregroundColor: Colors.black),
+                        style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF00C853), foregroundColor: Colors.black),
                         child: const Text("CRÉER"),
                       ),
                     ],
@@ -120,7 +150,11 @@ class _HomeScreenState extends State<HomeScreen> {
             right: _selectedSpot != null ? 0 : -450,
             width: MediaQuery.of(context).size.width > 600 ? 400 : MediaQuery.of(context).size.width,
             child: _selectedSpot != null 
-              ? SidePanel(spot: _selectedSpot!, onClose: _closePanel) 
+              ? SidePanel(
+                  spot: _selectedSpot!, 
+                  onClose: _closePanel,
+                  onAddReview: _onAddReview,
+                ) 
               : const SizedBox.shrink(),
           ),
         ],
@@ -129,6 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
+// --- CRÉATION DE SPOT ---
 class _CreateSpotDialog extends StatefulWidget {
   final LatLng position;
   final Function(Spot) onSubmit;
@@ -141,10 +176,10 @@ class _CreateSpotDialogState extends State<_CreateSpotDialog> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _descController = TextEditingController();
-  final _rateController = TextEditingController();
-  
   String _selectedCategory = 'Tourisme';
-  BeggarAttribute _selectedAttribute = BeggarAttribute.none;
+  double _revenue = 3.0;
+  double _security = 3.0;
+  double _traffic = 3.0;
 
   @override
   Widget build(BuildContext context) {
@@ -163,39 +198,27 @@ class _CreateSpotDialogState extends State<_CreateSpotDialog> {
                 decoration: const InputDecoration(labelText: 'Nom du lieu', labelStyle: TextStyle(color: Colors.grey)),
                 validator: (v) => v!.isEmpty ? 'Requis' : null,
               ),
-              DropdownButton<String>(
+              const SizedBox(height: 10),
+              DropdownButtonFormField<String>(
                 value: _selectedCategory,
                 dropdownColor: const Color(0xFF0F172A),
                 style: const TextStyle(color: Colors.white),
-                isExpanded: true,
-                items: ['Tourisme', 'Business', 'Shopping', 'Nightlife'].map((c) => DropdownMenuItem(value: c, child: Text(c))).toList(),
+                decoration: const InputDecoration(labelText: 'Catégorie', labelStyle: TextStyle(color: Colors.grey)),
+                items: ['Tourisme', 'Business', 'Shopping', 'Nightlife', 'Transport'].map((c) => DropdownMenuItem(value: c, child: Text(c))).toList(),
                 onChanged: (v) => setState(() => _selectedCategory = v!),
               ),
               const SizedBox(height: 20),
-              const Text("ATTRIBUT UTILISÉ (SKIN)", style: TextStyle(color: Color(0xFF00E5FF), fontSize: 12)),
-              DropdownButton<BeggarAttribute>(
-                value: _selectedAttribute,
-                dropdownColor: const Color(0xFF0F172A),
-                style: const TextStyle(color: Colors.white),
-                isExpanded: true,
-                items: BeggarAttribute.values.map((a) => DropdownMenuItem(value: a, child: Text(a.name.toUpperCase()))).toList(),
-                onChanged: (v) => setState(() => _selectedAttribute = v!),
-              ),
-              const SizedBox(height: 20),
-              TextFormField(
-                controller: _rateController,
-                keyboardType: TextInputType.number,
-                style: const TextStyle(color: Colors.greenAccent, fontSize: 20, fontWeight: FontWeight.bold),
-                decoration: const InputDecoration(labelText: 'GAIN HORAIRE ESTIMÉ (€)', suffixText: '€/h'),
-                inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}'))],
-                validator: (v) => v!.isEmpty ? 'Requis' : null,
-              ),
+              const Text("NOTATION RAPIDE", style: TextStyle(color: Color(0xFF00C853), fontSize: 12, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 10),
+              _buildSlider("Revenu", _revenue, (v) => setState(() => _revenue = v)),
+              _buildSlider("Sécurité", _security, (v) => setState(() => _security = v)),
+              _buildSlider("Passage", _traffic, (v) => setState(() => _traffic = v)),
               const SizedBox(height: 10),
               TextFormField(
                 controller: _descController,
                 maxLines: 2,
                 style: const TextStyle(color: Colors.white),
-                decoration: const InputDecoration(labelText: 'Commentaire'),
+                decoration: const InputDecoration(labelText: 'Commentaire', labelStyle: TextStyle(color: Colors.grey)),
               ),
             ],
           ),
@@ -205,16 +228,45 @@ class _CreateSpotDialogState extends State<_CreateSpotDialog> {
         TextButton(onPressed: () => Navigator.pop(context), child: const Text("ANNULER")),
         ElevatedButton(
           onPressed: _submit,
-          style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF00E5FF), foregroundColor: Colors.black),
+          style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF00C853), foregroundColor: Colors.black),
           child: const Text("VALIDER"),
         )
       ],
     );
   }
 
+  Widget _buildSlider(String label, double value, Function(double) onChanged) {
+    // Couleur dynamique ROUGE -> VERT
+    final color = _getGraduatedColor(value);
+    return Row(
+      children: [
+        SizedBox(width: 60, child: Text(label, style: const TextStyle(color: Colors.white70, fontSize: 12))),
+        Expanded(
+          child: Slider(
+            value: value, min: 1, max: 5, divisions: 4,
+            activeColor: color, 
+            thumbColor: color,
+            inactiveColor: Colors.white10,
+            label: value.toStringAsFixed(0), onChanged: onChanged,
+          ),
+        ),
+        Text(value.toStringAsFixed(0), style: TextStyle(color: color, fontWeight: FontWeight.bold)),
+      ],
+    );
+  }
+
+  Color _getGraduatedColor(double rating) {
+    double t = (rating / 5.0).clamp(0.0, 1.0);
+    if (t < 0.5) {
+      return Color.lerp(const Color(0xFFFF3D00), const Color(0xFFFFEA00), t * 2)!;
+    } else {
+      return Color.lerp(const Color(0xFFFFEA00), const Color(0xFF00C853), (t - 0.5) * 2)!;
+    }
+  }
+
   void _submit() {
     if (_formKey.currentState!.validate()) {
-      final rate = double.tryParse(_rateController.text) ?? 0.0;
+      final userAttribute = currentUser.myAttributes.isNotEmpty ? currentUser.myAttributes.first : BeggarAttribute.none;
       final newSpot = Spot(
         id: DateTime.now().toString(),
         name: _nameController.text,
@@ -222,16 +274,122 @@ class _CreateSpotDialogState extends State<_CreateSpotDialog> {
         position: widget.position,
         category: _selectedCategory,
         createdAt: DateTime.now(),
-        createdBy: 'Moi',
+        createdBy: currentUser.name,
         reviews: [
           Review(
-            id: 'init', authorName: 'Moi',
-            hourlyRate: rate, attribute: _selectedAttribute,
-            comment: _descController.text, createdAt: DateTime.now(),
+            id: 'init', authorName: currentUser.name,
+            ratingRevenue: _revenue, ratingSecurity: _security, ratingTraffic: _traffic,
+            attribute: userAttribute, comment: _descController.text, createdAt: DateTime.now(),
           )
         ],
       );
       widget.onSubmit(newSpot);
+    }
+  }
+}
+
+// --- AJOUT D'AVIS ---
+class _AddReviewDialog extends StatefulWidget {
+  final String spotName;
+  final Function(Review) onSubmit;
+  const _AddReviewDialog({required this.spotName, required this.onSubmit});
+  @override
+  State<_AddReviewDialog> createState() => _AddReviewDialogState();
+}
+
+class _AddReviewDialogState extends State<_AddReviewDialog> {
+  final _formKey = GlobalKey<FormState>();
+  final _commentController = TextEditingController();
+  double _revenue = 3.0;
+  double _security = 3.0;
+  double _traffic = 3.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: const Color(0xFF1E293B),
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('DÉCLARER UN GAIN', style: TextStyle(color: Colors.white, fontSize: 14)),
+          Text(widget.spotName, style: const TextStyle(color: Color(0xFF00C853), fontWeight: FontWeight.bold)),
+        ],
+      ),
+      content: SingleChildScrollView(
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text("COMMENT C'ÉTAIT ?", style: TextStyle(color: Colors.white70, fontSize: 12, fontWeight: FontWeight.bold)),
+              const SizedBox(height: 10),
+              _buildSlider("Revenu", _revenue, (v) => setState(() => _revenue = v)),
+              _buildSlider("Sécurité", _security, (v) => setState(() => _security = v)),
+              _buildSlider("Passage", _traffic, (v) => setState(() => _traffic = v)),
+              const SizedBox(height: 10),
+              TextFormField(
+                controller: _commentController,
+                maxLines: 2,
+                style: const TextStyle(color: Colors.white),
+                decoration: const InputDecoration(labelText: 'Commentaire rapide', labelStyle: TextStyle(color: Colors.grey)),
+              ),
+            ],
+          ),
+        ),
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(context), child: const Text("ANNULER")),
+        ElevatedButton(
+          onPressed: _submit,
+          style: ElevatedButton.styleFrom(backgroundColor: const Color(0xFF00C853), foregroundColor: Colors.black),
+          child: const Text("PUBLIER"),
+        )
+      ],
+    );
+  }
+
+  Widget _buildSlider(String label, double value, Function(double) onChanged) {
+    final color = _getGraduatedColor(value);
+    return Row(
+      children: [
+        SizedBox(width: 60, child: Text(label, style: const TextStyle(color: Colors.white70, fontSize: 12))),
+        Expanded(
+          child: Slider(
+            value: value, min: 1, max: 5, divisions: 4,
+            activeColor: color,
+            thumbColor: color,
+            inactiveColor: Colors.white10,
+            label: value.toStringAsFixed(0), onChanged: onChanged,
+          ),
+        ),
+        Text(value.toStringAsFixed(0), style: TextStyle(color: color, fontWeight: FontWeight.bold)),
+      ],
+    );
+  }
+
+  Color _getGraduatedColor(double rating) {
+    double t = (rating / 5.0).clamp(0.0, 1.0);
+    if (t < 0.5) {
+      return Color.lerp(const Color(0xFFFF3D00), const Color(0xFFFFEA00), t * 2)!;
+    } else {
+      return Color.lerp(const Color(0xFFFFEA00), const Color(0xFF00C853), (t - 0.5) * 2)!;
+    }
+  }
+
+  void _submit() {
+    if (_formKey.currentState!.validate()) {
+      final userAttribute = currentUser.myAttributes.isNotEmpty ? currentUser.myAttributes.first : BeggarAttribute.none;
+      final newReview = Review(
+        id: DateTime.now().toString(),
+        authorName: currentUser.name,
+        ratingRevenue: _revenue,
+        ratingSecurity: _security,
+        ratingTraffic: _traffic,
+        attribute: userAttribute,
+        comment: _commentController.text.isEmpty ? "Rien à signaler." : _commentController.text,
+        createdAt: DateTime.now(),
+      );
+      widget.onSubmit(newReview);
     }
   }
 }

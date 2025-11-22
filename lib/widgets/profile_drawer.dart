@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../data/mock_data.dart'; 
+import '../models/spot_models.dart';
 
 class ProfileDrawer extends StatelessWidget {
   const ProfileDrawer({super.key});
@@ -7,35 +8,34 @@ class ProfileDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Simulation User
-    const userName = "ID_8492"; 
-    final totalEarningsGenerated = 650.0; 
+    final user = currentUser;
     
-    // Logique Ranking (Black Mirror)
+    // On simule un historique pour l'affichage (on prend quelques reviews au hasard des mocks)
+    final myHistory = mockSpots.expand((s) => s.reviews).take(5).toList();
+    final int contributionCount = myHistory.length + 42; // Faux nombre total
+
+    // Logique Ranking (Basée sur l'expérience/contributions)
     String rank = "NPC";
     Color rankColor = Colors.grey;
     double progress = 0.0;
 
-    if (totalEarningsGenerated > 1000) {
+    if (contributionCount > 100) {
       rank = "SYSTEM ADMIN";
       rankColor = const Color(0xFF00E5FF);
       progress = 1.0;
-    } else if (totalEarningsGenerated > 500) {
-      rank = "ASSET";
+    } else if (contributionCount > 50) {
+      rank = "GUIDE";
       rankColor = Colors.greenAccent;
       progress = 0.75;
-    } else if (totalEarningsGenerated > 100) {
-      rank = "GLITCH";
+    } else if (contributionCount > 10) {
+      rank = "EXPLORATEUR";
       rankColor = Colors.amberAccent;
       progress = 0.40;
     } else {
-      rank = "NPC";
+      rank = "NOVICE";
       rankColor = Colors.grey;
       progress = 0.1;
     }
-
-    // On récupère quelques reviews pour l'historique
-    // (Attention: mockSpots doit être importé correctement)
-    final myHistory = mockSpots.expand((s) => s.reviews).take(5).toList();
 
     return Drawer(
       backgroundColor: const Color(0xFF0F172A),
@@ -63,7 +63,7 @@ class ProfileDrawer extends StatelessWidget {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(userName, style: const TextStyle(color: Colors.white, fontFamily: 'Courier', fontSize: 20, fontWeight: FontWeight.bold)),
+                        Text(user.name, style: const TextStyle(color: Colors.white, fontFamily: 'Courier', fontSize: 20, fontWeight: FontWeight.bold)),
                         Container(
                           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(color: rankColor.withOpacity(0.2), border: Border.all(color: rankColor)),
@@ -81,7 +81,7 @@ class ProfileDrawer extends StatelessWidget {
                   minHeight: 4,
                 ),
                 const SizedBox(height: 4),
-                Text("SOCIAL CREDIT SCORE: ${(progress * 1000).toInt()}", style: TextStyle(color: rankColor, fontSize: 8, fontFamily: 'Courier')),
+                Text("RÉPUTATION: $contributionCount PTS", style: TextStyle(color: rankColor, fontSize: 8, fontFamily: 'Courier')),
               ],
             ),
           ),
@@ -94,18 +94,18 @@ class ProfileDrawer extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 _buildColdStat("ZONES", "12"),
-                _buildColdStat("YIELD", "${totalEarningsGenerated.toInt()}€"),
-                _buildColdStat("HITS", "842"),
+                _buildColdStat("AVIS", "$contributionCount"),
+                _buildColdStat("KARMA", "High"),
               ],
             ),
           ),
           
           const Padding(
             padding: EdgeInsets.only(left: 16, top: 20, bottom: 10),
-            child: Text("HISTORIQUE DES DONNÉES", style: TextStyle(color: Color(0xFF00E5FF), fontSize: 10, letterSpacing: 1, fontFamily: 'Courier')),
+            child: Text("DERNIÈRES ACTIVITÉS", style: TextStyle(color: Color(0xFF00E5FF), fontSize: 10, letterSpacing: 1, fontFamily: 'Courier')),
           ),
 
-          // LISTE HISTORIQUE (Corrigée)
+          // LISTE HISTORIQUE (Corrigée pour utiliser les notes /5)
           Expanded(
             child: ListView(
               padding: EdgeInsets.zero,
@@ -116,10 +116,17 @@ class ProfileDrawer extends StatelessWidget {
                   ),
                   child: ListTile(
                     dense: true,
-                    leading: const Icon(Icons.data_object, size: 16, color: Colors.grey),
+                    leading: const Icon(Icons.rate_review, size: 16, color: Colors.grey),
                     title: Text(review.comment, maxLines: 1, overflow: TextOverflow.ellipsis, style: const TextStyle(color: Colors.white70, fontFamily: 'Courier', fontSize: 12)),
-                    // CORRECTION ICI : On affiche les HITS et la DUREE
-                    trailing: Text("${review.hourlyRate} HITS", style: TextStyle(color: rankColor, fontWeight: FontWeight.bold, fontFamily: 'Courier')),
+                    // Affiche la note Revenu en étoiles
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: List.generate(5, (index) => Icon(
+                        index < review.ratingRevenue ? Icons.star : Icons.star_border,
+                        size: 10, 
+                        color: rankColor
+                      )),
+                    ),
                   ),
                 );
               }).toList(),

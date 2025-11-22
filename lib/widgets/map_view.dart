@@ -28,15 +28,14 @@ class PoorSpotMap extends StatelessWidget {
 
     return FlutterMap(
       options: MapOptions(
-        initialCenter: const LatLng(50.8466, 4.3528),
-        initialZoom: 14.0,
+        initialCenter: const LatLng(50.8466, 4.3528), // Bruxelles centre
+        initialZoom: 13.0,
         onLongPress: (_, latlng) => onMapLongPress(latlng),
         interactionOptions: const InteractionOptions(
           flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
         ),
       ),
       children: [
-        // Carte "Voyager" (Clair/Propre)
         TileLayer(
           urlTemplate: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
           subdomains: const ['a', 'b', 'c', 'd'],
@@ -49,59 +48,47 @@ class PoorSpotMap extends StatelessWidget {
 
   Marker _buildSpotMarker(BuildContext context, Spot spot) {
     final isSelected = spot.id == selectedSpotId;
-    final earnings = spot.averageHourlyRate;
-    final color = _getRevenueColor(earnings);
+    final pinColor = _getGraduatedColor(spot.globalRating);
+    final categoryIcon = _getCategoryIcon(spot.category);
+
+    final double size = isSelected ? 65 : 50;
 
     return Marker(
       point: spot.position,
-      width: isSelected ? 70 : 55, // Un peu plus gros pour la lisibilité
-      height: isSelected ? 70 : 55,
+      width: size, 
+      height: size,
+      alignment: Alignment.topCenter,
       child: GestureDetector(
         onTap: () => onSpotTap(spot),
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            // 1. Le Cercle Principal (Couleur = Argent)
-            AnimatedContainer(
-              duration: const Duration(milliseconds: 300),
-              decoration: BoxDecoration(
-                color: color,
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.black, width: 2),
-                boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 8, offset: const Offset(0, 4))],
+        child: AnimatedScale(
+          scale: isSelected ? 1.1 : 1.0,
+          duration: const Duration(milliseconds: 200),
+          child: Stack(
+            alignment: Alignment.topCenter,
+            children: [
+              // A. Le PING (Forme de goutte)
+              Icon(
+                Icons.location_on, 
+                color: pinColor, 
+                size: size,
+                shadows: [
+                  BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 10, offset: const Offset(0, 5))
+                ],
               ),
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(_getCategoryIcon(spot.category), size: 16, color: Colors.black),
-                    // Affiche le montant directement sur la map !
-                    Text(
-                      "${earnings.toInt()}€", 
-                      style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 10)
-                    ),
-                  ],
+              
+              // B. Le PICTOGRAMME (Catégorie) à l'intérieur
+              Positioned(
+                top: size * 0.15,
+                child: Icon(
+                  categoryIcon, 
+                  size: size * 0.45, 
+                  color: Colors.white,
                 ),
               ),
-            ),
-            
-            // 2. Badge "Présence" (Rouge si occupé, Vert si libre)
-            Positioned(
-              right: -2, top: -2,
-              child: Container(
-                padding: const EdgeInsets.all(4),
-                decoration: BoxDecoration(
-                  color: spot.currentActiveUsers > 0 ? Colors.red : Colors.green,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 1.5),
-                ),
-                child: Text(
-                  "${spot.currentActiveUsers}",
-                  style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold),
-                ),
-              ),
-            )
-          ],
+              
+              // ZÉRO badge de notification ici. C'est clean.
+            ],
+          ),
         ),
       ),
     );
@@ -110,22 +97,30 @@ class PoorSpotMap extends StatelessWidget {
   Marker _buildTempMarker(BuildContext context, LatLng pos) {
     return Marker(
       point: pos, width: 50, height: 50,
-      child: const Icon(Icons.add_location_alt, size: 40, color: Colors.black),
+      alignment: Alignment.topCenter,
+      child: const Icon(Icons.add_location_alt, size: 50, color: Colors.black),
     );
   }
 
-  Color _getRevenueColor(double rate) {
-    if (rate >= 30) return const Color(0xFF00E5FF); // Cyan (Jackpot)
-    if (rate >= 15) return const Color(0xFF76FF03); // Vert fluo (Bien)
-    if (rate >= 5) return const Color(0xFFFFEA00); // Jaune (Moyen)
-    return const Color(0xFFFF3D00); // Rouge (Misère)
+  // Graduat Rouge -> Jaune -> VERT (Correction appliquée)
+  Color _getGraduatedColor(double rating) {
+    double t = (rating / 5.0).clamp(0.0, 1.0);
+    if (t < 0.5) {
+      // De Rouge à Jaune
+      return Color.lerp(const Color(0xFFFF3D00), const Color(0xFFFFEA00), t * 2)!;
+    } else {
+      // De Jaune à Vert Vif (0xFF00C853)
+      return Color.lerp(const Color(0xFFFFEA00), const Color(0xFF00C853), (t - 0.5) * 2)!;
+    }
   }
 
   IconData _getCategoryIcon(String category) {
     switch (category) {
-      case 'Tourisme': return Icons.camera_alt;
-      case 'Business': return Icons.work;
-      case 'Shopping': return Icons.shopping_bag;
+      case 'Tourisme': return Icons.camera_alt; 
+      case 'Business': return Icons.business_center; 
+      case 'Shopping': return Icons.shopping_bag; 
+      case 'Nightlife': return Icons.local_bar; 
+      case 'Transport': return Icons.directions_subway; 
       default: return Icons.place;
     }
   }
