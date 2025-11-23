@@ -3,7 +3,7 @@ import '../models/spot_models.dart';
 import '../models/user_model.dart';
 import '../data/current_session.dart';
 import '../services/api_service.dart';
-import '../screens/leaderboard_screen.dart'; // IMPORTANT: Import du classement
+import '../screens/leaderboard_screen.dart';
 
 class ProfileDrawer extends StatefulWidget {
   final VoidCallback onLoginSuccess;
@@ -32,20 +32,13 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
   String? _errorMsg;
 
   TabController? _tabController;
-  List<AchievementDef> _allAchievements = [];
 
   @override
   void initState() {
     super.initState();
     if (CurrentSession().user != null) {
       _tabController = TabController(length: 4, vsync: this);
-      _loadAchievements();
     }
-  }
-
-  Future<void> _loadAchievements() async {
-    _allAchievements = await _api.fetchAllAchievements();
-    if (mounted) setState(() {});
   }
 
   @override
@@ -55,9 +48,6 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
     if (user != null) {
       if (_tabController == null) {
         _tabController = TabController(length: 4, vsync: this);
-      }
-      if (_allAchievements.isEmpty) {
-        _loadAchievements();
       }
     } else {
       _tabController?.dispose();
@@ -217,7 +207,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // HEADER AVEC LE BOUTON CLASSEMENT
+          // HEADER
           Container(
             padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
             decoration: BoxDecoration(
@@ -236,15 +226,13 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
                       children: [
                         Text(user.name, style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
                         const SizedBox(height: 4),
-                        // Affichage des points
                         Text("RÔDEUR • ${user.points} PTS", style: const TextStyle(color: Color(0xFF00C853), fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 1)),
                       ],
                     ),
                   ),
-                  // --- BOUTON CLASSEMENT ---
                   IconButton(
                     onPressed: () {
-                      Navigator.pop(context); // Ferme le drawer
+                      Navigator.pop(context);
                       Navigator.push(
                         context, 
                         MaterialPageRoute(builder: (context) => const LeaderboardScreen())
@@ -253,13 +241,12 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
                     icon: const Icon(Icons.emoji_events, color: Color(0xFFFFD700), size: 28),
                     tooltip: "Voir le classement",
                   )
-                  // -------------------------
                 ],
               ),
             ),
           ),
 
-          // TAB BAR
+          // TAB BAR - MODIFIÉ: "SUCCÈS" devient "AVIS"
           Container(
             color: const Color(0xFF020617),
             child: TabBar(
@@ -274,7 +261,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
               tabs: const [
                 Tab(text: "PROFIL", icon: Icon(Icons.person_outline, size: 18)),
                 Tab(text: "HISTO.", icon: Icon(Icons.history, size: 18)),
-                Tab(text: "SUCCÈS", icon: Icon(Icons.emoji_events, size: 18)),
+                Tab(text: "AVIS", icon: Icon(Icons.rate_review, size: 18)), // Changement d'icône et de texte
                 Tab(text: "FAVORIS", icon: Icon(Icons.star_outline, size: 18)),
               ],
             ),
@@ -287,7 +274,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
               children: [
                 _buildProfileTab(user),
                 _buildHistoryTab(user),
-                _buildAchievementsTab(user),
+                _buildReviewsTab(user), // Anciennement succès
                 _buildFavoritesTab(),
               ],
             ),
@@ -362,83 +349,30 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
     );
   }
 
-  // --- ACHIEVEMENTS TAB ---
-  Widget _buildAchievementsTab(User user) {
-    if (_allAchievements.isEmpty) return const Center(child: CircularProgressIndicator(color: Color(0xFF00C853)));
+  // --- REVIEWS TAB (NOUVEAU) ---
+  Widget _buildReviewsTab(User user) {
+    final reviews = _getUserReviews();
 
-    return GridView.builder(
+    if (reviews.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.rate_review_outlined, size: 60, color: Colors.white.withOpacity(0.2)),
+            const SizedBox(height: 16),
+            const Text("Aucun avis posté", style: TextStyle(color: Colors.white54, fontSize: 14)),
+          ],
+        ),
+      );
+    }
+
+    return ListView.builder(
       padding: const EdgeInsets.all(12),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3, 
-        childAspectRatio: 0.8,
-        crossAxisSpacing: 10, 
-        mainAxisSpacing: 10
-      ),
-      itemCount: _allAchievements.length,
+      itemCount: reviews.length,
       itemBuilder: (context, index) {
-        final def = _allAchievements[index];
-        final isUnlocked = user.achievements.contains(def.id);
-
-        return Opacity(
-          opacity: isUnlocked ? 1.0 : 0.3,
-          child: Container(
-            decoration: BoxDecoration(
-              color: isUnlocked ? Colors.amber.withOpacity(0.1) : Colors.white10,
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(color: isUnlocked ? Colors.amber : Colors.white10),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(_getIconData(def.icon), size: 30, color: isUnlocked ? Colors.amber : Colors.white),
-                const SizedBox(height: 8),
-                Text(def.name, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold)),
-                const SizedBox(height: 4),
-                Text("${def.points} pts", style: TextStyle(color: isUnlocked ? Colors.amber : Colors.grey, fontSize: 9)),
-              ],
-            ),
-          ),
-        );
+        return _UserReviewCard(item: reviews[index]);
       },
     );
-  }
-
-  IconData _getIconData(String name) {
-    switch (name) {
-      case 'footprint': return Icons.directions_walk;
-      case 'compass': return Icons.explore;
-      case 'map': return Icons.map;
-      case 'public': return Icons.public;
-      case 'category': return Icons.category;
-      case 'hourglass_bottom': return Icons.hourglass_bottom;
-      case 'hourglass_top': return Icons.hourglass_top;
-      case 'hourglass_full': return Icons.hourglass_full;
-      case 'history': return Icons.history;
-      case 'infinity': return Icons.all_inclusive;
-      case 'fire': return Icons.local_fire_department;
-      case 'bedtime': return Icons.bedtime;
-      case 'sunny': return Icons.wb_sunny;
-      case 'restaurant': return Icons.restaurant;
-      case 'weekend': return Icons.weekend;
-      case 'business_center': return Icons.business_center;
-      case 'camera_alt': return Icons.camera_alt;
-      case 'celebration': return Icons.celebration;
-      case 'shopping_bag': return Icons.shopping_bag;
-      case 'train': return Icons.train;
-      case 'add_location': return Icons.add_location_alt;
-      case 'domain': return Icons.domain;
-      case 'rate_review': return Icons.rate_review;
-      case 'campaign': return Icons.campaign;
-      case 'home': return Icons.home;
-      case 'timer': return Icons.timer;
-      case 'bolt': return Icons.bolt;
-      case 'attach_money': return Icons.attach_money;
-      case 'shield': return Icons.shield;
-      case 'groups': return Icons.groups;
-      case 'waving_hand': return Icons.waving_hand;
-      case 'hourglass_empty': return Icons.hourglass_empty;
-      default: return Icons.emoji_events;
-    }
   }
 
   // --- HISTORY TAB ---
@@ -681,14 +615,12 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
   }
 }
 
-// --- Helper class ---
 class _UserReviewWithSpot {
   final Review review;
   final Spot spot;
   _UserReviewWithSpot({required this.review, required this.spot});
 }
 
-// --- Favorite Spot Card ---
 class _FavoriteSpotCard extends StatelessWidget {
   final Spot spot;
   final VoidCallback onTap;

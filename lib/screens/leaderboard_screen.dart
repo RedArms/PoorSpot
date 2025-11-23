@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../services/api_service.dart';
 import '../data/current_session.dart';
+import '../models/user_model.dart';
 
 class LeaderboardScreen extends StatefulWidget {
   const LeaderboardScreen({super.key});
@@ -10,13 +11,19 @@ class LeaderboardScreen extends StatefulWidget {
   State<LeaderboardScreen> createState() => _LeaderboardScreenState();
 }
 
-class _LeaderboardScreenState extends State<LeaderboardScreen> {
+class _LeaderboardScreenState extends State<LeaderboardScreen> with SingleTickerProviderStateMixin {
   final ApiService _api = ApiService();
+  late TabController _tabController;
   
-  String _selectedPeriod = "forever"; // daily, weekly, monthly, forever
-  String _sortBy = "points"; // 'points' or 'time'
+  // LEADERBOARD STATE
+  String _selectedPeriod = "forever"; 
+  String _sortBy = "points"; 
   List<Map<String, dynamic>> _users = [];
-  bool _isLoading = true;
+  bool _isLoadingLeaderboard = true;
+
+  // ACHIEVEMENTS STATE
+  List<AchievementDef> _allAchievements = [];
+  bool _isLoadingAchievements = true;
 
   final List<String> _periods = ["daily", "weekly", "monthly", "forever"];
   final Map<String, String> _periodLabels = {
@@ -29,16 +36,35 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
   @override
   void initState() {
     super.initState();
-    _loadData();
+    _tabController = TabController(length: 2, vsync: this);
+    _loadLeaderboard();
+    _loadAchievements();
   }
 
-  Future<void> _loadData() async {
-    setState(() => _isLoading = true);
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _loadLeaderboard() async {
+    setState(() => _isLoadingLeaderboard = true);
     final data = await _api.fetchLeaderboard(_selectedPeriod, _sortBy);
     if (mounted) {
       setState(() {
         _users = data;
-        _isLoading = false;
+        _isLoadingLeaderboard = false;
+      });
+    }
+  }
+
+  Future<void> _loadAchievements() async {
+    setState(() => _isLoadingAchievements = true);
+    final data = await _api.fetchAllAchievements();
+    if (mounted) {
+      setState(() {
+        _allAchievements = data;
+        _isLoadingAchievements = false;
       });
     }
   }
@@ -46,7 +72,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
   void _onPeriodChanged(String period) {
     if (_selectedPeriod == period) return;
     setState(() => _selectedPeriod = period);
-    _loadData();
+    _loadLeaderboard();
   }
 
   @override
@@ -54,136 +80,119 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
     return Scaffold(
       backgroundColor: const Color(0xFF0F172A),
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: const Color(0xFF0F172A),
         elevation: 0,
         centerTitle: true,
-        title: const Text("CLASSEMENT", style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 2, color: Colors.white)),
+        title: const Text("CLASSEMENT & SUCCÈS", style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: 1.5, color: Colors.white, fontSize: 16)),
         iconTheme: const IconThemeData(color: Colors.white),
-      ),
-      body: Column(
-        children: [
-          // SWITCH MODE
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-            child: Container(
-              decoration: BoxDecoration(color: Colors.white.withOpacity(0.05), borderRadius: BorderRadius.circular(30)),
-              child: Row(
-                children: [
-                  _buildToggleBtn("POINTS", "points"),
-                  _buildToggleBtn("TEMPS", "time"),
-                ],
-              ),
-            ),
-          ),
-
-          // FILTRES (Uniquement pour le temps)
-          if (_sortBy == "time")
-            Container(
-              height: 40,
-              margin: const EdgeInsets.only(bottom: 10),
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                itemCount: _periods.length,
-                separatorBuilder: (_, __) => const SizedBox(width: 10),
-                itemBuilder: (context, index) {
-                  final p = _periods[index];
-                  final isSelected = _selectedPeriod == p;
-                  return GestureDetector(
-                    onTap: () => _onPeriodChanged(p),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: isSelected ? const Color(0xFF00C853) : Colors.transparent,
-                        borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: isSelected ? const Color(0xFF00C853) : Colors.white24),
-                      ),
-                      child: Text(
-                        _periodLabels[p]!,
-                        style: TextStyle(color: isSelected ? Colors.black : Colors.white54, fontWeight: FontWeight.bold, fontSize: 11),
-                      ),
-                    ),
-                  );
-                },
-              ),
-            ),
-
-          Expanded(
-            child: _isLoading 
-              ? const Center(child: CircularProgressIndicator(color: Color(0xFF00C853)))
-              : _users.isEmpty 
-                ? _buildEmptyState()
-                : _buildContent(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildToggleBtn(String label, String value) {
-    final isSelected = _sortBy == value;
-    return Expanded(
-      child: GestureDetector(
-        onTap: () { 
-          if (_sortBy != value) {
-            setState(() => _sortBy = value); 
-            _loadData(); 
-          }
-        },
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 10),
-          decoration: BoxDecoration(
-            color: isSelected ? const Color(0xFF00C853) : Colors.transparent,
-            borderRadius: BorderRadius.circular(30),
-          ),
-          alignment: Alignment.center,
-          child: Text(label, style: TextStyle(color: isSelected ? Colors.black : Colors.white54, fontWeight: FontWeight.bold, fontSize: 12)),
+        bottom: TabBar(
+          controller: _tabController,
+          indicatorColor: const Color(0xFF00C853),
+          labelColor: const Color(0xFF00C853),
+          unselectedLabelColor: Colors.white54,
+          labelStyle: const TextStyle(fontWeight: FontWeight.bold),
+          tabs: const [
+            Tab(text: "CLASSEMENT"),
+            Tab(text: "LISTE DES SUCCÈS"),
+          ],
         ),
       ),
-    );
-  }
-
-  Widget _buildEmptyState() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+      body: TabBarView(
+        controller: _tabController,
         children: [
-          Icon(Icons.emoji_events_outlined, size: 80, color: Colors.white.withOpacity(0.1)),
-          const SizedBox(height: 20),
-          const Text("Personne n'est classé ici...", style: TextStyle(color: Colors.white38)),
-          const SizedBox(height: 5),
-          const Text("Sois le premier !", style: TextStyle(color: Color(0xFF00C853), fontWeight: FontWeight.bold)),
+          _buildLeaderboardTab(),
+          _buildAchievementsTab(),
         ],
       ),
     );
   }
 
-  Widget _buildContent() {
+  // --- TAB 1: LEADERBOARD ---
+  Widget _buildLeaderboardTab() {
+    return Column(
+      children: [
+        const SizedBox(height: 10),
+        // SWITCH MODE (Points vs Temps)
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+          child: Container(
+            decoration: BoxDecoration(color: Colors.white.withOpacity(0.05), borderRadius: BorderRadius.circular(30)),
+            child: Row(
+              children: [
+                _buildToggleBtn("POINTS", "points"),
+                _buildToggleBtn("TEMPS", "time"),
+              ],
+            ),
+          ),
+        ),
+
+        // FILTRES (Uniquement pour le temps)
+        if (_sortBy == "time")
+          Container(
+            height: 40,
+            margin: const EdgeInsets.only(bottom: 10),
+            child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              itemCount: _periods.length,
+              separatorBuilder: (_, __) => const SizedBox(width: 10),
+              itemBuilder: (context, index) {
+                final p = _periods[index];
+                final isSelected = _selectedPeriod == p;
+                return GestureDetector(
+                  onTap: () => _onPeriodChanged(p),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
+                    alignment: Alignment.center,
+                    decoration: BoxDecoration(
+                      color: isSelected ? const Color(0xFF00C853) : Colors.transparent,
+                      borderRadius: BorderRadius.circular(20),
+                      border: Border.all(color: isSelected ? const Color(0xFF00C853) : Colors.white24),
+                    ),
+                    child: Text(
+                      _periodLabels[p]!,
+                      style: TextStyle(color: isSelected ? Colors.black : Colors.white54, fontWeight: FontWeight.bold, fontSize: 11),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+
+        Expanded(
+          child: _isLoadingLeaderboard
+            ? const Center(child: CircularProgressIndicator(color: Color(0xFF00C853)))
+            : _users.isEmpty 
+              ? _buildEmptyState("Personne n'est classé ici...")
+              : _buildLeaderboardList(),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLeaderboardList() {
     final top3 = _users.take(3).toList();
     final rest = _users.length > 3 ? _users.sublist(3) : <Map<String, dynamic>>[];
 
     return CustomScrollView(
       slivers: [
-        // Podium
         SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 30, 20, 40),
+            padding: const EdgeInsets.fromLTRB(20, 20, 20, 40),
             child: SizedBox(
-              height: 220,
+              height: 200, // Hauteur fixe pour éviter l'overflow
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  if (top3.length >= 2) _buildPodiumItem(top3[1], 2, 140, const Color(0xFFC0C0C0)),
-                  if (top3.isNotEmpty) _buildPodiumItem(top3[0], 1, 180, const Color(0xFFFFD700)),
-                  if (top3.length >= 3) _buildPodiumItem(top3[2], 3, 110, const Color(0xFFCD7F32)),
+                  if (top3.length >= 2) _buildPodiumItem(top3[1], 2, 120, const Color(0xFFC0C0C0)),
+                  if (top3.isNotEmpty) _buildPodiumItem(top3[0], 1, 160, const Color(0xFFFFD700)),
+                  if (top3.length >= 3) _buildPodiumItem(top3[2], 3, 90, const Color(0xFFCD7F32)),
                 ],
               ),
             ),
           ),
         ),
-        // Liste
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
@@ -227,6 +236,129 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
         ),
         const SliverToBoxAdapter(child: SizedBox(height: 50)),
       ],
+    );
+  }
+
+  // --- TAB 2: ACHIEVEMENTS LIST ---
+  Widget _buildAchievementsTab() {
+    if (_isLoadingAchievements) return const Center(child: CircularProgressIndicator(color: Color(0xFF00C853)));
+    if (_allAchievements.isEmpty) return _buildEmptyState("Aucun succès disponible");
+
+    final userAchievements = CurrentSession().user?.achievements ?? [];
+
+    return ListView.separated(
+      padding: const EdgeInsets.all(20),
+      itemCount: _allAchievements.length,
+      separatorBuilder: (_, __) => const SizedBox(height: 12),
+      itemBuilder: (context, index) {
+        final def = _allAchievements[index];
+        final isUnlocked = userAchievements.contains(def.id);
+
+        return Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            color: isUnlocked ? const Color(0xFF00C853).withOpacity(0.1) : Colors.white.withOpacity(0.05),
+            borderRadius: BorderRadius.circular(12),
+            border: Border.all(
+              color: isUnlocked ? const Color(0xFF00C853).withOpacity(0.5) : Colors.white10
+            ),
+          ),
+          child: Row(
+            children: [
+              // ICONE
+              Container(
+                width: 50, height: 50,
+                decoration: BoxDecoration(
+                  color: isUnlocked ? const Color(0xFF00C853).withOpacity(0.2) : Colors.black26,
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  _getIconData(def.icon), 
+                  color: isUnlocked ? const Color(0xFF00C853) : Colors.white24,
+                  size: 24
+                ),
+              ),
+              const SizedBox(width: 16),
+              // TEXTES
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      def.name.toUpperCase(),
+                      style: TextStyle(
+                        color: isUnlocked ? Colors.white : Colors.white38,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      def.desc,
+                      style: TextStyle(
+                        color: isUnlocked ? Colors.white70 : Colors.white24,
+                        fontSize: 12
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              // POINTS
+              Column(
+                children: [
+                  Text(
+                    "+${def.points}",
+                    style: TextStyle(
+                      color: isUnlocked ? const Color(0xFFFFD700) : Colors.white24,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16
+                    ),
+                  ),
+                  Text("PTS", style: TextStyle(color: isUnlocked ? const Color(0xFFFFD700) : Colors.white24, fontSize: 8, fontWeight: FontWeight.bold)),
+                ],
+              )
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  // --- HELPERS ---
+
+  Widget _buildToggleBtn(String label, String value) {
+    final isSelected = _sortBy == value;
+    return Expanded(
+      child: GestureDetector(
+        onTap: () { 
+          if (_sortBy != value) {
+            setState(() => _sortBy = value); 
+            _loadLeaderboard(); 
+          }
+        },
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          decoration: BoxDecoration(
+            color: isSelected ? const Color(0xFF00C853) : Colors.transparent,
+            borderRadius: BorderRadius.circular(30),
+          ),
+          alignment: Alignment.center,
+          child: Text(label, style: TextStyle(color: isSelected ? Colors.black : Colors.white54, fontWeight: FontWeight.bold, fontSize: 12)),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildEmptyState(String msg) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(Icons.emoji_events_outlined, size: 60, color: Colors.white.withOpacity(0.1)),
+          const SizedBox(height: 20),
+          Text(msg, style: const TextStyle(color: Colors.white38)),
+        ],
+      ),
     );
   }
 
@@ -289,6 +421,62 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
         decoration: BoxDecoration(color: Colors.amber.withOpacity(0.15), borderRadius: BorderRadius.circular(20), border: Border.all(color: Colors.amber.withOpacity(0.6))),
         child: Text("$score pts", style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold, fontSize: small ? 10 : 12)),
       );
+    }
+  }
+
+  IconData _getIconData(String name) {
+    switch (name) {
+      case 'footprint': return Icons.directions_walk;
+      case 'compass': return Icons.explore;
+      case 'map': return Icons.map;
+      case 'public': return Icons.public;
+      case 'category': return Icons.category;
+      case 'hourglass_bottom': return Icons.hourglass_bottom;
+      case 'hourglass_top': return Icons.hourglass_top;
+      case 'hourglass_full': return Icons.hourglass_full;
+      case 'history': return Icons.history;
+      case 'infinity': return Icons.all_inclusive;
+      case 'fire': return Icons.local_fire_department;
+      case 'bedtime': return Icons.bedtime;
+      case 'sunny': return Icons.wb_sunny;
+      case 'restaurant': return Icons.restaurant;
+      case 'weekend': return Icons.weekend;
+      case 'business_center': return Icons.business_center;
+      case 'camera_alt': return Icons.camera_alt;
+      case 'celebration': return Icons.celebration;
+      case 'shopping_bag': return Icons.shopping_bag;
+      case 'train': return Icons.train;
+      case 'add_location': return Icons.add_location_alt;
+      case 'domain': return Icons.domain;
+      case 'rate_review': return Icons.rate_review;
+      case 'campaign': return Icons.campaign;
+      case 'home': return Icons.home;
+      case 'timer': return Icons.timer;
+      case 'bolt': return Icons.bolt;
+      case 'attach_money': return Icons.attach_money;
+      case 'shield': return Icons.shield;
+      case 'groups': return Icons.groups;
+      case 'waving_hand': return Icons.waving_hand;
+      case 'hourglass_empty': return Icons.hourglass_empty;
+      // Icons ajoutées pour les nouveaux succès
+      case 'school': return Icons.school;
+      case 'park': return Icons.park;
+      case 'storefront': return Icons.storefront;
+      case 'local_activity': return Icons.local_activity;
+      case 'local_bar': return Icons.local_bar;
+      case 'nights_stay': return Icons.nights_stay;
+      case 'city': return Icons.location_city;
+      case 'lock': return Icons.lock;
+      case 'tent': return Icons.holiday_village;
+      case 'flash_on': return Icons.flash_on;
+      case 'star': return Icons.star;
+      case 'warning': return Icons.warning;
+      case 'skull': return Icons.dangerous;
+      case 'visibility_off': return Icons.visibility_off;
+      case 'nature_people': return Icons.nature_people;
+      case 'diamond': return Icons.diamond;
+      case 'money_off': return Icons.money_off;
+      default: return Icons.emoji_events;
     }
   }
 }

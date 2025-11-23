@@ -11,51 +11,73 @@ import uvicorn
 
 DB_FILE = "db.json"
 
-# --- 30 SUCCÈS GAMIFIÉS ---
+# --- 50 SUCCÈS GAMIFIÉS (LISTE ÉTENDUE) ---
 ACHIEVEMENTS_DEF = [
-    # Démarrage
+    # --- 1. DÉMARRAGE (2) ---
     {"id": "welcome", "name": "Bienvenue", "desc": "Créer son compte", "points": 10, "icon": "waving_hand"},
     {"id": "first_step", "name": "Premier Pas", "desc": "Terminer une première session", "points": 20, "icon": "footprint"},
     
-    # Temps (Endurance)
+    # --- 2. ENDURANCE (TEMPS) (5) ---
     {"id": "time_1h", "name": "Débutant", "desc": "1 heure cumulée", "points": 30, "icon": "hourglass_bottom"},
     {"id": "time_5h", "name": "Habitué", "desc": "5 heures cumulées", "points": 60, "icon": "hourglass_empty"},
     {"id": "time_10h", "name": "Pro de la rue", "desc": "10 heures cumulées", "points": 120, "icon": "hourglass_full"},
     {"id": "time_24h", "name": "Légende", "desc": "24 heures cumulées", "points": 300, "icon": "history"},
     {"id": "time_100h", "name": "Immortel", "desc": "100 heures cumulées", "points": 1000, "icon": "infinity"},
     
-    # Exploration (Diversité)
+    # --- 3. EXPLORATION (QUANTITÉ) (5) ---
     {"id": "explorer_3", "name": "Curieux", "desc": "3 spots différents visités", "points": 50, "icon": "compass"},
     {"id": "explorer_10", "name": "Nomade", "desc": "10 spots différents visités", "points": 150, "icon": "map"},
+    {"id": "explorer_15", "name": "Explorateur Ultime", "desc": "15 spots différents visités", "points": 250, "icon": "explore"}, # NEW
     {"id": "explorer_20", "name": "Vagabond", "desc": "20 spots différents visités", "points": 300, "icon": "public"},
     {"id": "jack_of_all", "name": "Polyvalent", "desc": "Visiter 1 spot de chaque catégorie", "points": 200, "icon": "category"},
 
-    # Catégories Spécifiques
+    # --- 4. SPÉCIALISTE (CATÉGORIES) (9) ---
     {"id": "biz_man", "name": "Business Man", "desc": "3 spots Business visités", "points": 75, "icon": "business_center"},
     {"id": "tourist", "name": "Touriste", "desc": "3 spots Tourisme visités", "points": 75, "icon": "camera_alt"},
     {"id": "party_animal", "name": "Fêtard", "desc": "3 spots Nightlife visités", "points": 75, "icon": "celebration"},
     {"id": "shopper", "name": "Panier Percé", "desc": "3 spots Shopping visités", "points": 75, "icon": "shopping_bag"},
     {"id": "commuter", "name": "Voyageur", "desc": "3 spots Transport visités", "points": 75, "icon": "train"},
+    {"id": "culture_fan", "name": "Intellectuel", "desc": "3 spots Culture visités", "points": 75, "icon": "school"}, # NEW
+    {"id": "nature_lover", "name": "Écureuil", "desc": "3 spots Nature/Parc visités", "points": 75, "icon": "park"}, # NEW
+    {"id": "market_trader", "name": "Négociant", "desc": "3 spots Marché visités", "points": 75, "icon": "storefront"}, # NEW
+    {"id": "festival_goer", "name": "Festivalier", "desc": "3 spots Event visités", "points": 75, "icon": "local_activity"}, # NEW
 
-    # Horaire (Contexte)
-    {"id": "early_bird", "name": "Lève-tôt", "desc": "Mendier entre 5h et 8h du matin", "points": 50, "icon": "sunny"},
+    # --- 5. CONTEXTE (HORAIRES) (6) ---
+    {"id": "early_bird", "name": "Lève-tôt", "desc": "Mendier entre 5h et 8h du matin", "points": 50, "icon": "wb_sunny"},
     {"id": "lunch_time", "name": "Pause Déj", "desc": "Mendier entre 12h et 14h", "points": 50, "icon": "restaurant"},
+    {"id": "afterwork", "name": "Afterwork", "desc": "5 sessions entre 17h et 20h", "points": 60, "icon": "local_bar"}, # NEW
     {"id": "night_owl", "name": "Oiseau de Nuit", "desc": "Mendier entre 2h et 5h du matin", "points": 100, "icon": "bedtime"},
+    {"id": "insomniac", "name": "Insomniaque", "desc": "5 sessions de nuit (00h-04h)", "points": 150, "icon": "nights_stay"}, # NEW
     {"id": "weekender", "name": "Du Dimanche", "desc": "Mendier un Samedi ou Dimanche", "points": 40, "icon": "weekend"},
 
-    # Création & Contribution
+    # --- 6. CONTRIBUTION (CRÉATION/AVIS) (6) ---
     {"id": "creator_1", "name": "Pionnier", "desc": "Créer 1 nouveau spot", "points": 100, "icon": "add_location"},
     {"id": "creator_5", "name": "Architecte", "desc": "Créer 5 spots", "points": 400, "icon": "domain"},
+    {"id": "urban_planner", "name": "Urbaniste", "desc": "Créer 10 spots", "points": 800, "icon": "city"}, # NEW
     {"id": "reviewer_1", "name": "Critique", "desc": "Laisser 1 avis", "points": 30, "icon": "rate_review"},
     {"id": "reviewer_5", "name": "Influenceur", "desc": "Laisser 5 avis", "points": 150, "icon": "campaign"},
+    {"id": "reviewer_20", "name": "Guide Local", "desc": "Laisser 20 avis", "points": 500, "icon": "map"}, # NEW
 
-    # Fidélité & Performance
+    # --- 7. STYLE DE JEU (STATS) (10) ---
     {"id": "loyal_5", "name": "Squatteur", "desc": "Revenir 5 fois au même spot", "points": 80, "icon": "home"},
+    {"id": "loyal_10", "name": "Fidèle", "desc": "Revenir 10 fois au même spot", "points": 150, "icon": "lock"}, # NEW
     {"id": "marathon", "name": "Marathon", "desc": "Rester + de 3h d'affilée", "points": 150, "icon": "timer"},
+    {"id": "camping", "name": "Camping", "desc": "Rester + de 5h d'affilée", "points": 300, "icon": "tent"}, # NEW
     {"id": "sprint", "name": "Sprint", "desc": "Rester moins de 5 min", "points": 10, "icon": "bolt"},
+    {"id": "flash", "name": "Flash", "desc": "10 sessions de moins de 5 min", "points": 100, "icon": "flash_on"}, # NEW
     {"id": "rich_zone", "name": "Zone Riche", "desc": "Visiter un spot noté 5/5 en revenu", "points": 50, "icon": "attach_money"},
     {"id": "safe_zone", "name": "Zone Sûre", "desc": "Visiter un spot noté 5/5 en sécurité", "points": 50, "icon": "shield"},
     {"id": "busy_zone", "name": "Bain de foule", "desc": "Visiter un spot noté 5/5 en passage", "points": 50, "icon": "groups"},
+    {"id": "star", "name": "La Star", "desc": "Visiter un spot noté >4 en Revenu ET Passage", "points": 100, "icon": "star"}, # NEW
+
+    # --- 8. RISQUE & STRATÉGIE (7) ---
+    {"id": "risk_taker", "name": "Téméraire", "desc": "Visiter un spot mal famé (Sécu < 2.5)", "points": 100, "icon": "warning"}, # NEW
+    {"id": "survivor", "name": "Survivant", "desc": "5 sessions dans des spots mal famés", "points": 300, "icon": "skull"}, # NEW
+    {"id": "ghost", "name": "Fantôme", "desc": "Visiter un spot désert (Passage < 1.5)", "points": 60, "icon": "visibility_off"}, # NEW
+    {"id": "hermit", "name": "Ermite", "desc": "5 sessions dans des spots déserts", "points": 150, "icon": "nature_people"}, # NEW
+    {"id": "gourmet", "name": "Gourmet", "desc": "5 sessions dans des spots à haut revenu (>4.5)", "points": 200, "icon": "diamond"}, # NEW
+    {"id": "penny_pincher", "name": "Dèche", "desc": "5 sessions dans des spots à faible revenu (<2.0)", "points": 50, "icon": "money_off"}, # NEW
+    {"id": "kamikaze", "name": "Kamikaze", "desc": "Spot bondé (>4) mais dangereux (<1.5)", "points": 500, "icon": "local_fire_department"}, # NEW
 ]
 
 active_occupations: Dict[str, dict] = {}
@@ -138,7 +160,7 @@ class Spot(BaseModel):
     reviews: List[Review] = []
     # Helper properties for logic
     @property
-    def avgRevenue(self): return sum(r.ratingRevenue for r in reviews)/len(reviews) if reviews else 0
+    def avgRevenue(self): return sum(r.ratingRevenue for r in self.reviews)/len(self.reviews) if self.reviews else 0
 
 class Database(BaseModel):
     users: List[User]
@@ -153,7 +175,7 @@ def load_db() -> Database:
 
 def save_db(db: Database): save_db_data(db.model_dump())
 
-# --- LOGIQUE DE DÉBLOCAGE ---
+# --- LOGIQUE DE DÉBLOCAGE (Mise à jour) ---
 def check_new_achievements(user: User, db: Database):
     new_unlocks = []
     def has(aid): return aid in user.achievements
@@ -167,39 +189,68 @@ def check_new_achievements(user: User, db: Database):
     created_count = sum(1 for s in db.spots if s.createdBy == user.id)
     reviews_count = sum(sum(1 for r in s.reviews if r.authorName == user.name) for s in db.spots)
 
-    # Maps
+    # Maps et Compteurs
     spots_map = {s.id: s for s in db.spots}
     cat_visits = {}
     spot_visits_count = {}
+    
+    # Compteurs contextuels
+    afterwork_count = 0
+    insomnia_count = 0
+    high_rev_count = 0
+    low_rev_count = 0
+    low_sec_count = 0
+    low_traf_count = 0
+    flash_count = 0
 
     for h in history:
         s = spots_map.get(h.spotId)
+        spot_visits_count[h.spotId] = spot_visits_count.get(h.spotId, 0) + 1
+        
+        # Check durée courte
+        if h.durationSeconds < 300: flash_count += 1
+
+        # Check horaire
+        try:
+            dt = datetime.fromisoformat(h.timestamp)
+            if 17 <= dt.hour < 20: afterwork_count += 1
+            if 0 <= dt.hour < 4: insomnia_count += 1
+        except: pass
+
         if s:
             cat_visits.setdefault(s.category, set()).add(s.id)
-        spot_visits_count[h.spotId] = spot_visits_count.get(h.spotId, 0) + 1
+            
+            # Calcul moyennes spot
+            if s.reviews:
+                avg_rev = sum(r.ratingRevenue for r in s.reviews)/len(s.reviews)
+                avg_sec = sum(r.ratingSecurity for r in s.reviews) / len(s.reviews)
+                avg_traf = sum(r.ratingTraffic for r in s.reviews) / len(s.reviews)
+                
+                if avg_rev > 4.5: high_rev_count += 1
+                if avg_rev < 2.0: low_rev_count += 1
+                if avg_sec < 2.0: low_sec_count += 1
+                if avg_traf < 2.0: low_traf_count += 1
 
-    # --- CHECK ---
+    # --- CHECK DES CONDITIONS ---
 
-    # Creation
-    if has("welcome") is False: # Should happen at register but double check
-        new_unlocks.append("welcome")
-
-    # First Step
+    # 1. Démarrage
+    if has("welcome") is False: new_unlocks.append("welcome")
     if len(history) >= 1 and not has("first_step"): new_unlocks.append("first_step")
 
-    # Time
+    # 2. Temps
     if total_seconds >= 3600 and not has("time_1h"): new_unlocks.append("time_1h")
     if total_seconds >= 18000 and not has("time_5h"): new_unlocks.append("time_5h")
     if total_seconds >= 36000 and not has("time_10h"): new_unlocks.append("time_10h")
     if total_seconds >= 86400 and not has("time_24h"): new_unlocks.append("time_24h")
     if total_seconds >= 360000 and not has("time_100h"): new_unlocks.append("time_100h")
 
-    # Explorer
+    # 3. Exploration
     if len(distinct_spots) >= 3 and not has("explorer_3"): new_unlocks.append("explorer_3")
     if len(distinct_spots) >= 10 and not has("explorer_10"): new_unlocks.append("explorer_10")
+    if len(distinct_spots) >= 15 and not has("explorer_15"): new_unlocks.append("explorer_15")
     if len(distinct_spots) >= 20 and not has("explorer_20"): new_unlocks.append("explorer_20")
     
-    # Categories
+    # 4. Catégories
     all_cats = ["Tourisme", "Business", "Nightlife", "Shopping", "Transport"]
     if all(len(cat_visits.get(c, [])) >= 1 for c in all_cats) and not has("jack_of_all"): new_unlocks.append("jack_of_all")
 
@@ -208,44 +259,71 @@ def check_new_achievements(user: User, db: Database):
     if len(cat_visits.get("Nightlife", [])) >= 3 and not has("party_animal"): new_unlocks.append("party_animal")
     if len(cat_visits.get("Shopping", [])) >= 3 and not has("shopper"): new_unlocks.append("shopper")
     if len(cat_visits.get("Transport", [])) >= 3 and not has("commuter"): new_unlocks.append("commuter")
+    
+    if len(cat_visits.get("Culture", [])) >= 3 and not has("culture_fan"): new_unlocks.append("culture_fan")
+    if len(cat_visits.get("Market", [])) >= 3 and not has("market_trader"): new_unlocks.append("market_trader")
+    if len(cat_visits.get("Event", [])) >= 3 and not has("festival_goer"): new_unlocks.append("festival_goer")
+    # Nature + Parc combinés
+    nature_count = len(cat_visits.get("Nature", [])) + len(cat_visits.get("Parc", []))
+    if nature_count >= 3 and not has("nature_lover"): new_unlocks.append("nature_lover")
 
-    # Creator & Reviewer
+    # 5. Contribution
     if created_count >= 1 and not has("creator_1"): new_unlocks.append("creator_1")
     if created_count >= 5 and not has("creator_5"): new_unlocks.append("creator_5")
+    if created_count >= 10 and not has("urban_planner"): new_unlocks.append("urban_planner")
+    
     if reviews_count >= 1 and not has("reviewer_1"): new_unlocks.append("reviewer_1")
     if reviews_count >= 5 and not has("reviewer_5"): new_unlocks.append("reviewer_5")
+    if reviews_count >= 20 and not has("reviewer_20"): new_unlocks.append("reviewer_20")
 
-    # Loyalty
+    # 6. Fidélité / Style (Compteurs globaux)
     if any(c >= 5 for c in spot_visits_count.values()) and not has("loyal_5"): new_unlocks.append("loyal_5")
+    if any(c >= 10 for c in spot_visits_count.values()) and not has("loyal_10"): new_unlocks.append("loyal_10")
+    
+    if flash_count >= 10 and not has("flash"): new_unlocks.append("flash")
+    if afterwork_count >= 5 and not has("afterwork"): new_unlocks.append("afterwork")
+    if insomnia_count >= 5 and not has("insomniac"): new_unlocks.append("insomniac")
+    if high_rev_count >= 5 and not has("gourmet"): new_unlocks.append("gourmet")
+    if low_rev_count >= 5 and not has("penny_pincher"): new_unlocks.append("penny_pincher")
+    if low_sec_count >= 5 and not has("survivor"): new_unlocks.append("survivor")
+    if low_traf_count >= 5 and not has("hermit"): new_unlocks.append("hermit")
 
-    # Contextuel (Basé sur la dernière session si elle existe)
+    # 7. Contextuel (Session Actuelle - last log)
     if history:
-        last = history[0] # Le plus récent (ajouté en haut de liste)
-        # Duration context
+        last = history[0] 
+        # Duration
         if last.durationSeconds >= 10800 and not has("marathon"): new_unlocks.append("marathon") # 3h
+        if last.durationSeconds >= 18000 and not has("camping"): new_unlocks.append("camping") # 5h
         if last.durationSeconds < 300 and not has("sprint"): new_unlocks.append("sprint") # 5 min
 
-        # Time context
+        # Time
         dt = datetime.fromisoformat(last.timestamp)
         if 5 <= dt.hour < 8 and not has("early_bird"): new_unlocks.append("early_bird")
         if 12 <= dt.hour < 14 and not has("lunch_time"): new_unlocks.append("lunch_time")
         if 2 <= dt.hour < 5 and not has("night_owl"): new_unlocks.append("night_owl")
-        if dt.weekday() >= 5 and not has("weekender"): new_unlocks.append("weekender") # Sat=5, Sun=6
+        if dt.weekday() >= 5 and not has("weekender"): new_unlocks.append("weekender")
 
-        # Spot Quality Context
+        # Spot Quality
         s = spots_map.get(last.spotId)
-        if s:
-            # Calculer moyennes à la volée
+        if s and s.reviews:
+            # Calcul stats instantané pour ce spot précis
             rev = [r.ratingRevenue for r in s.reviews]
             sec = [r.ratingSecurity for r in s.reviews]
             traf = [r.ratingTraffic for r in s.reviews]
-            avg_rev = sum(rev)/len(rev) if rev else 0
-            avg_sec = sum(sec)/len(sec) if sec else 0
-            avg_traf = sum(traf)/len(traf) if traf else 0
+            
+            avg_rev = sum(rev)/len(rev)
+            avg_sec = sum(sec)/len(sec)
+            avg_traf = sum(traf)/len(traf)
 
             if avg_rev >= 4.8 and not has("rich_zone"): new_unlocks.append("rich_zone")
             if avg_sec >= 4.8 and not has("safe_zone"): new_unlocks.append("safe_zone")
             if avg_traf >= 4.8 and not has("busy_zone"): new_unlocks.append("busy_zone")
+            
+            # Badges Spéciaux uniques
+            if avg_sec < 2.5 and not has("risk_taker"): new_unlocks.append("risk_taker")
+            if avg_traf < 1.5 and not has("ghost"): new_unlocks.append("ghost")
+            if avg_rev > 4.0 and avg_traf > 4.0 and not has("star"): new_unlocks.append("star")
+            if avg_sec < 1.5 and avg_traf > 4.0 and not has("kamikaze"): new_unlocks.append("kamikaze")
 
     # Appliquer changements
     result = []
@@ -327,8 +405,6 @@ def occupy_spot(spot_id: str, user_id: str):
         if info["userId"] == user_id and s_id != spot_id:
             if user.history:
                 # Trouver le log ouvert correspondant
-                # Comme on change de spot, on clôture l'ancien
-                # On cherche le plus récent match
                 for log in user.history:
                     if log.spotId == s_id and not log.durationSeconds:
                         st = datetime.fromisoformat(log.timestamp)
@@ -396,7 +472,6 @@ def get_top_users(period: str = "forever", sort_by: str = "time"):
     lb.sort(key=lambda x: x["score"], reverse=True)
     return lb[:50]
 
-# ... (Favoris & Spots routes - Copiez-collez les mêmes qu'avant ou demandez si besoin, je raccourcis pour la clarté mais ils sont nécessaires) ...
 @app.post("/users/{user_id}/favorites/{spot_id}")
 def add_favorite(user_id: str, spot_id: str):
     db = load_db()

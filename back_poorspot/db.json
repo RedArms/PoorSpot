@@ -56,10 +56,34 @@
             ],
             "history": [
                 {
+                    "spotId": "6789abcd-001f-5d5f-a81f-00000000001f",
+                    "spotName": "Gare Centrale",
+                    "timestamp": "2025-11-23T04:46:54.438582",
+                    "durationSeconds": 3
+                },
+                {
+                    "spotId": "d9e0f1a2-0006-44d6-8f06-000000000006",
+                    "spotName": "Parc Royal",
+                    "timestamp": "2025-11-23T04:32:19.651775",
+                    "durationSeconds": 2
+                },
+                {
+                    "spotId": "d9e0f1a2-0006-44d6-8f06-000000000006",
+                    "spotName": "Parc Royal",
+                    "timestamp": "2025-11-23T04:32:13.447826",
+                    "durationSeconds": 20
+                },
+                {
+                    "spotId": "93a91288-501a-436d-97a3-cfee9dd47271",
+                    "spotName": "dzadzadaz",
+                    "timestamp": "2025-11-23T04:27:34.577068",
+                    "durationSeconds": 23
+                },
+                {
                     "spotId": "d9e0f1a2-0006-44d6-8f06-000000000006",
                     "spotName": "Parc Royal",
                     "timestamp": "2025-11-23T03:26:35.989320",
-                    "durationSeconds": 0
+                    "durationSeconds": 20
                 },
                 {
                     "spotId": "3a4b5c6d-002c-6aab-b52c-00000000002c",
@@ -111,8 +135,22 @@
                 }
             ],
             "createdAt": "2025-11-22T21:31:57.581454",
-            "points": 0,
-            "achievements": []
+            "points": 1190,
+            "achievements": [
+                "welcome",
+                "first_step",
+                "time_1h",
+                "explorer_3",
+                "creator_1",
+                "reviewer_1",
+                "reviewer_5",
+                "reviewer_20",
+                "flash",
+                "sprint",
+                "night_owl",
+                "weekender",
+                "busy_zone"
+            ]
         },
         {
             "id": "user_jeanmarc",
@@ -3495,6 +3533,29 @@
                     "attribute": "dog",
                     "comment": "Excellent pour chiens, beaucoup d'espace.",
                     "createdAt": "2025-07-25T09:00:00"
+                }
+            ]
+        },
+        {
+            "id": "93a91288-501a-436d-97a3-cfee9dd47271",
+            "name": "dzadzadaz",
+            "description": "dadzadza",
+            "latitude": 50.86414160809837,
+            "longitude": 4.3659367784371215,
+            "category": "Parc",
+            "createdAt": "2025-11-23T04:27:19.736728",
+            "createdBy": "f30a85a3-2b22-4a2e-8db6-0b5c69195c8d",
+            "currentActiveUsers": 0,
+            "reviews": [
+                {
+                    "id": "init_1763868439736",
+                    "authorName": "caca",
+                    "ratingRevenue": 0.5,
+                    "ratingSecurity": 1.0,
+                    "ratingTraffic": 1.0,
+                    "attribute": "dog",
+                    "comment": "Création du spot",
+                    "createdAt": "2025-11-23T04:27:19.736728"
                 }
             ]
         }
