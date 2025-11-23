@@ -1,4 +1,4 @@
-import 'dart:ui'; // Nécessaire pour ImageFilter
+import 'dart:ui'; 
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import '../models/spot_models.dart';
@@ -38,7 +38,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   bool _isCreating = false;
 
-  // Liste des catégories basées sur votre db.json
   final List<String> _categories = [
     'Tourisme', 'Business', 'Shopping', 'Nightlife', 
     'Transport', 'Culture', 'Parc', 'Market', 'Nature'
@@ -99,7 +98,6 @@ class _HomeScreenState extends State<HomeScreen> {
       _tempSpotPos = pos;   
     });
 
-    // Ouvre la modale
     _showCreateDialog(pos);
   }
 
@@ -107,9 +105,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void _showCreateDialog(LatLng pos) {
     showDialog(
       context: context,
-      barrierDismissible: false, // Oblige à utiliser les boutons
+      barrierDismissible: false,
       builder: (ctx) {
-        // On utilise StatefulBuilder pour que les sliders se mettent à jour dans la modale
         return StatefulBuilder(
           builder: (context, setModalState) {
             return BackdropFilter(
@@ -142,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             IconButton(
                               icon: const Icon(Icons.close, color: Colors.white54),
                               onPressed: () {
-                                setState(() => _tempSpotPos = null); // Retire le marqueur temporaire
+                                setState(() => _tempSpotPos = null);
                                 Navigator.pop(context);
                               },
                             )
@@ -158,7 +155,6 @@ class _HomeScreenState extends State<HomeScreen> {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              // Champs Texte
                               TextField(
                                 controller: _nameCtrl,
                                 style: const TextStyle(color: Colors.white),
@@ -174,7 +170,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               
                               const SizedBox(height: 24),
                               
-                              // Catégories
                               const Text("CATÉGORIE", style: TextStyle(color: Colors.grey, fontSize: 11, fontWeight: FontWeight.bold, letterSpacing: 1)),
                               const SizedBox(height: 8),
                               Wrap(
@@ -197,7 +192,6 @@ class _HomeScreenState extends State<HomeScreen> {
                               const Text("CRITÈRES & ÉVALUATION", style: TextStyle(color: Color(0xFF00C853), fontSize: 12, fontWeight: FontWeight.bold, letterSpacing: 1)),
                               const SizedBox(height: 16),
 
-                              // --- BARRES GRADUÉES ---
                               _buildRatingSlider("REVENU", Icons.attach_money, _ratingRevenue, (v) => setModalState(() => _ratingRevenue = v)),
                               const SizedBox(height: 12),
                               _buildRatingSlider("SÉCURITÉ", Icons.lock_outline, _ratingSecurity, (v) => setModalState(() => _ratingSecurity = v)),
@@ -273,7 +267,7 @@ class _HomeScreenState extends State<HomeScreen> {
             value: value,
             min: 0.0,
             max: 5.0,
-            divisions: 10, // Pas de 0.5
+            divisions: 10,
             onChanged: onChanged,
           ),
         ),
@@ -294,7 +288,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Graduat Rouge -> Jaune -> Vert
   Color _getGraduatedColor(double rating) {
     double t = (rating / 5.0).clamp(0.0, 1.0);
     if (t < 0.5) {
@@ -306,12 +299,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> _createSpot() async {
     if (_nameCtrl.text.isEmpty || _tempSpotPos == null) return;
-
     setState(() => _isCreating = true);
-
     final user = CurrentSession().user!;
     
-    // On crée une review initiale avec les notes des sliders
     final initialReview = Review(
       id: "init_${DateTime.now().millisecondsSinceEpoch}", 
       authorName: user.name, 
@@ -324,11 +314,11 @@ class _HomeScreenState extends State<HomeScreen> {
     );
 
     final newSpot = Spot(
-      id: "", // L'ID sera généré par le backend
+      id: "",
       name: _nameCtrl.text.trim(),
       description: _descCtrl.text.trim(),
       position: _tempSpotPos!,
-      reviews: [initialReview], // Ajout direct de l'avis initial
+      reviews: [initialReview],
       category: _selectedCategory,
       createdAt: DateTime.now(),
       createdBy: user.id,
@@ -344,19 +334,9 @@ class _HomeScreenState extends State<HomeScreen> {
         _spots.add(created);
         _tempSpotPos = null;
       });
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Spot créé avec succès !"), 
-          backgroundColor: Color(0xFF00C853)
-        )
-      );
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Spot créé avec succès !"), backgroundColor: Color(0xFF00C853)));
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text("Erreur lors de la création du spot."), 
-          backgroundColor: Colors.redAccent
-        )
-      );
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Erreur lors de la création du spot."), backgroundColor: Colors.redAccent));
     }
   }
 
@@ -366,6 +346,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // Calcul de la largeur du panneau (Responsive)
+    final screenWidth = MediaQuery.of(context).size.width;
+    // Sur mobile (< 500px) : 90% de l'écran
+    // Sur desktop/tablette (> 500px) : Fixé à 450px
+    final panelWidth = screenWidth > 500 ? 450.0 : screenWidth * 0.90;
+
     return Scaffold(
       key: _scaffoldKey,
       drawer: ProfileDrawer(
@@ -391,7 +377,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   selectedSpotId: _selectedSpot?.id,
                 ),
 
-          // 2. BOUTON MENU (Haut Gauche)
+          // 2. BOUTON MENU
           Positioned(
             top: MediaQuery.of(context).padding.top + 10,
             left: 20,
@@ -405,16 +391,17 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
 
           // 3. SIDE PANEL (CONSULTATION)
+          // Changement ici : On utilise ConstrainedBox au lieu de FractionallySizedBox
           if (_selectedSpot != null)
             Align(
               alignment: Alignment.centerRight,
-              child: FractionallySizedBox(
-                widthFactor: 0.85,
+              child: SizedBox(
+                width: panelWidth, // Largeur calculée dynamiquement
                 child: SidePanel(
                   spot: _selectedSpot!,
                   onClose: () => setState(() => _selectedSpot = null),
                   onAddReview: () {
-                    // TODO: Ouvrir modal d'avis si besoin
+                    // TODO: Implémenter la modale d'avis si besoin
                   },
                   onFavoriteChanged: () {},
                   onHistoryChanged: () => setState(() {}),
