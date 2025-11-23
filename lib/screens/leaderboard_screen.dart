@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../services/api_service.dart';
 import '../data/current_session.dart';
@@ -178,16 +177,25 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> with SingleTicker
       slivers: [
         SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 40),
+            padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
             child: SizedBox(
-              height: 200, // Hauteur fixe pour éviter l'overflow
+              // CORRECTION ICI : Hauteur augmentée à 350px (au lieu de 280)
+              height: 350, 
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  if (top3.length >= 2) _buildPodiumItem(top3[1], 2, 120, const Color(0xFFC0C0C0)),
-                  if (top3.isNotEmpty) _buildPodiumItem(top3[0], 1, 160, const Color(0xFFFFD700)),
-                  if (top3.length >= 3) _buildPodiumItem(top3[2], 3, 90, const Color(0xFFCD7F32)),
+                  // 2ème place (Gauche)
+                  if (top3.length >= 2) 
+                    _buildPodiumItem(top3[1], 2, 140, const Color(0xFFC0C0C0)), 
+                  
+                  // 1ère place (Centre)
+                  if (top3.isNotEmpty) 
+                    _buildPodiumItem(top3[0], 1, 180, const Color(0xFFFFD700)),
+                  
+                  // 3ème place (Droite)
+                  if (top3.length >= 3) 
+                    _buildPodiumItem(top3[2], 3, 110, const Color(0xFFCD7F32)),
                 ],
               ),
             ),
@@ -202,8 +210,8 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> with SingleTicker
               final score = user['score'] as int;
 
               return Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-                padding: const EdgeInsets.all(15),
+                margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
+                padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
                   color: isMe ? const Color(0xFF00C853).withOpacity(0.1) : Colors.white.withOpacity(0.05),
                   borderRadius: BorderRadius.circular(12),
@@ -211,21 +219,30 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> with SingleTicker
                 ),
                 child: Row(
                   children: [
-                    SizedBox(width: 30, child: Text("#$rank", style: const TextStyle(color: Colors.white38, fontWeight: FontWeight.bold, fontSize: 14))),
+                    SizedBox(
+                      width: 30, 
+                      child: Text("#$rank", style: const TextStyle(color: Colors.white38, fontWeight: FontWeight.bold, fontSize: 14))
+                    ),
                     CircleAvatar(
-                      radius: 18, backgroundColor: Colors.white10,
+                      radius: 16, backgroundColor: Colors.white10,
                       child: Text(user['name'].isNotEmpty ? user['name'][0].toUpperCase() : "?", style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
                     ),
-                    const SizedBox(width: 15),
+                    const SizedBox(width: 12),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(user['name'], style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14)),
+                          Text(
+                            user['name'], 
+                            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                           if (isMe) const Text("C'est vous !", style: TextStyle(color: Color(0xFF00C853), fontSize: 10)),
                         ],
                       ),
                     ),
+                    const SizedBox(width: 8),
                     _buildScoreBadge(score),
                   ],
                 ),
@@ -362,41 +379,77 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> with SingleTicker
     );
   }
 
-  Widget _buildPodiumItem(Map<String, dynamic> user, int rank, double height, Color color) {
+  Widget _buildPodiumItem(Map<String, dynamic> user, int rank, double barHeight, Color color) {
     final isMe = user['userId'] == CurrentSession().user?.id;
     final score = user['score'] as int;
     
+    // Utilisation de Expanded pour que chaque colonne prenne 1/3 de la largeur
     return Expanded(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end, // Aligne tout en bas
         children: [
+          // Avatar et Badges
           Stack(
             alignment: Alignment.topRight,
+            clipBehavior: Clip.none, 
             children: [
               Container(
                 padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: color, width: 2)),
                 child: CircleAvatar(
-                  radius: rank == 1 ? 30 : 22, backgroundColor: Colors.white10,
-                  child: Text(user['name'].isNotEmpty ? user['name'][0].toUpperCase() : "?", style: TextStyle(color: Colors.white, fontSize: rank == 1 ? 20 : 16, fontWeight: FontWeight.bold)),
+                  radius: rank == 1 ? 28 : 22, backgroundColor: Colors.white10,
+                  child: Text(
+                    user['name'].isNotEmpty ? user['name'][0].toUpperCase() : "?", 
+                    style: TextStyle(color: Colors.white, fontSize: rank == 1 ? 20 : 16, fontWeight: FontWeight.bold)
+                  ),
                 ),
               ),
-              if (rank == 1) const Positioned(right: -5, top: -5, child: Icon(Icons.emoji_events, color: Color(0xFFFFD700), size: 24))
+              if (rank == 1) 
+                const Positioned(
+                  right: -8, top: -8, 
+                  child: Icon(Icons.emoji_events, color: Color(0xFFFFD700), size: 24)
+                )
             ],
           ),
+          
           const SizedBox(height: 8),
-          Text(user['name'], maxLines: 1, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center, style: TextStyle(color: isMe ? const Color(0xFF00C853) : Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
+          
+          // Nom
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4.0),
+            child: Text(
+              user['name'], 
+              maxLines: 1, 
+              overflow: TextOverflow.ellipsis, 
+              textAlign: TextAlign.center, 
+              style: TextStyle(color: isMe ? const Color(0xFF00C853) : Colors.white, fontWeight: FontWeight.bold, fontSize: 12)
+            ),
+          ),
           const SizedBox(height: 4),
+          
+          // Score Badge
           _buildScoreBadge(score, small: true),
           const SizedBox(height: 8),
+          
+          // Barre du podium
           Container(
-            width: double.infinity, height: height, margin: const EdgeInsets.symmetric(horizontal: 4),
+            width: double.infinity, 
+            height: barHeight, 
+            margin: const EdgeInsets.symmetric(horizontal: 6),
             decoration: BoxDecoration(
-              gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [color.withOpacity(0.4), color.withOpacity(0.1)]),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter, end: Alignment.bottomCenter, 
+                colors: [color.withOpacity(0.4), color.withOpacity(0.1)]
+              ),
               borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
               border: Border(top: BorderSide(color: color.withOpacity(0.5), width: 2)),
             ),
-            child: Column(children: [const SizedBox(height: 10), Text("$rank", style: TextStyle(color: Colors.white.withOpacity(0.5), fontSize: 32, fontWeight: FontWeight.bold))]),
+            child: Column(
+              children: [
+                const SizedBox(height: 10), 
+                Text("$rank", style: TextStyle(color: Colors.white.withOpacity(0.5), fontSize: 32, fontWeight: FontWeight.bold))
+              ]
+            ),
           ),
         ],
       ),
@@ -408,18 +461,28 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> with SingleTicker
       final h = score ~/ 3600;
       final m = (score % 3600) ~/ 60;
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: small ? 8 : 12, vertical: 4),
+        padding: EdgeInsets.symmetric(horizontal: small ? 6 : 10, vertical: 4),
         decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), borderRadius: BorderRadius.circular(20), border: Border.all(color: Colors.white24)),
-        child: Row(mainAxisSize: MainAxisSize.min, children: [
-          Icon(Icons.timer, size: small ? 10 : 12, color: const Color(0xFF00C853)), const SizedBox(width: 4),
-          Text(h > 0 ? "${h}h ${m.toString().padLeft(2,'0')}" : "${m}m", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: small ? 10 : 12)),
-        ]),
+        child: Row(
+          mainAxisSize: MainAxisSize.min, 
+          children: [
+            Icon(Icons.timer, size: small ? 10 : 12, color: const Color(0xFF00C853)), 
+            const SizedBox(width: 4),
+            Text(
+              h > 0 ? "${h}h ${m.toString().padLeft(2,'0')}" : "${m}m", 
+              style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: small ? 10 : 12)
+            ),
+          ]
+        ),
       );
     } else {
       return Container(
-        padding: EdgeInsets.symmetric(horizontal: small ? 8 : 12, vertical: 4),
+        padding: EdgeInsets.symmetric(horizontal: small ? 6 : 10, vertical: 4),
         decoration: BoxDecoration(color: Colors.amber.withOpacity(0.15), borderRadius: BorderRadius.circular(20), border: Border.all(color: Colors.amber.withOpacity(0.6))),
-        child: Text("$score pts", style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold, fontSize: small ? 10 : 12)),
+        child: Text(
+          "$score pts", 
+          style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold, fontSize: small ? 10 : 12)
+        ),
       );
     }
   }
@@ -458,7 +521,6 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> with SingleTicker
       case 'groups': return Icons.groups;
       case 'waving_hand': return Icons.waving_hand;
       case 'hourglass_empty': return Icons.hourglass_empty;
-      // Icons ajoutées pour les nouveaux succès
       case 'school': return Icons.school;
       case 'park': return Icons.park;
       case 'storefront': return Icons.storefront;

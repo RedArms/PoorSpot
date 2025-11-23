@@ -1,10 +1,12 @@
 import 'dart:async';
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart'; // N'oubliez pas le pub add url_launcher
 import '../models/spot_models.dart';
 import '../models/user_model.dart';
 import '../data/current_session.dart';
 import '../services/api_service.dart';
+import 'package:geolocator/geolocator.dart'; // <--- AJOUT
 
 class SidePanel extends StatefulWidget {
   final Spot spot;
@@ -73,14 +75,27 @@ class _SidePanelState extends State<SidePanel> {
     }
   }
 
+  // --- NOUVEAU : Ouvre le GPS ---
+  Future<void> _launchGPS() async {
+    final lat = widget.spot.position.latitude;
+    final lng = widget.spot.position.longitude;
+    
+    // Essaye d'ouvrir Google Maps ou l'app par défaut
+    final Uri googleMapsUrl = Uri.parse("https://www.google.com/maps/search/?api=1&query=$lat,$lng");
+    
+    if (await canLaunchUrl(googleMapsUrl)) {
+      await launchUrl(googleMapsUrl, mode: LaunchMode.externalApplication);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Impossible d'ouvrir le GPS")));
+    }
+  }
+
   void _startTimer() {
     _timer?.cancel();
     final user = CurrentSession().user;
     if (user == null || user.history.isEmpty) return;
 
-    // On cherche le log actif correspondant au spot
     try {
-      // On prend le premier qui match le spotId et qui n'a pas de durée finale
       final currentLog = user.history.firstWhere(
         (log) => log.spotId == widget.spot.id && log.durationSeconds == 0,
         orElse: () => user.history.first
@@ -101,7 +116,7 @@ class _SidePanelState extends State<SidePanel> {
         }
       });
     } catch (e) {
-      // Pas de log trouvé, pas grave
+      // Pas de log trouvé
     }
   }
 
@@ -158,86 +173,158 @@ class _SidePanelState extends State<SidePanel> {
     widget.onFavoriteChanged();
   }
 
-  Future<void> _toggleOccupation() async {
-    final user = CurrentSession().user;
-    if (user == null) return;
+Future<void> _toggleOccupation() async {
+  final user = CurrentSession().user;
+  if (user == null) {
+    _showError("Connectez-vous pour pointer");
+    return;
+  }
 
-    setState(() => _isLoadingOccupation = true);
+  // TOUJOURS activer le loading en premier (même pour libérer !)
+  setState(() => _isLoadingOccupation = true);
 
-if (_isOccupiedByMe) {
-      // --- LIBÉRATION ---
-      // On utilise la version Full pour récupérer les achievements
-      final result = await _api.releaseSpotFull(widget.spot.id, user.id);
-      
-      final duration = result['duration'] as int?;
-      final newBadges = result['new_achievements'] as List<dynamic>?;
-      final totalPoints = result['total_points'] as int?;
+  try {
+    // === 1. Vérification GPS UNIQUEMENT si on veut OCCUPER (pas libérer) ===
+    if (!_isOccupiedByMe) {
+      bool canProceed = false;
 
-      if (duration != null) {
-        // Update Time
-        try {
-          final logToUpdate = user.history.firstWhere((log) => log.spotId == widget.spot.id && log.durationSeconds == 0);
-          logToUpdate.durationSeconds = duration;
-        } catch (e) {}
+      try {
+        LocationPermission permission = await Geolocator.checkPermission();
+        if (permission == LocationPermission.denied) {
+          permission = await Geolocator.requestPermission();
+        }
+
+        if (permission == LocationPermission.denied || permission == LocationPermission.deniedForever) {
+          _showError("Localisation refusée dans les paramètres");
+          return;
+        }
+
+        final position = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high,
+          timeLimit: const Duration(seconds: 12),
+        );
+
+        final distance = Geolocator.distanceBetween(
+          position.latitude,
+          position.longitude,
+          widget.spot.position.latitude,
+          widget.spot.position.longitude,
+        );
+
+        if (distance > 300) {
+          _showError("Trop loin ! ${distance.toStringAsFixed(0)} m (max 300 m)");
+          return;
+        }
+
+        canProceed = true;
+      } catch (e) {
+        _showError("Impossible d'accéder au GPS");
+        return;
       }
-      
-      // Update Points
+
+      if (!canProceed) return;
+    }
+
+    // === 2. Action : OCCUPER ou LIBÉRER ===
+    if (_isOccupiedByMe) {
+      // ─────────── LIBÉRATION ───────────
+      final result = await _api.releaseSpotFull(widget.spot.id, user.id);
+
+      if (!mounted) return;
+
+      // Mise à jour durée du log en cours
+      final duration = result['duration'] as int?;
+      if (duration != null) {
+        try {
+          final logToUpdate = user.history.firstWhere(
+            (log) => log.spotId == widget.spot.id && log.durationSeconds == 0,
+          );
+          logToUpdate.durationSeconds = duration;
+        } catch (_) {}
+      }
+
+      // Mise à jour points + badges
+      final totalPoints = result['total_points'] as int?;
       if (totalPoints != null) user.points = totalPoints;
 
-      // NOTIFICATION SUCCÈS !
+      final newBadges = result['new_achievements'] as List<dynamic>?;
       if (newBadges != null && newBadges.isNotEmpty) {
         for (var b in newBadges) {
-          user.achievements.add(b['id']); // Update local
-          _showAchievementSnack(b['name'], b['points']);
+          final badgeId = b['id']?.toString();
+          if (badgeId != null && !user.achievements.contains(badgeId)) {
+            user.achievements.add(badgeId);
+          }
+          _showAchievementSnack(b['name'] ?? "Succès", b['points'] ?? 0);
         }
       }
 
-      setState(() { _occupationInfo = null; });
+      // UI + timer
+      setState(() {
+        _occupationInfo = null;
+      });
       _stopTimer();
-      if (widget.onHistoryChanged != null) widget.onHistoryChanged!();
+      widget.onHistoryChanged?.call();
 
     } else {
-      // OCCUPER (NOUVEAU SPOT)
+      // ─────────── OCCUPATION ───────────
       final success = await _api.occupySpot(widget.spot.id, user.id);
-      
+
+      if (!mounted) return;
+
       if (success) {
-        setState(() { 
-          _occupationInfo = { "userId": user.id, "userName": user.name }; 
-        });
-        
-        // --- CORRECTION ICI : Nettoyage local de l'historique ---
-        // Avant d'ajouter le nouveau, on cherche s'il y avait un log "En cours" d'un AUTRE spot
-        // et on le ferme artificiellement pour l'UI (le backend a calculé la vraie durée, 
-        // ici on met une approx pour que ça ne reste pas "En cours" visuellement).
+        // Nettoyage des anciens logs "en cours" (évite les bugs d'affichage)
         for (var log in user.history) {
           if (log.durationSeconds == 0) {
-            final start = log.timestamp;
-            final now = DateTime.now();
-            // On met la différence
-            log.durationSeconds = now.difference(start).inSeconds;
-            // Si la diff est 0 (trop rapide), on met 1s pour ne pas qu'il reste "En cours"
-            if (log.durationSeconds == 0) log.durationSeconds = 1;
+            final approxDuration = DateTime.now().difference(log.timestamp).inSeconds;
+            log.durationSeconds = approxDuration > 0 ? approxDuration : 1;
           }
         }
 
         // Ajout du nouveau log
         user.history.insert(0, CheckInLog(
-          spotId: widget.spot.id, 
-          spotName: widget.spot.name, 
-          timestamp: DateTime.now()
+          spotId: widget.spot.id,
+          spotName: widget.spot.name,
+          timestamp: DateTime.now(),
+          durationSeconds: 0,
         ));
-        
+
+        setState(() {
+          _occupationInfo = {
+            "userId": user.id,
+            "userName": user.name,
+          };
+        });
+
         _startTimer();
-        if (widget.onHistoryChanged != null) widget.onHistoryChanged!();
+        widget.onHistoryChanged?.call();
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Impossible : Déjà pris !")));
-        _checkOccupation();
+        _showError("Spot déjà pris par quelqu’un d’autre");
+        await _checkOccupation(); // refresh forcé
       }
     }
-    setState(() => _isLoadingOccupation = false);
+  } catch (e) {
+    if (mounted) {
+      _showError("Erreur réseau ou serveur");
+      await _checkOccupation();
+    }
+  } finally {
+    if (mounted) {
+      setState(() => _isLoadingOccupation = false);
+    }
+  }
+}
+
+  void _showError(String msg) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Row(children: [const Icon(Icons.error_outline, color: Colors.white), const SizedBox(width: 10), Text(msg)]),
+        backgroundColor: Colors.redAccent,
+        behavior: SnackBarBehavior.floating,
+      )
+    );
   }
 
-void _showAchievementSnack(String name, int points) {
+  void _showAchievementSnack(String name, int points) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: Colors.amber[700],
@@ -262,7 +349,6 @@ void _showAchievementSnack(String name, int points) {
       )
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -337,6 +423,22 @@ void _showAchievementSnack(String name, int points) {
                       
                       if (user != null) ...[
                         _buildOccupationButton(),
+                        const SizedBox(height: 15),
+                        // --- NOUVEAU BOUTON GPS ---
+                        SizedBox(
+                          width: double.infinity,
+                          child: OutlinedButton.icon(
+                            onPressed: _launchGPS,
+                            icon: const Icon(Icons.directions, size: 18),
+                            label: const Text("Y ALLER (GPS)", style: TextStyle(fontWeight: FontWeight.bold)),
+                            style: OutlinedButton.styleFrom(
+                              foregroundColor: Colors.white70,
+                              side: const BorderSide(color: Colors.white24),
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                            ),
+                          ),
+                        ),
                         const SizedBox(height: 30),
                       ],
 

@@ -34,11 +34,43 @@
                     "spotName": "Rue Neuve",
                     "timestamp": "2025-11-22T23:40:57.139900",
                     "durationSeconds": 319
+                },
+                {
+                    "spotId": "90abcdef-0022-6072-ab22-000000000022",
+                    "spotName": "Halles Saint-Géry",
+                    "timestamp": "2025-11-22T17:57:53.800022",
+                    "durationSeconds": 1520
+                },
+                {
+                    "spotId": "aaaaaaaa-0014-5294-9d14-000000000014",
+                    "spotName": "Place Fernand Cocq",
+                    "timestamp": "2025-11-21T08:12:53.800022",
+                    "durationSeconds": 2068
+                },
+                {
+                    "spotId": "f5061728-0028-6678-b128-000000000028",
+                    "spotName": "Marché du Parvis",
+                    "timestamp": "2025-10-31T08:12:53.800022",
+                    "durationSeconds": 6208
+                },
+                {
+                    "spotId": "11111111-000b-491b-940b-00000000000b",
+                    "spotName": "Galeries Royales Saint-Hubert",
+                    "timestamp": "2025-10-29T19:12:53.800022",
+                    "durationSeconds": 2506
                 }
             ],
             "createdAt": "2025-01-01T12:00:00",
-            "points": 0,
-            "achievements": []
+            "points": 235,
+            "achievements": [
+                "welcome",
+                "first_step",
+                "explorer_3",
+                "shopper",
+                "sprint",
+                "weekender",
+                "time_1h"
+            ]
         },
         {
             "id": "f30a85a3-2b22-4a2e-8db6-0b5c69195c8d",
@@ -55,6 +87,36 @@
                 "c2d3e4f5-0025-6375-ae25-000000000025"
             ],
             "history": [
+                {
+                    "spotId": "28608358-be27-4d60-b284-bf1aae7960d6",
+                    "spotName": "Odoo Ferme",
+                    "timestamp": "2025-11-23T09:01:14.000830",
+                    "durationSeconds": 95
+                },
+                {
+                    "spotId": "28608358-be27-4d60-b284-bf1aae7960d6",
+                    "spotName": "Odoo Ferme",
+                    "timestamp": "2025-11-23T08:50:51.985790",
+                    "durationSeconds": 1
+                },
+                {
+                    "spotId": "28608358-be27-4d60-b284-bf1aae7960d6",
+                    "spotName": "Odoo Ferme",
+                    "timestamp": "2025-11-23T08:44:15.123013",
+                    "durationSeconds": 26
+                },
+                {
+                    "spotId": "12345678-001a-580a-a31a-00000000001a",
+                    "spotName": "Marché du Midi",
+                    "timestamp": "2025-11-23T08:03:39.644776",
+                    "durationSeconds": 22
+                },
+                {
+                    "spotId": "c8d9e0f1-0005-43c5-8e05-000000000005",
+                    "spotName": "Place Rogier",
+                    "timestamp": "2025-11-23T08:00:43.524343",
+                    "durationSeconds": 14
+                },
                 {
                     "spotId": "6789abcd-001f-5d5f-a81f-00000000001f",
                     "spotName": "Gare Centrale",
@@ -132,10 +194,418 @@
                     "spotName": "Rue Neuve",
                     "timestamp": "2025-11-22T23:26:02.708512",
                     "durationSeconds": 10
+                },
+                {
+                    "spotId": "77777777-0011-4f71-9a11-000000000011",
+                    "spotName": "Place Saint-Géry",
+                    "timestamp": "2025-11-20T09:12:53.800022",
+                    "durationSeconds": 14326
+                },
+                {
+                    "spotId": "d3e4f506-0026-6476-af26-000000000026",
+                    "spotName": "Musées Royaux des Beaux-Arts",
+                    "timestamp": "2025-11-20T04:12:53.800022",
+                    "durationSeconds": 7417
+                },
+                {
+                    "spotId": "78901234-003a-7807-c339-00000000003a",
+                    "spotName": "Parc du Cinquantenaire (petite esplanade)",
+                    "timestamp": "2025-11-17T21:12:53.800022",
+                    "durationSeconds": 5992
+                },
+                {
+                    "spotId": "23456789-001b-591b-a41b-00000000001b",
+                    "spotName": "Canal de Bruxelles",
+                    "timestamp": "2025-11-12T13:12:53.800022",
+                    "durationSeconds": 1760
+                },
+                {
+                    "spotId": "11111111-000b-491b-940b-00000000000b",
+                    "spotName": "Galeries Royales Saint-Hubert",
+                    "timestamp": "2025-10-27T00:12:53.800022",
+                    "durationSeconds": 3906
+                },
+                {
+                    "spotId": "56789abc-001e-5c4e-a71e-00000000001e",
+                    "spotName": "Sablon - Antique District",
+                    "timestamp": "2025-10-22T06:46:31",
+                    "durationSeconds": 7457
+                },
+                {
+                    "spotId": "4b5c6d7e-002d-6bbc-b62d-00000000002d",
+                    "spotName": "Pont de la Porte de Ninove",
+                    "timestamp": "2025-10-20T06:54:41",
+                    "durationSeconds": 7250
+                },
+                {
+                    "spotId": "18293a4b-002a-688a-b32a-00000000002a",
+                    "spotName": "Avenue de la Toison d'Or",
+                    "timestamp": "2025-10-15T08:29:59",
+                    "durationSeconds": 1593
+                },
+                {
+                    "spotId": "456789ab-001d-5b3d-a61d-00000000001d",
+                    "spotName": "Place du Jeu de Balle",
+                    "timestamp": "2025-10-15T07:24:50",
+                    "durationSeconds": 5173
+                },
+                {
+                    "spotId": "01234567-0033-7100-bc33-000000000033",
+                    "spotName": "Place du Châtelain (marché)",
+                    "timestamp": "2025-10-10T06:07:50",
+                    "durationSeconds": 10114
+                },
+                {
+                    "spotId": "3456789a-001c-5a2c-a51c-00000000001c",
+                    "spotName": "Place Anneessens",
+                    "timestamp": "2025-10-01T08:04:41",
+                    "durationSeconds": 2983
+                },
+                {
+                    "spotId": "07172930-0029-6779-b229-000000000029",
+                    "spotName": "Place du Luxembourg",
+                    "timestamp": "2025-10-01T07:55:16",
+                    "durationSeconds": 3707
+                },
+                {
+                    "spotId": "23456789-001b-591b-a41b-00000000001b",
+                    "spotName": "Canal de Bruxelles",
+                    "timestamp": "2025-09-25T07:05:45",
+                    "durationSeconds": 8128
+                },
+                {
+                    "spotId": "f5061728-0028-6678-b128-000000000028",
+                    "spotName": "Marché du Parvis",
+                    "timestamp": "2025-09-20T07:45:00",
+                    "durationSeconds": 3941
+                },
+                {
+                    "spotId": "293a4b5c-002b-699b-b42b-00000000002b",
+                    "spotName": "Place du Luxembourg (côté parc)",
+                    "timestamp": "2025-09-20T07:24:49",
+                    "durationSeconds": 5368
+                },
+                {
+                    "spotId": "5c6d7e8f-002e-6ccd-b72e-00000000002e",
+                    "spotName": "Place du Béguinage",
+                    "timestamp": "2025-09-15T06:26:25",
+                    "durationSeconds": 9117
+                },
+                {
+                    "spotId": "789abcd0-0020-5e60-a920-000000000020",
+                    "spotName": "Square Ambiorix",
+                    "timestamp": "2025-09-10T07:55:18",
+                    "durationSeconds": 3324
+                },
+                {
+                    "spotId": "b1c2d3e4-0024-6274-ad24-000000000024",
+                    "spotName": "Place Van Meenen",
+                    "timestamp": "2025-09-10T06:56:16",
+                    "durationSeconds": 6860
+                },
+                {
+                    "spotId": "12345678-001a-580a-a31a-00000000001a",
+                    "spotName": "Marché du Midi",
+                    "timestamp": "2025-09-10T06:54:33",
+                    "durationSeconds": 3665
+                },
+                {
+                    "spotId": "ffffffff-0019-57e9-a219-000000000019",
+                    "spotName": "Quartier Européen",
+                    "timestamp": "2025-09-05T08:14:42",
+                    "durationSeconds": 2395
+                },
+                {
+                    "spotId": "90123456-003c-7a09-c53c-00000000003c",
+                    "spotName": "Square de Meeûs",
+                    "timestamp": "2025-09-05T06:28:43",
+                    "durationSeconds": 8877
+                },
+                {
+                    "spotId": "a0b1c2d3-0023-6173-ac23-000000000023",
+                    "spotName": "Porte de Namur",
+                    "timestamp": "2025-09-01T08:23:14",
+                    "durationSeconds": 1955
+                },
+                {
+                    "spotId": "6d7e8f90-002f-6dde-b82f-00000000002f",
+                    "spotName": "Place Fontainas",
+                    "timestamp": "2025-09-01T06:18:47",
+                    "durationSeconds": 9527
+                },
+                {
+                    "spotId": "eeeeeeee-0018-56d8-a118-000000000018",
+                    "spotName": "Porte de Hal",
+                    "timestamp": "2025-08-25T07:14:35",
+                    "durationSeconds": 5860
+                },
+                {
+                    "spotId": "dddddddd-0017-55c7-a017-000000000017",
+                    "spotName": "Place de la Monnaie",
+                    "timestamp": "2025-08-20T07:47:29",
+                    "durationSeconds": 4032
+                },
+                {
+                    "spotId": "8f901234-0031-6ffe-ba31-000000000031",
+                    "spotName": "Place Constantin Meunier",
+                    "timestamp": "2025-08-20T07:06:10",
+                    "durationSeconds": 6634
+                },
+                {
+                    "spotId": "90abcdef-0022-6072-ab22-000000000022",
+                    "spotName": "Halles Saint-Géry",
+                    "timestamp": "2025-08-10T08:20:48",
+                    "durationSeconds": 1879
+                },
+                {
+                    "spotId": "01234567-003d-7b1a-c63d-00000000003d",
+                    "spotName": "Place Emile Dupont",
+                    "timestamp": "2025-08-10T08:00:23",
+                    "durationSeconds": 3403
+                },
+                {
+                    "spotId": "e4f50617-0027-6577-b027-000000000027",
+                    "spotName": "Square des Martyrs",
+                    "timestamp": "2025-08-10T07:17:06",
+                    "durationSeconds": 7678
+                },
+                {
+                    "spotId": "cccccccc-0016-54b6-9f16-000000000016",
+                    "spotName": "Place des Palais",
+                    "timestamp": "2025-08-10T05:44:19",
+                    "durationSeconds": 10700
+                },
+                {
+                    "spotId": "3a4b5c6d-002c-6aab-b52c-00000000002c",
+                    "spotName": "La Bourse (petite place)",
+                    "timestamp": "2025-08-05T07:39:20",
+                    "durationSeconds": 4293
+                },
+                {
+                    "spotId": "89abcdef-0021-5f71-aa21-000000000021",
+                    "spotName": "Espace Louise (Place Stéphanie)",
+                    "timestamp": "2025-08-01T07:19:10",
+                    "durationSeconds": 5826
+                },
+                {
+                    "spotId": "78901234-003a-7807-c339-00000000003a",
+                    "spotName": "Parc du Cinquantenaire (petite esplanade)",
+                    "timestamp": "2025-07-25T07:44:38",
+                    "durationSeconds": 4141
+                },
+                {
+                    "spotId": "bbbbbbbb-0015-53a5-9e15-000000000015",
+                    "spotName": "Avenue Louise",
+                    "timestamp": "2025-07-25T06:48:24",
+                    "durationSeconds": 7798
+                },
+                {
+                    "spotId": "23456789-003f-7d3c-c83f-00000000003f",
+                    "spotName": "Parc Duden",
+                    "timestamp": "2025-07-25T06:41:30",
+                    "durationSeconds": 7785
+                },
+                {
+                    "spotId": "7e8f9012-0030-6eef-b930-000000000030",
+                    "spotName": "Quai aux Briques",
+                    "timestamp": "2025-07-20T06:53:53",
+                    "durationSeconds": 7325
+                },
+                {
+                    "spotId": "aaaaaaaa-0014-5294-9d14-000000000014",
+                    "spotName": "Place Fernand Cocq",
+                    "timestamp": "2025-07-16T08:46:29",
+                    "durationSeconds": 3927
+                },
+                {
+                    "spotId": "d3e4f506-0026-6476-af26-000000000026",
+                    "spotName": "Musées Royaux des Beaux-Arts",
+                    "timestamp": "2025-07-15T06:30:24",
+                    "durationSeconds": 8443
+                },
+                {
+                    "spotId": "e0f1a2b3-0007-45e7-9007-000000000007",
+                    "spotName": "Atomium",
+                    "timestamp": "2025-07-10T08:47:34",
+                    "durationSeconds": 5136
+                },
+                {
+                    "spotId": "99999999-0013-5183-9c13-000000000013",
+                    "spotName": "Place du Châtelain",
+                    "timestamp": "2025-07-10T07:49:49",
+                    "durationSeconds": 3753
+                },
+                {
+                    "spotId": "12345678-003e-7c2b-c73e-00000000003e",
+                    "spotName": "Parc Elisabeth",
+                    "timestamp": "2025-07-10T07:44:33",
+                    "durationSeconds": 4159
+                },
+                {
+                    "spotId": "90123456-0032-70ff-bb32-000000000032",
+                    "spotName": "Esplanade du Cinquantenaire",
+                    "timestamp": "2025-07-10T07:00:48",
+                    "durationSeconds": 6793
+                },
+                {
+                    "spotId": "88888888-0012-5072-9b12-000000000012",
+                    "spotName": "Place Jourdan",
+                    "timestamp": "2025-06-22T09:56:01",
+                    "durationSeconds": 3375
+                },
+                {
+                    "spotId": "77777777-0011-4f71-9a11-000000000011",
+                    "spotName": "Place Saint-Géry",
+                    "timestamp": "2025-06-10T17:17:16",
+                    "durationSeconds": 7422
+                },
+                {
+                    "spotId": "c8d9e0f1-0005-43c5-8e05-000000000005",
+                    "spotName": "Place Rogier",
+                    "timestamp": "2025-06-05T08:00:46",
+                    "durationSeconds": 4039
+                },
+                {
+                    "spotId": "b4c5d6e7-0004-42b4-8d04-000000000004",
+                    "spotName": "Mont des Arts",
+                    "timestamp": "2025-06-03T07:30:24",
+                    "durationSeconds": 6886
+                },
+                {
+                    "spotId": "66666666-0010-4e60-9910-000000000010",
+                    "spotName": "Quartier des Marolles",
+                    "timestamp": "2025-06-01T08:49:40",
+                    "durationSeconds": 2647
+                },
+                {
+                    "spotId": "67890123-0039-7706-c238-000000000039",
+                    "spotName": "Parvis Notre-Dame",
+                    "timestamp": "2025-05-25T07:21:26",
+                    "durationSeconds": 5651
+                },
+                {
+                    "spotId": "23456789-0035-7302-be35-000000000035",
+                    "spotName": "Place Royale",
+                    "timestamp": "2025-05-20T07:54:16",
+                    "durationSeconds": 3852
+                },
+                {
+                    "spotId": "33333333-000d-4b3d-960d-00000000000d",
+                    "spotName": "Bois de la Cambre",
+                    "timestamp": "2025-05-20T06:34:13",
+                    "durationSeconds": 8586
+                },
+                {
+                    "spotId": "c2d3e4f5-0025-6375-ae25-000000000025",
+                    "spotName": "Parc de Bruxelles (Parc Royal - autre entrée)",
+                    "timestamp": "2025-05-12T06:20:41",
+                    "durationSeconds": 9302
+                },
+                {
+                    "spotId": "44444444-000e-4c4e-970e-00000000000e",
+                    "spotName": "Place Sainte-Catherine",
+                    "timestamp": "2025-05-10T08:18:14",
+                    "durationSeconds": 5772
+                },
+                {
+                    "spotId": "d9e0f1a2-0006-44d6-8f06-000000000006",
+                    "spotName": "Parc Royal",
+                    "timestamp": "2025-05-03T07:15:14",
+                    "durationSeconds": 6055
+                },
+                {
+                    "spotId": "22222222-000c-4a2c-950c-00000000000c",
+                    "spotName": "Parc de la Cinquantenaire",
+                    "timestamp": "2025-05-02T09:24:01",
+                    "durationSeconds": 1607
+                },
+                {
+                    "spotId": "11111111-000b-491b-940b-00000000000b",
+                    "spotName": "Galeries Royales Saint-Hubert",
+                    "timestamp": "2025-04-25T07:38:41",
+                    "durationSeconds": 5042
+                },
+                {
+                    "spotId": "89012345-003b-7908-c43b-00000000003b",
+                    "spotName": "Rue du Marché aux Herbes",
+                    "timestamp": "2025-04-20T08:13:45",
+                    "durationSeconds": 2492
+                },
+                {
+                    "spotId": "56789012-0038-7605-c137-000000000038",
+                    "spotName": "Place de Brouckère",
+                    "timestamp": "2025-04-20T06:20:45",
+                    "durationSeconds": 9330
+                },
+                {
+                    "spotId": "89abcdef-000a-480a-930a-00000000000a",
+                    "spotName": "Bourse",
+                    "timestamp": "2025-04-15T19:13:41",
+                    "durationSeconds": 2308
+                },
+                {
+                    "spotId": "f1a2b3c4-0008-46f8-9108-000000000008",
+                    "spotName": "Parvis de Saint-Gilles",
+                    "timestamp": "2025-04-14T08:11:58",
+                    "durationSeconds": 3729
+                },
+                {
+                    "spotId": "55555555-000f-4d5f-980f-00000000000f",
+                    "spotName": "Place Flagey",
+                    "timestamp": "2025-04-05T07:35:20",
+                    "durationSeconds": 8205
+                },
+                {
+                    "spotId": "a1b2c3d4-0003-41a3-8c03-000000000003",
+                    "spotName": "Place du Sablon",
+                    "timestamp": "2025-04-02T08:00:29",
+                    "durationSeconds": 6138
+                },
+                {
+                    "spotId": "45678901-0037-7504-c036-000000000037",
+                    "spotName": "Rue des Bouchers",
+                    "timestamp": "2025-04-01T07:37:03",
+                    "durationSeconds": 4501
+                },
+                {
+                    "spotId": "6789abcd-001f-5d5f-a81f-00000000001f",
+                    "spotName": "Gare Centrale",
+                    "timestamp": "2025-04-01T07:07:53",
+                    "durationSeconds": 6177
+                },
+                {
+                    "spotId": "12345678-0034-7201-bd34-000000000034",
+                    "spotName": "Boulevard Anspach",
+                    "timestamp": "2025-03-25T08:09:24",
+                    "durationSeconds": 2439
+                },
+                {
+                    "spotId": "e7b2c4d5-0002-4f2b-9b02-000000000002",
+                    "spotName": "Gare du Midi",
+                    "timestamp": "2025-03-25T07:51:13",
+                    "durationSeconds": 8315
+                },
+                {
+                    "spotId": "34567890-0036-7403-bf36-000000000036",
+                    "spotName": "Place du Sablon (côté chocolatiers)",
+                    "timestamp": "2025-03-25T06:57:30",
+                    "durationSeconds": 6755
+                },
+                {
+                    "spotId": "d0f1a3b2-0001-4e1a-8a01-000000000001",
+                    "spotName": "Grand-Place",
+                    "timestamp": "2025-03-20T06:15:29",
+                    "durationSeconds": 9338
+                },
+                {
+                    "spotId": "01234567-0009-4709-9209-000000000009",
+                    "spotName": "Rue Neuve",
+                    "timestamp": "2025-03-17T06:53:40",
+                    "durationSeconds": 10711
                 }
             ],
-            "createdAt": "2025-11-22T21:31:57.581454",
-            "points": 1190,
+            "createdAt": "2025-03-16T06:53:40",
+            "points": 4395,
             "achievements": [
                 "welcome",
                 "first_step",
@@ -149,7 +619,26 @@
                 "sprint",
                 "night_owl",
                 "weekender",
-                "busy_zone"
+                "busy_zone",
+                "time_5h",
+                "time_10h",
+                "time_24h",
+                "time_100h",
+                "explorer_10",
+                "explorer_15",
+                "explorer_20",
+                "tourist",
+                "party_animal",
+                "shopper",
+                "commuter",
+                "culture_fan",
+                "market_trader",
+                "nature_lover",
+                "penny_pincher",
+                "hermit",
+                "jack_of_all",
+                "rich_zone",
+                "safe_zone"
             ]
         },
         {
@@ -161,10 +650,443 @@
                 "music"
             ],
             "favorites": [],
-            "history": [],
-            "createdAt": "2025-02-14T10:22:00",
-            "points": 0,
-            "achievements": []
+            "history": [
+                {
+                    "spotId": "d0f1a3b2-0001-4e1a-8a01-000000000001",
+                    "spotName": "Grand-Place",
+                    "timestamp": "2025-11-17T21:12:53.800022",
+                    "durationSeconds": 13547
+                },
+                {
+                    "spotId": "3a4b5c6d-002c-6aab-b52c-00000000002c",
+                    "spotName": "La Bourse (petite place)",
+                    "timestamp": "2025-11-09T13:12:53.800022",
+                    "durationSeconds": 3797
+                },
+                {
+                    "spotId": "293a4b5c-002b-699b-b42b-00000000002b",
+                    "spotName": "Place du Luxembourg (côté parc)",
+                    "timestamp": "2025-11-01T00:12:53.800022",
+                    "durationSeconds": 2104
+                },
+                {
+                    "spotId": "e7b2c4d5-0002-4f2b-9b02-000000000002",
+                    "spotName": "Gare du Midi",
+                    "timestamp": "2025-10-27T23:12:53.800022",
+                    "durationSeconds": 10958
+                },
+                {
+                    "spotId": "56789abc-001e-5c4e-a71e-00000000001e",
+                    "spotName": "Sablon - Antique District",
+                    "timestamp": "2025-09-25T09:49:55",
+                    "durationSeconds": 4142
+                },
+                {
+                    "spotId": "4b5c6d7e-002d-6bbc-b62d-00000000002d",
+                    "spotName": "Pont de la Porte de Ninove",
+                    "timestamp": "2025-09-20T08:14:45",
+                    "durationSeconds": 2452
+                },
+                {
+                    "spotId": "456789ab-001d-5b3d-a61d-00000000001d",
+                    "spotName": "Place du Jeu de Balle",
+                    "timestamp": "2025-09-15T07:07:49",
+                    "durationSeconds": 4734
+                },
+                {
+                    "spotId": "01234567-0033-7100-bc33-000000000033",
+                    "spotName": "Place du Châtelain (marché)",
+                    "timestamp": "2025-09-10T06:31:27",
+                    "durationSeconds": 8710
+                },
+                {
+                    "spotId": "18293a4b-002a-688a-b32a-00000000002a",
+                    "spotName": "Avenue de la Toison d'Or",
+                    "timestamp": "2025-09-05T10:02:48",
+                    "durationSeconds": 2862
+                },
+                {
+                    "spotId": "3456789a-001c-5a2c-a51c-00000000001c",
+                    "spotName": "Place Anneessens",
+                    "timestamp": "2025-09-05T09:20:34",
+                    "durationSeconds": 1964
+                },
+                {
+                    "spotId": "07172930-0029-6779-b229-000000000029",
+                    "spotName": "Place du Luxembourg",
+                    "timestamp": "2025-09-01T11:32:29",
+                    "durationSeconds": 1403
+                },
+                {
+                    "spotId": "23456789-001b-591b-a41b-00000000001b",
+                    "spotName": "Canal de Bruxelles",
+                    "timestamp": "2025-08-25T08:29:21",
+                    "durationSeconds": 8684
+                },
+                {
+                    "spotId": "293a4b5c-002b-699b-b42b-00000000002b",
+                    "spotName": "Place du Luxembourg (côté parc)",
+                    "timestamp": "2025-08-20T09:39:44",
+                    "durationSeconds": 8207
+                },
+                {
+                    "spotId": "f5061728-0028-6678-b128-000000000028",
+                    "spotName": "Marché du Parvis",
+                    "timestamp": "2025-08-20T06:28:58",
+                    "durationSeconds": 7124
+                },
+                {
+                    "spotId": "12345678-001a-580a-a31a-00000000001a",
+                    "spotName": "Marché du Midi",
+                    "timestamp": "2025-08-15T07:49:21",
+                    "durationSeconds": 2209
+                },
+                {
+                    "spotId": "789abcd0-0020-5e60-a920-000000000020",
+                    "spotName": "Square Ambiorix",
+                    "timestamp": "2025-08-10T10:11:39",
+                    "durationSeconds": 2718
+                },
+                {
+                    "spotId": "6d7e8f90-002f-6dde-b82f-00000000002f",
+                    "spotName": "Place Fontainas",
+                    "timestamp": "2025-08-05T17:25:16",
+                    "durationSeconds": 1661
+                },
+                {
+                    "spotId": "90123456-003c-7a09-c53c-00000000003c",
+                    "spotName": "Square de Meeûs",
+                    "timestamp": "2025-08-05T11:08:23",
+                    "durationSeconds": 2903
+                },
+                {
+                    "spotId": "b1c2d3e4-0024-6274-ad24-000000000024",
+                    "spotName": "Place Van Meenen",
+                    "timestamp": "2025-08-05T10:30:59",
+                    "durationSeconds": 1323
+                },
+                {
+                    "spotId": "5c6d7e8f-002e-6ccd-b72e-00000000002e",
+                    "spotName": "Place du Béguinage",
+                    "timestamp": "2025-08-05T09:44:43",
+                    "durationSeconds": 7926
+                },
+                {
+                    "spotId": "ffffffff-0019-57e9-a219-000000000019",
+                    "spotName": "Quartier Européen",
+                    "timestamp": "2025-08-05T09:18:33",
+                    "durationSeconds": 9113
+                },
+                {
+                    "spotId": "a0b1c2d3-0023-6173-ac23-000000000023",
+                    "spotName": "Porte de Namur",
+                    "timestamp": "2025-07-25T14:01:57",
+                    "durationSeconds": 6872
+                },
+                {
+                    "spotId": "eeeeeeee-0018-56d8-a118-000000000018",
+                    "spotName": "Porte de Hal",
+                    "timestamp": "2025-07-25T10:42:20",
+                    "durationSeconds": 4104
+                },
+                {
+                    "spotId": "8f901234-0031-6ffe-ba31-000000000031",
+                    "spotName": "Place Constantin Meunier",
+                    "timestamp": "2025-07-20T09:14:11",
+                    "durationSeconds": 9380
+                },
+                {
+                    "spotId": "3a4b5c6d-002c-6aab-b52c-00000000002c",
+                    "spotName": "La Bourse (petite place)",
+                    "timestamp": "2025-07-15T17:26:44",
+                    "durationSeconds": 8645
+                },
+                {
+                    "spotId": "dddddddd-0017-55c7-a017-000000000017",
+                    "spotName": "Place de la Monnaie",
+                    "timestamp": "2025-07-15T16:01:38",
+                    "durationSeconds": 7042
+                },
+                {
+                    "spotId": "90abcdef-0022-6072-ab22-000000000022",
+                    "spotName": "Halles Saint-Géry",
+                    "timestamp": "2025-07-10T11:52:59",
+                    "durationSeconds": 1883
+                },
+                {
+                    "spotId": "01234567-003d-7b1a-c63d-00000000003d",
+                    "spotName": "Place Emile Dupont",
+                    "timestamp": "2025-07-10T11:32:54",
+                    "durationSeconds": 1540
+                },
+                {
+                    "spotId": "e4f50617-0027-6577-b027-000000000027",
+                    "spotName": "Square des Martyrs",
+                    "timestamp": "2025-07-10T11:31:49",
+                    "durationSeconds": 1592
+                },
+                {
+                    "spotId": "cccccccc-0016-54b6-9f16-000000000016",
+                    "spotName": "Place des Palais",
+                    "timestamp": "2025-07-05T09:50:36",
+                    "durationSeconds": 7412
+                },
+                {
+                    "spotId": "89abcdef-0021-5f71-aa21-000000000021",
+                    "spotName": "Espace Louise (Place Stéphanie)",
+                    "timestamp": "2025-07-01T09:48:30",
+                    "durationSeconds": 7454
+                },
+                {
+                    "spotId": "aaaaaaaa-0014-5294-9d14-000000000014",
+                    "spotName": "Place Fernand Cocq",
+                    "timestamp": "2025-06-25T14:04:59",
+                    "durationSeconds": 10178
+                },
+                {
+                    "spotId": "bbbbbbbb-0015-53a5-9e15-000000000015",
+                    "spotName": "Avenue Louise",
+                    "timestamp": "2025-06-25T08:55:27",
+                    "durationSeconds": 10758
+                },
+                {
+                    "spotId": "23456789-003f-7d3c-c83f-00000000003f",
+                    "spotName": "Parc Duden",
+                    "timestamp": "2025-06-20T08:05:58",
+                    "durationSeconds": 6748
+                },
+                {
+                    "spotId": "78901234-003a-7807-c339-00000000003a",
+                    "spotName": "Parc du Cinquantenaire (petite esplanade)",
+                    "timestamp": "2025-06-20T07:03:42",
+                    "durationSeconds": 10314
+                },
+                {
+                    "spotId": "7e8f9012-0030-6eef-b930-000000000030",
+                    "spotName": "Quai aux Briques",
+                    "timestamp": "2025-06-15T16:46:04",
+                    "durationSeconds": 7837
+                },
+                {
+                    "spotId": "90123456-0032-70ff-bb32-000000000032",
+                    "spotName": "Esplanade du Cinquantenaire",
+                    "timestamp": "2025-06-10T13:18:20",
+                    "durationSeconds": 2209
+                },
+                {
+                    "spotId": "d3e4f506-0026-6476-af26-000000000026",
+                    "spotName": "Musées Royaux des Beaux-Arts",
+                    "timestamp": "2025-06-10T10:48:26",
+                    "durationSeconds": 4008
+                },
+                {
+                    "spotId": "e0f1a2b3-0007-45e7-9007-000000000007",
+                    "spotName": "Atomium",
+                    "timestamp": "2025-06-05T10:23:21",
+                    "durationSeconds": 8932
+                },
+                {
+                    "spotId": "99999999-0013-5183-9c13-000000000013",
+                    "spotName": "Place du Châtelain",
+                    "timestamp": "2025-06-05T09:28:23",
+                    "durationSeconds": 5170
+                },
+                {
+                    "spotId": "c2d3e4f5-0025-6375-ae25-000000000025",
+                    "spotName": "Parc de Bruxelles (Parc Royal - autre entrée)",
+                    "timestamp": "2025-06-05T08:19:01",
+                    "durationSeconds": 9483
+                },
+                {
+                    "spotId": "12345678-003e-7c2b-c73e-00000000003e",
+                    "spotName": "Parc Elisabeth",
+                    "timestamp": "2025-06-05T08:02:03",
+                    "durationSeconds": 10466
+                },
+                {
+                    "spotId": "d9e0f1a2-0006-44d6-8f06-000000000006",
+                    "spotName": "Parc Royal",
+                    "timestamp": "2025-06-01T10:51:59",
+                    "durationSeconds": 8996
+                },
+                {
+                    "spotId": "77777777-0011-4f71-9a11-000000000011",
+                    "spotName": "Place Saint-Géry",
+                    "timestamp": "2025-05-20T18:38:03",
+                    "durationSeconds": 4343
+                },
+                {
+                    "spotId": "88888888-0012-5072-9b12-000000000012",
+                    "spotName": "Place Jourdan",
+                    "timestamp": "2025-05-20T11:57:01",
+                    "durationSeconds": 3478
+                },
+                {
+                    "spotId": "c8d9e0f1-0005-43c5-8e05-000000000005",
+                    "spotName": "Place Rogier",
+                    "timestamp": "2025-05-02T08:33:21",
+                    "durationSeconds": 8614
+                },
+                {
+                    "spotId": "67890123-0039-7706-c238-000000000039",
+                    "spotName": "Parvis Notre-Dame",
+                    "timestamp": "2025-04-15T09:39:06",
+                    "durationSeconds": 4449
+                },
+                {
+                    "spotId": "66666666-0010-4e60-9910-000000000010",
+                    "spotName": "Quartier des Marolles",
+                    "timestamp": "2025-04-15T08:04:46",
+                    "durationSeconds": 9965
+                },
+                {
+                    "spotId": "44444444-000e-4c4e-970e-00000000000e",
+                    "spotName": "Place Sainte-Catherine",
+                    "timestamp": "2025-04-12T19:46:12",
+                    "durationSeconds": 2077
+                },
+                {
+                    "spotId": "33333333-000d-4b3d-960d-00000000000d",
+                    "spotName": "Bois de la Cambre",
+                    "timestamp": "2025-04-10T12:58:08",
+                    "durationSeconds": 3123
+                },
+                {
+                    "spotId": "23456789-0035-7302-be35-000000000035",
+                    "spotName": "Place Royale",
+                    "timestamp": "2025-04-10T11:20:43",
+                    "durationSeconds": 2038
+                },
+                {
+                    "spotId": "b4c5d6e7-0004-42b4-8d04-000000000004",
+                    "spotName": "Mont des Arts",
+                    "timestamp": "2025-04-02T09:58:58",
+                    "durationSeconds": 7112
+                },
+                {
+                    "spotId": "22222222-000c-4a2c-950c-00000000000c",
+                    "spotName": "Parc de la Cinquantenaire",
+                    "timestamp": "2025-04-01T11:09:05",
+                    "durationSeconds": 2731
+                },
+                {
+                    "spotId": "f1a2b3c4-0008-46f8-9108-000000000008",
+                    "spotName": "Parvis de Saint-Gilles",
+                    "timestamp": "2025-03-22T15:42:49",
+                    "durationSeconds": 7845
+                },
+                {
+                    "spotId": "89abcdef-000a-480a-930a-00000000000a",
+                    "spotName": "Bourse",
+                    "timestamp": "2025-03-12T19:57:56",
+                    "durationSeconds": 3321
+                },
+                {
+                    "spotId": "89012345-003b-7908-c43b-00000000003b",
+                    "spotName": "Rue du Marché aux Herbes",
+                    "timestamp": "2025-03-10T11:16:28",
+                    "durationSeconds": 2026
+                },
+                {
+                    "spotId": "56789012-0038-7605-c137-000000000038",
+                    "spotName": "Place de Brouckère",
+                    "timestamp": "2025-03-10T08:34:13",
+                    "durationSeconds": 4573
+                },
+                {
+                    "spotId": "11111111-000b-491b-940b-00000000000b",
+                    "spotName": "Galeries Royales Saint-Hubert",
+                    "timestamp": "2025-03-05T10:48:24",
+                    "durationSeconds": 4182
+                },
+                {
+                    "spotId": "6789abcd-001f-5d5f-a81f-00000000001f",
+                    "spotName": "Gare Centrale",
+                    "timestamp": "2025-03-01T15:02:07",
+                    "durationSeconds": 6623
+                },
+                {
+                    "spotId": "45678901-0037-7504-c036-000000000037",
+                    "spotName": "Rue des Bouchers",
+                    "timestamp": "2025-02-25T10:58:48",
+                    "durationSeconds": 7082
+                },
+                {
+                    "spotId": "e7b2c4d5-0002-4f2b-9b02-000000000002",
+                    "spotName": "Gare du Midi",
+                    "timestamp": "2025-02-18T11:48:34",
+                    "durationSeconds": 2290
+                },
+                {
+                    "spotId": "34567890-0036-7403-bf36-000000000036",
+                    "spotName": "Place du Sablon (côté chocolatiers)",
+                    "timestamp": "2025-02-15T11:21:42",
+                    "durationSeconds": 9264
+                },
+                {
+                    "spotId": "55555555-000f-4d5f-980f-00000000000f",
+                    "spotName": "Place Flagey",
+                    "timestamp": "2025-02-14T14:11:19",
+                    "durationSeconds": 9613
+                },
+                {
+                    "spotId": "01234567-0009-4709-9209-000000000009",
+                    "spotName": "Rue Neuve",
+                    "timestamp": "2025-02-11T11:12:49",
+                    "durationSeconds": 6098
+                },
+                {
+                    "spotId": "a1b2c3d4-0003-41a3-8c03-000000000003",
+                    "spotName": "Place du Sablon",
+                    "timestamp": "2025-02-05T09:31:13",
+                    "durationSeconds": 2987
+                },
+                {
+                    "spotId": "12345678-0034-7201-bd34-000000000034",
+                    "spotName": "Boulevard Anspach",
+                    "timestamp": "2025-02-01T10:19:03",
+                    "durationSeconds": 5737
+                },
+                {
+                    "spotId": "d0f1a3b2-0001-4e1a-8a01-000000000001",
+                    "spotName": "Grand-Place",
+                    "timestamp": "2025-01-05T13:22:43",
+                    "durationSeconds": 2380
+                }
+            ],
+            "createdAt": "2025-01-04T13:22:43",
+            "points": 4145,
+            "achievements": [
+                "welcome",
+                "reviewer_1",
+                "reviewer_5",
+                "reviewer_20",
+                "first_step",
+                "time_1h",
+                "time_5h",
+                "time_10h",
+                "time_24h",
+                "explorer_3",
+                "explorer_10",
+                "explorer_15",
+                "explorer_20",
+                "tourist",
+                "party_animal",
+                "shopper",
+                "commuter",
+                "culture_fan",
+                "market_trader",
+                "nature_lover",
+                "afterwork",
+                "penny_pincher",
+                "hermit",
+                "lunch_time",
+                "weekender",
+                "star",
+                "safe_zone",
+                "time_100h",
+                "marathon"
+            ]
         },
         {
             "id": "user_lolita",
@@ -175,10 +1097,428 @@
                 "student"
             ],
             "favorites": [],
-            "history": [],
-            "createdAt": "2025-04-03T09:00:00",
-            "points": 0,
-            "achievements": []
+            "history": [
+                {
+                    "spotId": "77777777-0011-4f71-9a11-000000000011",
+                    "spotName": "Place Saint-Géry",
+                    "timestamp": "2025-11-21T14:12:53.800022",
+                    "durationSeconds": 11478
+                },
+                {
+                    "spotId": "a1b2c3d4-0003-41a3-8c03-000000000003",
+                    "spotName": "Place du Sablon",
+                    "timestamp": "2025-11-20T02:12:53.800022",
+                    "durationSeconds": 4784
+                },
+                {
+                    "spotId": "56789abc-001e-5c4e-a71e-00000000001e",
+                    "spotName": "Sablon - Antique District",
+                    "timestamp": "2025-10-02T08:07:38",
+                    "durationSeconds": 6177
+                },
+                {
+                    "spotId": "4b5c6d7e-002d-6bbc-b62d-00000000002d",
+                    "spotName": "Pont de la Porte de Ninove",
+                    "timestamp": "2025-10-01T07:06:51",
+                    "durationSeconds": 10000
+                },
+                {
+                    "spotId": "456789ab-001d-5b3d-a61d-00000000001d",
+                    "spotName": "Place du Jeu de Balle",
+                    "timestamp": "2025-09-25T06:40:31",
+                    "durationSeconds": 8019
+                },
+                {
+                    "spotId": "18293a4b-002a-688a-b32a-00000000002a",
+                    "spotName": "Avenue de la Toison d'Or",
+                    "timestamp": "2025-09-20T09:10:01",
+                    "durationSeconds": 2860
+                },
+                {
+                    "spotId": "01234567-0033-7100-bc33-000000000033",
+                    "spotName": "Place du Châtelain (marché)",
+                    "timestamp": "2025-09-20T08:27:47",
+                    "durationSeconds": 5206
+                },
+                {
+                    "spotId": "3456789a-001c-5a2c-a51c-00000000001c",
+                    "spotName": "Place Anneessens",
+                    "timestamp": "2025-09-12T10:07:20",
+                    "durationSeconds": 3085
+                },
+                {
+                    "spotId": "07172930-0029-6779-b229-000000000029",
+                    "spotName": "Place du Luxembourg",
+                    "timestamp": "2025-09-10T10:15:06",
+                    "durationSeconds": 2550
+                },
+                {
+                    "spotId": "23456789-001b-591b-a41b-00000000001b",
+                    "spotName": "Canal de Bruxelles",
+                    "timestamp": "2025-09-05T08:13:13",
+                    "durationSeconds": 6151
+                },
+                {
+                    "spotId": "293a4b5c-002b-699b-b42b-00000000002b",
+                    "spotName": "Place du Luxembourg (côté parc)",
+                    "timestamp": "2025-09-01T10:21:43",
+                    "durationSeconds": 2233
+                },
+                {
+                    "spotId": "f5061728-0028-6678-b128-000000000028",
+                    "spotName": "Marché du Parvis",
+                    "timestamp": "2025-08-30T06:55:09",
+                    "durationSeconds": 7069
+                },
+                {
+                    "spotId": "5c6d7e8f-002e-6ccd-b72e-00000000002e",
+                    "spotName": "Place du Béguinage",
+                    "timestamp": "2025-08-25T09:49:04",
+                    "durationSeconds": 3925
+                },
+                {
+                    "spotId": "6d7e8f90-002f-6dde-b82f-00000000002f",
+                    "spotName": "Place Fontainas",
+                    "timestamp": "2025-08-20T17:28:08",
+                    "durationSeconds": 10601
+                },
+                {
+                    "spotId": "b1c2d3e4-0024-6274-ad24-000000000024",
+                    "spotName": "Place Van Meenen",
+                    "timestamp": "2025-08-20T08:51:58",
+                    "durationSeconds": 5401
+                },
+                {
+                    "spotId": "789abcd0-0020-5e60-a920-000000000020",
+                    "spotName": "Square Ambiorix",
+                    "timestamp": "2025-08-20T08:29:44",
+                    "durationSeconds": 5017
+                },
+                {
+                    "spotId": "12345678-001a-580a-a31a-00000000001a",
+                    "spotName": "Marché du Midi",
+                    "timestamp": "2025-08-20T06:53:19",
+                    "durationSeconds": 7191
+                },
+                {
+                    "spotId": "90123456-003c-7a09-c53c-00000000003c",
+                    "spotName": "Square de Meeûs",
+                    "timestamp": "2025-08-15T09:41:34",
+                    "durationSeconds": 5952
+                },
+                {
+                    "spotId": "ffffffff-0019-57e9-a219-000000000019",
+                    "spotName": "Quartier Européen",
+                    "timestamp": "2025-08-15T08:15:08",
+                    "durationSeconds": 9692
+                },
+                {
+                    "spotId": "a0b1c2d3-0023-6173-ac23-000000000023",
+                    "spotName": "Porte de Namur",
+                    "timestamp": "2025-08-05T10:34:57",
+                    "durationSeconds": 8124
+                },
+                {
+                    "spotId": "eeeeeeee-0018-56d8-a118-000000000018",
+                    "spotName": "Porte de Hal",
+                    "timestamp": "2025-08-05T09:56:45",
+                    "durationSeconds": 3472
+                },
+                {
+                    "spotId": "8f901234-0031-6ffe-ba31-000000000031",
+                    "spotName": "Place Constantin Meunier",
+                    "timestamp": "2025-08-01T10:22:11",
+                    "durationSeconds": 1790
+                },
+                {
+                    "spotId": "dddddddd-0017-55c7-a017-000000000017",
+                    "spotName": "Place de la Monnaie",
+                    "timestamp": "2025-07-25T15:20:06",
+                    "durationSeconds": 5905
+                },
+                {
+                    "spotId": "3a4b5c6d-002c-6aab-b52c-00000000002c",
+                    "spotName": "La Bourse (petite place)",
+                    "timestamp": "2025-07-25T15:08:14",
+                    "durationSeconds": 9945
+                },
+                {
+                    "spotId": "90abcdef-0022-6072-ab22-000000000022",
+                    "spotName": "Halles Saint-Géry",
+                    "timestamp": "2025-07-20T13:01:50",
+                    "durationSeconds": 3381
+                },
+                {
+                    "spotId": "e4f50617-0027-6577-b027-000000000027",
+                    "spotName": "Square des Martyrs",
+                    "timestamp": "2025-07-20T09:46:33",
+                    "durationSeconds": 4177
+                },
+                {
+                    "spotId": "01234567-003d-7b1a-c63d-00000000003d",
+                    "spotName": "Place Emile Dupont",
+                    "timestamp": "2025-07-20T09:07:06",
+                    "durationSeconds": 6583
+                },
+                {
+                    "spotId": "cccccccc-0016-54b6-9f16-000000000016",
+                    "spotName": "Place des Palais",
+                    "timestamp": "2025-07-20T08:23:20",
+                    "durationSeconds": 5551
+                },
+                {
+                    "spotId": "89abcdef-0021-5f71-aa21-000000000021",
+                    "spotName": "Espace Louise (Place Stéphanie)",
+                    "timestamp": "2025-07-10T09:07:11",
+                    "durationSeconds": 6337
+                },
+                {
+                    "spotId": "aaaaaaaa-0014-5294-9d14-000000000014",
+                    "spotName": "Place Fernand Cocq",
+                    "timestamp": "2025-07-05T16:58:33",
+                    "durationSeconds": 6723
+                },
+                {
+                    "spotId": "bbbbbbbb-0015-53a5-9e15-000000000015",
+                    "spotName": "Avenue Louise",
+                    "timestamp": "2025-07-02T10:23:55",
+                    "durationSeconds": 1826
+                },
+                {
+                    "spotId": "78901234-003a-7807-c339-00000000003a",
+                    "spotName": "Parc du Cinquantenaire (petite esplanade)",
+                    "timestamp": "2025-07-01T09:45:46",
+                    "durationSeconds": 4020
+                },
+                {
+                    "spotId": "23456789-003f-7d3c-c83f-00000000003f",
+                    "spotName": "Parc Duden",
+                    "timestamp": "2025-07-01T08:51:10",
+                    "durationSeconds": 7639
+                },
+                {
+                    "spotId": "7e8f9012-0030-6eef-b930-000000000030",
+                    "spotName": "Quai aux Briques",
+                    "timestamp": "2025-06-25T17:08:04",
+                    "durationSeconds": 10193
+                },
+                {
+                    "spotId": "d3e4f506-0026-6476-af26-000000000026",
+                    "spotName": "Musées Royaux des Beaux-Arts",
+                    "timestamp": "2025-06-25T09:03:41",
+                    "durationSeconds": 6677
+                },
+                {
+                    "spotId": "90123456-0032-70ff-bb32-000000000032",
+                    "spotName": "Esplanade du Cinquantenaire",
+                    "timestamp": "2025-06-20T09:59:03",
+                    "durationSeconds": 3177
+                },
+                {
+                    "spotId": "99999999-0013-5183-9c13-000000000013",
+                    "spotName": "Place du Châtelain",
+                    "timestamp": "2025-06-20T08:49:37",
+                    "durationSeconds": 3634
+                },
+                {
+                    "spotId": "12345678-003e-7c2b-c73e-00000000003e",
+                    "spotName": "Parc Elisabeth",
+                    "timestamp": "2025-06-20T07:33:50",
+                    "durationSeconds": 8335
+                },
+                {
+                    "spotId": "e0f1a2b3-0007-45e7-9007-000000000007",
+                    "spotName": "Atomium",
+                    "timestamp": "2025-06-10T10:36:13",
+                    "durationSeconds": 2652
+                },
+                {
+                    "spotId": "88888888-0012-5072-9b12-000000000012",
+                    "spotName": "Place Jourdan",
+                    "timestamp": "2025-06-02T12:33:02",
+                    "durationSeconds": 5694
+                },
+                {
+                    "spotId": "77777777-0011-4f71-9a11-000000000011",
+                    "spotName": "Place Saint-Géry",
+                    "timestamp": "2025-06-01T18:39:54",
+                    "durationSeconds": 8020
+                },
+                {
+                    "spotId": "c2d3e4f5-0025-6375-ae25-000000000025",
+                    "spotName": "Parc de Bruxelles (Parc Royal - autre entrée)",
+                    "timestamp": "2025-05-20T09:25:50",
+                    "durationSeconds": 1765
+                },
+                {
+                    "spotId": "d9e0f1a2-0006-44d6-8f06-000000000006",
+                    "spotName": "Parc Royal",
+                    "timestamp": "2025-05-10T10:19:19",
+                    "durationSeconds": 2226
+                },
+                {
+                    "spotId": "66666666-0010-4e60-9910-000000000010",
+                    "spotName": "Quartier des Marolles",
+                    "timestamp": "2025-05-02T08:40:39",
+                    "durationSeconds": 6192
+                },
+                {
+                    "spotId": "67890123-0039-7706-c238-000000000039",
+                    "spotName": "Parvis Notre-Dame",
+                    "timestamp": "2025-05-01T09:24:27",
+                    "durationSeconds": 1970
+                },
+                {
+                    "spotId": "b4c5d6e7-0004-42b4-8d04-000000000004",
+                    "spotName": "Mont des Arts",
+                    "timestamp": "2025-05-01T07:43:40",
+                    "durationSeconds": 7932
+                },
+                {
+                    "spotId": "33333333-000d-4b3d-960d-00000000000d",
+                    "spotName": "Bois de la Cambre",
+                    "timestamp": "2025-05-01T07:10:50",
+                    "durationSeconds": 9939
+                },
+                {
+                    "spotId": "44444444-000e-4c4e-970e-00000000000e",
+                    "spotName": "Place Sainte-Catherine",
+                    "timestamp": "2025-04-25T16:24:05",
+                    "durationSeconds": 9014
+                },
+                {
+                    "spotId": "23456789-0035-7302-be35-000000000035",
+                    "spotName": "Place Royale",
+                    "timestamp": "2025-04-25T09:48:09",
+                    "durationSeconds": 3763
+                },
+                {
+                    "spotId": "c8d9e0f1-0005-43c5-8e05-000000000005",
+                    "spotName": "Place Rogier",
+                    "timestamp": "2025-04-21T13:02:51",
+                    "durationSeconds": 10367
+                },
+                {
+                    "spotId": "f1a2b3c4-0008-46f8-9108-000000000008",
+                    "spotName": "Parvis de Saint-Gilles",
+                    "timestamp": "2025-04-03T16:59:04",
+                    "durationSeconds": 10679
+                },
+                {
+                    "spotId": "89abcdef-000a-480a-930a-00000000000a",
+                    "spotName": "Bourse",
+                    "timestamp": "2025-04-02T20:39:35",
+                    "durationSeconds": 6084
+                },
+                {
+                    "spotId": "11111111-000b-491b-940b-00000000000b",
+                    "spotName": "Galeries Royales Saint-Hubert",
+                    "timestamp": "2025-03-20T12:58:03",
+                    "durationSeconds": 8866
+                },
+                {
+                    "spotId": "56789012-0038-7605-c137-000000000038",
+                    "spotName": "Place de Brouckère",
+                    "timestamp": "2025-03-20T11:31:14",
+                    "durationSeconds": 1662
+                },
+                {
+                    "spotId": "89012345-003b-7908-c43b-00000000003b",
+                    "spotName": "Rue du Marché aux Herbes",
+                    "timestamp": "2025-03-20T08:09:27",
+                    "durationSeconds": 9805
+                },
+                {
+                    "spotId": "22222222-000c-4a2c-950c-00000000000c",
+                    "spotName": "Parc de la Cinquantenaire",
+                    "timestamp": "2025-03-10T09:08:49",
+                    "durationSeconds": 6132
+                },
+                {
+                    "spotId": "45678901-0037-7504-c036-000000000037",
+                    "spotName": "Rue des Bouchers",
+                    "timestamp": "2025-03-05T15:05:50",
+                    "durationSeconds": 10073
+                },
+                {
+                    "spotId": "55555555-000f-4d5f-980f-00000000000f",
+                    "spotName": "Place Flagey",
+                    "timestamp": "2025-03-01T13:31:51",
+                    "durationSeconds": 10121
+                },
+                {
+                    "spotId": "a1b2c3d4-0003-41a3-8c03-000000000003",
+                    "spotName": "Place du Sablon",
+                    "timestamp": "2025-03-01T12:21:57",
+                    "durationSeconds": 5562
+                },
+                {
+                    "spotId": "34567890-0036-7403-bf36-000000000036",
+                    "spotName": "Place du Sablon (côté chocolatiers)",
+                    "timestamp": "2025-03-01T11:31:09",
+                    "durationSeconds": 6538
+                },
+                {
+                    "spotId": "12345678-0034-7201-bd34-000000000034",
+                    "spotName": "Boulevard Anspach",
+                    "timestamp": "2025-02-20T11:05:23",
+                    "durationSeconds": 6504
+                },
+                {
+                    "spotId": "01234567-0009-4709-9209-000000000009",
+                    "spotName": "Rue Neuve",
+                    "timestamp": "2025-02-20T09:22:49",
+                    "durationSeconds": 9961
+                },
+                {
+                    "spotId": "6789abcd-001f-5d5f-a81f-00000000001f",
+                    "spotName": "Gare Centrale",
+                    "timestamp": "2025-02-18T05:46:06",
+                    "durationSeconds": 9237
+                },
+                {
+                    "spotId": "d0f1a3b2-0001-4e1a-8a01-000000000001",
+                    "spotName": "Grand-Place",
+                    "timestamp": "2025-02-10T09:53:30",
+                    "durationSeconds": 3555
+                },
+                {
+                    "spotId": "e7b2c4d5-0002-4f2b-9b02-000000000002",
+                    "spotName": "Gare du Midi",
+                    "timestamp": "2025-02-02T13:52:02",
+                    "durationSeconds": 7424
+                }
+            ],
+            "createdAt": "2025-02-01T13:52:02",
+            "points": 3995,
+            "achievements": [
+                "welcome",
+                "reviewer_1",
+                "reviewer_5",
+                "reviewer_20",
+                "first_step",
+                "time_1h",
+                "time_5h",
+                "time_10h",
+                "time_24h",
+                "time_100h",
+                "explorer_3",
+                "explorer_10",
+                "explorer_15",
+                "explorer_20",
+                "tourist",
+                "party_animal",
+                "shopper",
+                "commuter",
+                "culture_fan",
+                "market_trader",
+                "nature_lover",
+                "penny_pincher",
+                "hermit",
+                "star",
+                "safe_zone",
+                "marathon"
+            ]
         },
         {
             "id": "user_cobra",
@@ -190,10 +1530,510 @@
                 "music"
             ],
             "favorites": [],
-            "history": [],
-            "createdAt": "2025-05-01T18:15:00",
-            "points": 0,
-            "achievements": []
+            "history": [
+                {
+                    "spotId": "c8d9e0f1-0005-43c5-8e05-000000000005",
+                    "spotName": "Place Rogier",
+                    "timestamp": "2025-11-22T16:00:53.800022",
+                    "durationSeconds": 1256
+                },
+                {
+                    "spotId": "e4f50617-0027-6577-b027-000000000027",
+                    "spotName": "Square des Martyrs",
+                    "timestamp": "2025-11-22T04:12:53.800022",
+                    "durationSeconds": 5649
+                },
+                {
+                    "spotId": "e4f50617-0027-6577-b027-000000000027",
+                    "spotName": "Square des Martyrs",
+                    "timestamp": "2025-11-21T22:12:53.800022",
+                    "durationSeconds": 9602
+                },
+                {
+                    "spotId": "56789abc-001e-5c4e-a71e-00000000001e",
+                    "spotName": "Sablon - Antique District",
+                    "timestamp": "2025-10-12T12:04:56",
+                    "durationSeconds": 10388
+                },
+                {
+                    "spotId": "4b5c6d7e-002d-6bbc-b62d-00000000002d",
+                    "spotName": "Pont de la Porte de Ninove",
+                    "timestamp": "2025-10-10T08:34:26",
+                    "durationSeconds": 10208
+                },
+                {
+                    "spotId": "18293a4b-002a-688a-b32a-00000000002a",
+                    "spotName": "Avenue de la Toison d'Or",
+                    "timestamp": "2025-10-05T12:56:37",
+                    "durationSeconds": 6813
+                },
+                {
+                    "spotId": "456789ab-001d-5b3d-a61d-00000000001d",
+                    "spotName": "Place du Jeu de Balle",
+                    "timestamp": "2025-10-05T09:21:50",
+                    "durationSeconds": 1732
+                },
+                {
+                    "spotId": "01234567-0033-7100-bc33-000000000033",
+                    "spotName": "Place du Châtelain (marché)",
+                    "timestamp": "2025-10-01T08:28:45",
+                    "durationSeconds": 8694
+                },
+                {
+                    "spotId": "07172930-0029-6779-b229-000000000029",
+                    "spotName": "Place du Luxembourg",
+                    "timestamp": "2025-09-20T08:54:38",
+                    "durationSeconds": 5150
+                },
+                {
+                    "spotId": "3456789a-001c-5a2c-a51c-00000000001c",
+                    "spotName": "Place Anneessens",
+                    "timestamp": "2025-09-20T06:50:37",
+                    "durationSeconds": 9477
+                },
+                {
+                    "spotId": "23456789-001b-591b-a41b-00000000001b",
+                    "spotName": "Canal de Bruxelles",
+                    "timestamp": "2025-09-15T09:12:21",
+                    "durationSeconds": 9863
+                },
+                {
+                    "spotId": "f5061728-0028-6678-b128-000000000028",
+                    "spotName": "Marché du Parvis",
+                    "timestamp": "2025-09-10T09:26:49",
+                    "durationSeconds": 1924
+                },
+                {
+                    "spotId": "293a4b5c-002b-699b-b42b-00000000002b",
+                    "spotName": "Place du Luxembourg (côté parc)",
+                    "timestamp": "2025-09-10T07:04:34",
+                    "durationSeconds": 8512
+                },
+                {
+                    "spotId": "5c6d7e8f-002e-6ccd-b72e-00000000002e",
+                    "spotName": "Place du Béguinage",
+                    "timestamp": "2025-09-05T08:21:06",
+                    "durationSeconds": 7164
+                },
+                {
+                    "spotId": "12345678-001a-580a-a31a-00000000001a",
+                    "spotName": "Marché du Midi",
+                    "timestamp": "2025-09-01T07:54:29",
+                    "durationSeconds": 7246
+                },
+                {
+                    "spotId": "b1c2d3e4-0024-6274-ad24-000000000024",
+                    "spotName": "Place Van Meenen",
+                    "timestamp": "2025-09-01T07:49:00",
+                    "durationSeconds": 5715
+                },
+                {
+                    "spotId": "789abcd0-0020-5e60-a920-000000000020",
+                    "spotName": "Square Ambiorix",
+                    "timestamp": "2025-09-01T07:46:48",
+                    "durationSeconds": 5826
+                },
+                {
+                    "spotId": "ffffffff-0019-57e9-a219-000000000019",
+                    "spotName": "Quartier Européen",
+                    "timestamp": "2025-08-25T07:58:44",
+                    "durationSeconds": 7071
+                },
+                {
+                    "spotId": "90123456-003c-7a09-c53c-00000000003c",
+                    "spotName": "Square de Meeûs",
+                    "timestamp": "2025-08-25T07:20:51",
+                    "durationSeconds": 7177
+                },
+                {
+                    "spotId": "a0b1c2d3-0023-6173-ac23-000000000023",
+                    "spotName": "Porte de Namur",
+                    "timestamp": "2025-08-20T09:30:43",
+                    "durationSeconds": 1426
+                },
+                {
+                    "spotId": "eeeeeeee-0018-56d8-a118-000000000018",
+                    "spotName": "Porte de Hal",
+                    "timestamp": "2025-08-15T08:07:27",
+                    "durationSeconds": 6191
+                },
+                {
+                    "spotId": "8f901234-0031-6ffe-ba31-000000000031",
+                    "spotName": "Place Constantin Meunier",
+                    "timestamp": "2025-08-10T07:34:54",
+                    "durationSeconds": 6459
+                },
+                {
+                    "spotId": "dddddddd-0017-55c7-a017-000000000017",
+                    "spotName": "Place de la Monnaie",
+                    "timestamp": "2025-08-05T18:40:17",
+                    "durationSeconds": 4460
+                },
+                {
+                    "spotId": "90abcdef-0022-6072-ab22-000000000022",
+                    "spotName": "Halles Saint-Géry",
+                    "timestamp": "2025-08-01T16:48:46",
+                    "durationSeconds": 3915
+                },
+                {
+                    "spotId": "e4f50617-0027-6577-b027-000000000027",
+                    "spotName": "Square des Martyrs",
+                    "timestamp": "2025-08-01T09:33:19",
+                    "durationSeconds": 1512
+                },
+                {
+                    "spotId": "cccccccc-0016-54b6-9f16-000000000016",
+                    "spotName": "Place des Palais",
+                    "timestamp": "2025-08-01T09:00:38",
+                    "durationSeconds": 1650
+                },
+                {
+                    "spotId": "01234567-003d-7b1a-c63d-00000000003d",
+                    "spotName": "Place Emile Dupont",
+                    "timestamp": "2025-08-01T07:10:53",
+                    "durationSeconds": 9741
+                },
+                {
+                    "spotId": "6d7e8f90-002f-6dde-b82f-00000000002f",
+                    "spotName": "Place Fontainas",
+                    "timestamp": "2025-07-25T18:58:23",
+                    "durationSeconds": 6961
+                },
+                {
+                    "spotId": "89abcdef-0021-5f71-aa21-000000000021",
+                    "spotName": "Espace Louise (Place Stéphanie)",
+                    "timestamp": "2025-07-20T12:23:51",
+                    "durationSeconds": 9125
+                },
+                {
+                    "spotId": "bbbbbbbb-0015-53a5-9e15-000000000015",
+                    "spotName": "Avenue Louise",
+                    "timestamp": "2025-07-15T13:56:22",
+                    "durationSeconds": 7062
+                },
+                {
+                    "spotId": "23456789-003f-7d3c-c83f-00000000003f",
+                    "spotName": "Parc Duden",
+                    "timestamp": "2025-07-15T09:06:12",
+                    "durationSeconds": 1350
+                },
+                {
+                    "spotId": "78901234-003a-7807-c339-00000000003a",
+                    "spotName": "Parc du Cinquantenaire (petite esplanade)",
+                    "timestamp": "2025-07-15T07:27:50",
+                    "durationSeconds": 7228
+                },
+                {
+                    "spotId": "7e8f9012-0030-6eef-b930-000000000030",
+                    "spotName": "Quai aux Briques",
+                    "timestamp": "2025-07-05T18:13:51",
+                    "durationSeconds": 9681
+                },
+                {
+                    "spotId": "3a4b5c6d-002c-6aab-b52c-00000000002c",
+                    "spotName": "La Bourse (petite place)",
+                    "timestamp": "2025-07-05T17:30:10",
+                    "durationSeconds": 5291
+                },
+                {
+                    "spotId": "d3e4f506-0026-6476-af26-000000000026",
+                    "spotName": "Musées Royaux des Beaux-Arts",
+                    "timestamp": "2025-07-05T08:36:32",
+                    "durationSeconds": 4558
+                },
+                {
+                    "spotId": "99999999-0013-5183-9c13-000000000013",
+                    "spotName": "Place du Châtelain",
+                    "timestamp": "2025-07-01T17:01:05",
+                    "durationSeconds": 3207
+                },
+                {
+                    "spotId": "e0f1a2b3-0007-45e7-9007-000000000007",
+                    "spotName": "Atomium",
+                    "timestamp": "2025-07-01T16:30:35",
+                    "durationSeconds": 1312
+                },
+                {
+                    "spotId": "90123456-0032-70ff-bb32-000000000032",
+                    "spotName": "Esplanade du Cinquantenaire",
+                    "timestamp": "2025-07-01T13:05:16",
+                    "durationSeconds": 9972
+                },
+                {
+                    "spotId": "12345678-003e-7c2b-c73e-00000000003e",
+                    "spotName": "Parc Elisabeth",
+                    "timestamp": "2025-07-01T06:40:58",
+                    "durationSeconds": 9926
+                },
+                {
+                    "spotId": "aaaaaaaa-0014-5294-9d14-000000000014",
+                    "spotName": "Place Fernand Cocq",
+                    "timestamp": "2025-06-15T17:58:06",
+                    "durationSeconds": 10566
+                },
+                {
+                    "spotId": "d9e0f1a2-0006-44d6-8f06-000000000006",
+                    "spotName": "Parc Royal",
+                    "timestamp": "2025-06-15T08:26:25",
+                    "durationSeconds": 1901
+                },
+                {
+                    "spotId": "c2d3e4f5-0025-6375-ae25-000000000025",
+                    "spotName": "Parc de Bruxelles (Parc Royal - autre entrée)",
+                    "timestamp": "2025-06-15T07:56:56",
+                    "durationSeconds": 3309
+                },
+                {
+                    "spotId": "88888888-0012-5072-9b12-000000000012",
+                    "spotName": "Place Jourdan",
+                    "timestamp": "2025-06-12T17:21:13",
+                    "durationSeconds": 1983
+                },
+                {
+                    "spotId": "c8d9e0f1-0005-43c5-8e05-000000000005",
+                    "spotName": "Place Rogier",
+                    "timestamp": "2025-05-20T17:26:05",
+                    "durationSeconds": 5426
+                },
+                {
+                    "spotId": "66666666-0010-4e60-9910-000000000010",
+                    "spotName": "Quartier des Marolles",
+                    "timestamp": "2025-05-20T13:11:02",
+                    "durationSeconds": 6321
+                },
+                {
+                    "spotId": "67890123-0039-7706-c238-000000000039",
+                    "spotName": "Parvis Notre-Dame",
+                    "timestamp": "2025-05-15T08:52:45",
+                    "durationSeconds": 5341
+                },
+                {
+                    "spotId": "b4c5d6e7-0004-42b4-8d04-000000000004",
+                    "spotName": "Mont des Arts",
+                    "timestamp": "2025-05-12T14:02:24",
+                    "durationSeconds": 6467
+                },
+                {
+                    "spotId": "33333333-000d-4b3d-960d-00000000000d",
+                    "spotName": "Bois de la Cambre",
+                    "timestamp": "2025-05-12T10:27:17",
+                    "durationSeconds": 3185
+                },
+                {
+                    "spotId": "77777777-0011-4f71-9a11-000000000011",
+                    "spotName": "Place Saint-Géry",
+                    "timestamp": "2025-05-05T19:39:18",
+                    "durationSeconds": 8305
+                },
+                {
+                    "spotId": "23456789-0035-7302-be35-000000000035",
+                    "spotName": "Place Royale",
+                    "timestamp": "2025-05-05T12:16:46",
+                    "durationSeconds": 9646
+                },
+                {
+                    "spotId": "22222222-000c-4a2c-950c-00000000000c",
+                    "spotName": "Parc de la Cinquantenaire",
+                    "timestamp": "2025-04-18T07:38:42",
+                    "durationSeconds": 6535
+                },
+                {
+                    "spotId": "56789012-0038-7605-c137-000000000038",
+                    "spotName": "Place de Brouckère",
+                    "timestamp": "2025-04-05T17:48:03",
+                    "durationSeconds": 3717
+                },
+                {
+                    "spotId": "11111111-000b-491b-940b-00000000000b",
+                    "spotName": "Galeries Royales Saint-Hubert",
+                    "timestamp": "2025-04-05T10:17:34",
+                    "durationSeconds": 2191
+                },
+                {
+                    "spotId": "89012345-003b-7908-c43b-00000000003b",
+                    "spotName": "Rue du Marché aux Herbes",
+                    "timestamp": "2025-04-01T17:26:15",
+                    "durationSeconds": 1736
+                },
+                {
+                    "spotId": "44444444-000e-4c4e-970e-00000000000e",
+                    "spotName": "Place Sainte-Catherine",
+                    "timestamp": "2025-04-01T16:50:19",
+                    "durationSeconds": 3649
+                },
+                {
+                    "spotId": "55555555-000f-4d5f-980f-00000000000f",
+                    "spotName": "Place Flagey",
+                    "timestamp": "2025-03-20T16:54:00",
+                    "durationSeconds": 7386
+                },
+                {
+                    "spotId": "45678901-0037-7504-c036-000000000037",
+                    "spotName": "Rue des Bouchers",
+                    "timestamp": "2025-03-20T16:42:28",
+                    "durationSeconds": 7700
+                },
+                {
+                    "spotId": "6789abcd-001f-5d5f-a81f-00000000001f",
+                    "spotName": "Gare Centrale",
+                    "timestamp": "2025-03-15T16:31:18",
+                    "durationSeconds": 5038
+                },
+                {
+                    "spotId": "a1b2c3d4-0003-41a3-8c03-000000000003",
+                    "spotName": "Place du Sablon",
+                    "timestamp": "2025-03-15T10:18:17",
+                    "durationSeconds": 3802
+                },
+                {
+                    "spotId": "f1a2b3c4-0008-46f8-9108-000000000008",
+                    "spotName": "Parvis de Saint-Gilles",
+                    "timestamp": "2025-03-12T11:31:39",
+                    "durationSeconds": 8527
+                },
+                {
+                    "spotId": "e7b2c4d5-0002-4f2b-9b02-000000000002",
+                    "spotName": "Gare du Midi",
+                    "timestamp": "2025-03-10T18:27:30",
+                    "durationSeconds": 8043
+                },
+                {
+                    "spotId": "34567890-0036-7403-bf36-000000000036",
+                    "spotName": "Place du Sablon (côté chocolatiers)",
+                    "timestamp": "2025-03-10T15:33:52",
+                    "durationSeconds": 1236
+                },
+                {
+                    "spotId": "12345678-0034-7201-bd34-000000000034",
+                    "spotName": "Boulevard Anspach",
+                    "timestamp": "2025-03-10T15:18:38",
+                    "durationSeconds": 9121
+                },
+                {
+                    "spotId": "01234567-0009-4709-9209-000000000009",
+                    "spotName": "Rue Neuve",
+                    "timestamp": "2025-03-05T12:26:03",
+                    "durationSeconds": 10608
+                },
+                {
+                    "spotId": "d0f1a3b2-0001-4e1a-8a01-000000000001",
+                    "spotName": "Grand-Place",
+                    "timestamp": "2025-03-03T16:12:45",
+                    "durationSeconds": 7781
+                },
+                {
+                    "spotId": "89abcdef-000a-480a-930a-00000000000a",
+                    "spotName": "Bourse",
+                    "timestamp": "2025-03-01T16:41:47",
+                    "durationSeconds": 10587
+                }
+            ],
+            "createdAt": "2025-02-28T16:41:47",
+            "points": 3995,
+            "achievements": [
+                "welcome",
+                "reviewer_1",
+                "reviewer_5",
+                "reviewer_20",
+                "first_step",
+                "time_1h",
+                "time_5h",
+                "time_10h",
+                "time_24h",
+                "time_100h",
+                "explorer_3",
+                "explorer_10",
+                "explorer_15",
+                "explorer_20",
+                "tourist",
+                "party_animal",
+                "shopper",
+                "commuter",
+                "culture_fan",
+                "market_trader",
+                "nature_lover",
+                "afterwork",
+                "penny_pincher",
+                "hermit",
+                "star",
+                "lunch_time",
+                "weekender",
+                "safe_zone"
+            ]
+        },
+        {
+            "id": "1e65c150-ecd9-429a-98ca-59141b26db38",
+            "name": "test",
+            "password_hash": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+            "attributes": [
+                "music"
+            ],
+            "favorites": [
+                "e0f1a2b3-0007-45e7-9007-000000000007"
+            ],
+            "history": [
+                {
+                    "spotId": "28608358-be27-4d60-b284-bf1aae7960d6",
+                    "spotName": "Odoo Ferme",
+                    "timestamp": "2025-11-23T13:59:14.884663",
+                    "durationSeconds": 0
+                },
+                {
+                    "spotId": "28608358-be27-4d60-b284-bf1aae7960d6",
+                    "spotName": "Odoo Ferme",
+                    "timestamp": "2025-11-23T13:58:47.955609",
+                    "durationSeconds": 17
+                },
+                {
+                    "spotId": "28608358-be27-4d60-b284-bf1aae7960d6",
+                    "spotName": "Odoo Ferme",
+                    "timestamp": "2025-11-23T13:57:31.434479",
+                    "durationSeconds": 23
+                },
+                {
+                    "spotId": "28608358-be27-4d60-b284-bf1aae7960d6",
+                    "spotName": "Odoo Ferme",
+                    "timestamp": "2025-11-23T13:51:10.199963",
+                    "durationSeconds": 24
+                },
+                {
+                    "spotId": "28608358-be27-4d60-b284-bf1aae7960d6",
+                    "spotName": "Odoo Ferme",
+                    "timestamp": "2025-11-23T13:45:57.365121",
+                    "durationSeconds": 8
+                },
+                {
+                    "spotId": "28608358-be27-4d60-b284-bf1aae7960d6",
+                    "spotName": "Odoo Ferme",
+                    "timestamp": "2025-11-23T13:45:40.603496",
+                    "durationSeconds": 42
+                },
+                {
+                    "spotId": "28608358-be27-4d60-b284-bf1aae7960d6",
+                    "spotName": "Odoo Ferme",
+                    "timestamp": "2025-11-23T13:45:24.543971",
+                    "durationSeconds": 44
+                },
+                {
+                    "spotId": "28608358-be27-4d60-b284-bf1aae7960d6",
+                    "spotName": "Odoo Ferme",
+                    "timestamp": "2025-11-23T13:43:32.711103",
+                    "durationSeconds": 64
+                }
+            ],
+            "createdAt": "2025-11-23T13:43:05.267041",
+            "points": 490,
+            "achievements": [
+                "welcome",
+                "first_step",
+                "sprint",
+                "lunch_time",
+                "weekender",
+                "rich_zone",
+                "reviewer_1",
+                "loyal_5",
+                "gourmet"
+            ]
         }
     ],
     "spots": [
@@ -3230,6 +5070,16 @@
             "currentActiveUsers": 1,
             "reviews": [
                 {
+                    "id": "rev_1763901895459",
+                    "authorName": "test",
+                    "ratingRevenue": 4.5,
+                    "ratingSecurity": 1.0,
+                    "ratingTraffic": 4.0,
+                    "attribute": "music",
+                    "comment": "Cest sympa",
+                    "createdAt": "2025-11-23T13:44:55.459987"
+                },
+                {
                     "id": "rev-78901234-003a-1",
                     "authorName": "JeanMarc",
                     "ratingRevenue": 1.0,
@@ -3556,6 +5406,39 @@
                     "attribute": "dog",
                     "comment": "Création du spot",
                     "createdAt": "2025-11-23T04:27:19.736728"
+                }
+            ]
+        },
+        {
+            "id": "28608358-be27-4d60-b284-bf1aae7960d6",
+            "name": "Odoo Ferme",
+            "description": "Beaucoup de gens trés riche, trés généreux",
+            "latitude": 50.63009009477117,
+            "longitude": 4.863398408115104,
+            "category": "Business",
+            "createdAt": "2025-11-23T08:42:06.297176",
+            "createdBy": "f30a85a3-2b22-4a2e-8db6-0b5c69195c8d",
+            "currentActiveUsers": 0,
+            "reviews": [
+                {
+                    "id": "rev_1763884542323",
+                    "authorName": "caca",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 4.5,
+                    "ratingTraffic": 1.5,
+                    "attribute": "dog",
+                    "comment": "c cool ils sont riches",
+                    "createdAt": "2025-11-23T08:55:42.323817"
+                },
+                {
+                    "id": "init_1763883726297",
+                    "authorName": "caca",
+                    "ratingRevenue": 5.0,
+                    "ratingSecurity": 5.0,
+                    "ratingTraffic": 3.0,
+                    "attribute": "dog",
+                    "comment": "Création du spot",
+                    "createdAt": "2025-11-23T08:42:06.297176"
                 }
             ]
         }

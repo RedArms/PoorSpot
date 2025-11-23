@@ -9,24 +9,27 @@ class MapView extends StatelessWidget {
   final LatLng? tempPosition;
   final Function(Spot) onSpotTap;
   final Function(LatLng) onMapLongPress;
+  final MapController mapController;
 
   const MapView({
     super.key,
     required this.spots,
-    this.selectedSpotId,
-    this.tempPosition,
     required this.onSpotTap,
     required this.onMapLongPress,
+    required this.mapController,
+    this.tempPosition,
+    this.selectedSpotId,
   });
 
   @override
   Widget build(BuildContext context) {
     final allMarkers = <Marker>[
-      ...spots.map((spot) => _buildSpotMarker(context, spot)),
       if (tempPosition != null) _buildTempMarker(context, tempPosition!),
+      ...spots.map((spot) => _buildSpotMarker(context, spot)),
     ];
 
     return FlutterMap(
+      mapController: mapController,
       options: MapOptions(
         initialCenter: const LatLng(50.8503, 4.3517),
         initialZoom: 13.0,
@@ -57,7 +60,7 @@ class MapView extends StatelessWidget {
 
     return Marker(
       point: spot.position,
-      width: size, 
+      width: size,
       height: size,
       alignment: Alignment.topCenter,
       child: GestureDetector(
@@ -70,20 +73,24 @@ class MapView extends StatelessWidget {
             children: [
               // A. Le PING (Goutte)
               Icon(
-                Icons.location_on, 
-                color: pinColor, 
+                Icons.location_on,
+                color: pinColor,
                 size: size,
                 shadows: [
-                  BoxShadow(color: Colors.black.withOpacity(0.3), blurRadius: 10, offset: const Offset(0, 5))
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.3),
+                    blurRadius: 10,
+                    offset: const Offset(0, 5),
+                  )
                 ],
               ),
-              
+
               // B. Le PICTOGRAMME (Catégorie)
               Positioned(
                 top: size * 0.15,
                 child: Icon(
-                  categoryIcon, 
-                  size: size * 0.45, 
+                  categoryIcon,
+                  size: size * 0.45,
                   color: Colors.white,
                 ),
               ),
@@ -96,9 +103,15 @@ class MapView extends StatelessWidget {
 
   Marker _buildTempMarker(BuildContext context, LatLng pos) {
     return Marker(
-      point: pos, width: 50, height: 50,
+      point: pos,
+      width: 50,
+      height: 50,
       alignment: Alignment.topCenter,
-      child: const Icon(Icons.add_location_alt, size: 50, color: Colors.black),
+      child: const Icon(
+        Icons.add_location_alt,
+        size: 50,
+        color: Colors.black, // Couleur noire pour bien ressortir sur la carte claire
+      ),
     );
   }
 
@@ -114,11 +127,15 @@ class MapView extends StatelessWidget {
 
   IconData _getCategoryIcon(String category) {
     switch (category) {
-      case 'Tourisme': return Icons.camera_alt; 
-      case 'Business': return Icons.business_center; 
-      case 'Shopping': return Icons.shopping_bag; 
-      case 'Nightlife': return Icons.local_bar; 
-      case 'Transport': return Icons.directions_subway; 
+      case 'Tourisme': return Icons.camera_alt;
+      case 'Business': return Icons.business_center;
+      case 'Shopping': return Icons.shopping_bag;
+      case 'Nightlife': return Icons.local_bar;
+      case 'Transport': return Icons.directions_subway;
+      case 'Culture': return Icons.school; // Icone ajoutée pour Culture
+      case 'Parc': return Icons.park;      // Icone ajoutée pour Parc
+      case 'Market': return Icons.storefront;// Icone ajoutée pour Market
+      case 'Nature': return Icons.nature_people; // Icone ajoutée pour Nature
       default: return Icons.place;
     }
   }
