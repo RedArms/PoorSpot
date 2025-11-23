@@ -10,8 +10,7 @@ class ApiService {
     return 'http://127.0.0.1:8000'; 
   }
 
-  // --- AUTH ---
-
+  // --- AUTH --- (Inchangé)
   Future<User?> register(String username, String password, List<BeggarAttribute> attributes) async {
     try {
       final body = {
@@ -28,12 +27,8 @@ class ApiService {
 
       if (response.statusCode == 200) {
         return User.fromJson(json.decode(utf8.decode(response.bodyBytes)));
-      } else {
-        print("Erreur Register: ${response.body}");
       }
-    } catch (e) {
-      print("Exception Register: $e");
-    }
+    } catch (e) { print("Err Register: $e"); }
     return null;
   }
 
@@ -52,12 +47,8 @@ class ApiService {
 
       if (response.statusCode == 200) {
         return User.fromJson(json.decode(utf8.decode(response.bodyBytes)));
-      } else {
-        print("Erreur Login: ${response.body}");
       }
-    } catch (e) {
-      print("Exception Login: $e");
-    }
+    } catch (e) { print("Err Login: $e"); }
     return null;
   }
 
@@ -72,48 +63,41 @@ class ApiService {
     } catch (e) { return false; }
   }
 
-  // --- FAVORITES ---
-
+  // --- FAVORITES --- (Inchangé)
   Future<bool> addFavorite(String userId, String spotId) async {
     try {
-      final response = await http.post(
-        Uri.parse('$baseUrl/users/$userId/favorites/$spotId'),
-      );
+      final response = await http.post(Uri.parse('$baseUrl/users/$userId/favorites/$spotId'));
       return response.statusCode == 200;
-    } catch (e) {
-      print("Exception addFavorite: $e");
-      return false;
-    }
+    } catch (e) { return false; }
   }
 
   Future<bool> removeFavorite(String userId, String spotId) async {
     try {
-      final response = await http.delete(
-        Uri.parse('$baseUrl/users/$userId/favorites/$spotId'),
-      );
+      final response = await http.delete(Uri.parse('$baseUrl/users/$userId/favorites/$spotId'));
       return response.statusCode == 200;
-    } catch (e) {
-      print("Exception removeFavorite: $e");
-      return false;
-    }
+    } catch (e) { return false; }
   }
 
-  Future<List<String>> getFavorites(String userId) async {
+  // --- OCCUPATION ---
+
+  Future<Map<String, dynamic>> fetchOccupations() async {
     try {
-      final response = await http.get(
-        Uri.parse('$baseUrl/users/$userId/favorites'),
-      );
+      final response = await http.get(Uri.parse('$baseUrl/occupations'));
       if (response.statusCode == 200) {
-        return List<String>.from(json.decode(utf8.decode(response.bodyBytes)));
+        return Map<String, dynamic>.from(json.decode(utf8.decode(response.bodyBytes)));
       }
-    } catch (e) {
-      print("Exception getFavorites: $e");
-    }
-    return [];
+    } catch (e) { print("Err fetchOccupations: $e"); }
+    return {};
   }
 
-  // --- DATA ---
+  Future<bool> occupySpot(String spotId, String userId) async {
+    try {
+      final response = await http.post(Uri.parse('$baseUrl/spots/$spotId/occupy?user_id=$userId'));
+      return response.statusCode == 200;
+    } catch (e) { return false; }
+  }
 
+  // --- DATA --- (Inchangé)
   Future<List<Spot>> fetchSpots() async {
     try {
       final response = await http.get(Uri.parse('$baseUrl/spots'));
@@ -150,4 +134,44 @@ class ApiService {
       return response.statusCode == 200;
     } catch (e) { return false; }
   }
+// Retourne une Map avec durée et succès
+  Future<Map<String, dynamic>> releaseSpotFull(String spotId, String userId) async {
+    try {
+      final response = await http.post(Uri.parse('$baseUrl/spots/$spotId/release?user_id=$userId'));
+      if (response.statusCode == 200) {
+        return json.decode(utf8.decode(response.bodyBytes));
+      }
+    } catch (e) { print("Err release: $e"); }
+    return {};
+  }
+
+  Future<List<AchievementDef>> fetchAllAchievements() async {
+    try {
+      final response = await http.get(Uri.parse('$baseUrl/achievements/list'));
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(utf8.decode(response.bodyBytes));
+        return data.map((e) => AchievementDef.fromJson(e)).toList();
+      }
+    } catch (e) {}
+    return [];
+  }
+
+  Future<List<Map<String, dynamic>>> fetchLeaderboard(String period, String sortBy) async {
+    try {
+      final response = await http.get(Uri.parse('$baseUrl/users/top?period=$period&sort_by=$sortBy'));
+      if (response.statusCode == 200) {
+        final List<dynamic> data = json.decode(utf8.decode(response.bodyBytes));
+        return data.cast<Map<String, dynamic>>();
+      }
+    } catch (e) { print("Err top: $e"); }
+    return [];
+  }
+  
+  // Garder l'ancienne méthode pour compatibilité si besoin, ou la rediriger
+ // Garder l'ancienne méthode pour compatibilité si besoin, ou la rediriger
+  Future<int?> releaseSpot(String spotId, String userId) async {
+    final res = await releaseSpotFull(spotId, userId);
+    return res['duration'] as int?;
+  }
+
 }

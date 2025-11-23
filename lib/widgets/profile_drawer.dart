@@ -20,7 +20,7 @@ class ProfileDrawer extends StatefulWidget {
   State<ProfileDrawer> createState() => _ProfileDrawerState();
 }
 
-class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProviderStateMixin {
+class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateMixin {
   final ApiService _api = ApiService();
   
   bool _isRegistering = false;
@@ -31,21 +31,34 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
   String? _errorMsg;
 
   TabController? _tabController;
+  List<AchievementDef> _allAchievements = [];
 
   @override
   void initState() {
     super.initState();
     if (CurrentSession().user != null) {
-      _tabController = TabController(length: 3, vsync: this);
+      _tabController = TabController(length: 4, vsync: this);
+      _loadAchievements();
     }
+  }
+
+  Future<void> _loadAchievements() async {
+    _allAchievements = await _api.fetchAllAchievements();
+    if (mounted) setState(() {});
   }
 
   @override
   void didUpdateWidget(covariant ProfileDrawer oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (CurrentSession().user != null && _tabController == null) {
-      _tabController = TabController(length: 3, vsync: this);
-    } else if (CurrentSession().user == null && _tabController != null) {
+    final user = CurrentSession().user;
+    if (user != null) {
+      if (_tabController == null) {
+        _tabController = TabController(length: 4, vsync: this);
+      }
+      if (_allAchievements.isEmpty) {
+        _loadAchievements();
+      }
+    } else {
       _tabController?.dispose();
       _tabController = null;
     }
@@ -87,7 +100,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
 
     if (user != null) {
       if (_tabController == null) {
-        _tabController = TabController(length: 3, vsync: this);
+        _tabController = TabController(length: 4, vsync: this);
       }
       return _buildUserProfile(user);
     }
@@ -231,7 +244,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
             ),
           ),
 
-          // TAB BAR - 3 TABS
+          // TAB BAR
           Container(
             color: const Color(0xFF020617),
             child: TabBar(
@@ -242,10 +255,12 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
               unselectedLabelColor: Colors.white54,
               labelStyle: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 0.5),
               labelPadding: EdgeInsets.zero,
+              isScrollable: false,
               tabs: const [
                 Tab(text: "PROFIL", icon: Icon(Icons.person_outline, size: 18)),
+                Tab(text: "HISTO.", icon: Icon(Icons.history, size: 18)),
+                Tab(text: "SUCCÈS", icon: Icon(Icons.emoji_events, size: 18)),
                 Tab(text: "FAVORIS", icon: Icon(Icons.star_outline, size: 18)),
-                Tab(text: "MES AVIS", icon: Icon(Icons.rate_review_outlined, size: 18)),
               ],
             ),
           ),
@@ -256,13 +271,14 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
               controller: _tabController,
               children: [
                 _buildProfileTab(user),
+                _buildHistoryTab(user),
+                _buildAchievementsTab(user),
                 _buildFavoritesTab(),
-                _buildReviewsTab(),
               ],
             ),
           ),
 
-          // LOGOUT BUTTON
+          // LOGOUT
           Container(
             padding: const EdgeInsets.all(16),
             decoration: const BoxDecoration(border: Border(top: BorderSide(color: Colors.white10))),
@@ -319,7 +335,9 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Row(
             children: [
-              _buildStatCard(Icons.rate_review, _getUserReviews().length.toString(), "Avis"),
+              _buildStatCard(Icons.timer, user.totalBeggingTime, "Temps Total"),
+              const SizedBox(width: 12),
+              _buildStatCard(Icons.emoji_events, "${user.points}", "Points"),
               const SizedBox(width: 12),
               _buildStatCard(Icons.star, _getFavoriteSpots().length.toString(), "Favoris"),
             ],
@@ -329,10 +347,121 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
     );
   }
 
+  // --- ACHIEVEMENTS TAB ---
+  Widget _buildAchievementsTab(User user) {
+    if (_allAchievements.isEmpty) return const Center(child: CircularProgressIndicator(color: Color(0xFF00C853)));
+
+    return GridView.builder(
+      padding: const EdgeInsets.all(12),
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 3, 
+        childAspectRatio: 0.8,
+        crossAxisSpacing: 10, 
+        mainAxisSpacing: 10
+      ),
+      itemCount: _allAchievements.length,
+      itemBuilder: (context, index) {
+        final def = _allAchievements[index];
+        final isUnlocked = user.achievements.contains(def.id);
+
+        return Opacity(
+          opacity: isUnlocked ? 1.0 : 0.3,
+          child: Container(
+            decoration: BoxDecoration(
+              color: isUnlocked ? Colors.amber.withOpacity(0.1) : Colors.white10,
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: isUnlocked ? Colors.amber : Colors.white10),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(_getIconData(def.icon), size: 30, color: isUnlocked ? Colors.amber : Colors.white),
+                const SizedBox(height: 8),
+                Text(def.name, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white, fontSize: 10, fontWeight: FontWeight.bold)),
+                const SizedBox(height: 4),
+                Text("${def.points} pts", style: TextStyle(color: isUnlocked ? Colors.amber : Colors.grey, fontSize: 9)),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  IconData _getIconData(String name) {
+    switch (name) {
+      case 'footprint': return Icons.directions_walk;
+      case 'compass': return Icons.explore;
+      case 'map': return Icons.map;
+      case 'hourglass_bottom': return Icons.hourglass_bottom;
+      case 'hourglass_top': return Icons.hourglass_top;
+      case 'fire': return Icons.local_fire_department;
+      case 'bedtime': return Icons.bedtime;
+      case 'business_center': return Icons.business_center;
+      case 'camera_alt': return Icons.camera_alt;
+      default: return Icons.emoji_events;
+    }
+  }
+
+  // --- HISTORY TAB ---
+  Widget _buildHistoryTab(User user) {
+    if (user.history.isEmpty) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.history_toggle_off, size: 60, color: Colors.white.withOpacity(0.2)),
+            const SizedBox(height: 16),
+            const Text("Aucun pointage récent", style: TextStyle(color: Colors.white54, fontSize: 14)),
+          ],
+        ),
+      );
+    }
+
+    return ListView.builder(
+      padding: const EdgeInsets.all(12),
+      itemCount: user.history.length,
+      itemBuilder: (context, index) {
+        final log = user.history[index];
+        return Container(
+          margin: const EdgeInsets.only(bottom: 10),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.05),
+            borderRadius: BorderRadius.circular(8),
+            border: Border(left: BorderSide(color: const Color(0xFF00C853), width: 3)),
+          ),
+          child: ListTile(
+            dense: true,
+            contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+            title: Text(
+              log.spotName,
+              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            ),
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(_formatFullDate(log.timestamp), style: const TextStyle(color: Colors.white54, fontSize: 11)),
+                Text(
+                  "Durée: ${log.formattedDuration}", 
+                  style: const TextStyle(color: Color(0xFF00C853), fontSize: 11, fontWeight: FontWeight.bold)
+                ),
+              ],
+            ),
+            trailing: Icon(
+              log.durationSeconds > 0 ? Icons.check_circle : Icons.timelapse, 
+              color: log.durationSeconds > 0 ? const Color(0xFF00C853) : Colors.amber, 
+              size: 18
+            ),
+          ),
+        );
+      },
+    );
+  }
+
   Widget _buildStatCard(IconData icon, String value, String label) {
     return Expanded(
       child: Container(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 4), 
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.05),
           borderRadius: BorderRadius.circular(12),
@@ -340,10 +469,29 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
         ),
         child: Column(
           children: [
-            Icon(icon, color: const Color(0xFF00C853), size: 24),
-            const SizedBox(height: 8),
-            Text(value, style: const TextStyle(color: Colors.white, fontSize: 24, fontWeight: FontWeight.bold)),
-            Text(label, style: const TextStyle(color: Colors.grey, fontSize: 11)),
+            Icon(icon, color: const Color(0xFF00C853), size: 20),
+            const SizedBox(height: 6),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4.0),
+              child: FittedBox(
+                fit: BoxFit.scaleDown, 
+                child: Text(
+                  value,
+                  maxLines: 1,
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 18, 
+                    fontWeight: FontWeight.bold
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(height: 2),
+            Text(
+              label, 
+              style: const TextStyle(color: Colors.grey, fontSize: 10),
+              textAlign: TextAlign.center,
+            ),
           ],
         ),
       ),
@@ -361,9 +509,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
           children: [
             Icon(Icons.star_outline, size: 60, color: Colors.white.withOpacity(0.2)),
             const SizedBox(height: 16),
-            const Text("Aucun favori pour le moment", style: TextStyle(color: Colors.white54, fontSize: 14)),
-            const SizedBox(height: 8),
-            const Text("Ajoutez des spots avec l'étoile ⭐", style: TextStyle(color: Colors.white38, fontSize: 12)),
+            const Text("Aucun favori", style: TextStyle(color: Colors.white54, fontSize: 14)),
           ],
         ),
       );
@@ -385,35 +531,6 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
     );
   }
 
-  // --- REVIEWS TAB ---
-  Widget _buildReviewsTab() {
-    final userReviews = _getUserReviews();
-
-    if (userReviews.isEmpty) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.rate_review_outlined, size: 60, color: Colors.white.withOpacity(0.2)),
-            const SizedBox(height: 16),
-            const Text("Aucun avis pour le moment", style: TextStyle(color: Colors.white54, fontSize: 14)),
-            const SizedBox(height: 8),
-            const Text("Partagez votre expérience sur les spots !", style: TextStyle(color: Colors.white38, fontSize: 12)),
-          ],
-        ),
-      );
-    }
-
-    return ListView.builder(
-      padding: const EdgeInsets.all(12),
-      itemCount: userReviews.length,
-      itemBuilder: (context, index) {
-        final item = userReviews[index];
-        return _UserReviewCard(item: item);
-      },
-    );
-  }
-
   Future<void> _submitAuth() async {
     if (_usernameCtrl.text.isEmpty || _passwordCtrl.text.isEmpty) {
       setState(() => _errorMsg = "Champs requis");
@@ -429,11 +546,12 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
 
     if (result != null) {
       CurrentSession().user = result;
-      _tabController = TabController(length: 3, vsync: this);
+      _tabController?.dispose();
+      _tabController = TabController(length: 4, vsync: this);
       widget.onLoginSuccess(); 
       Navigator.pop(context); 
     } else {
-      setState(() => _errorMsg = "Identifiants incorrects ou erreur serveur");
+      setState(() => _errorMsg = "Erreur connexion");
     }
   }
 
@@ -519,6 +637,10 @@ class _ProfileDrawerState extends State<ProfileDrawer> with SingleTickerProvider
       case BeggarAttribute.family: return "Famille";
     }
   }
+
+  String _formatFullDate(DateTime d) {
+    return "${d.day}/${d.month}/${d.year} à ${d.hour}h${d.minute.toString().padLeft(2,'0')}";
+  }
 }
 
 // --- Helper class ---
@@ -552,7 +674,6 @@ class _FavoriteSpotCard extends StatelessWidget {
         ),
         child: Row(
           children: [
-            // Rating circle
             Container(
               width: 50,
               height: 50,
@@ -569,7 +690,6 @@ class _FavoriteSpotCard extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 14),
-            // Info
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -593,21 +713,9 @@ class _FavoriteSpotCard extends StatelessWidget {
                     spot.category.toUpperCase(),
                     style: const TextStyle(color: Colors.grey, fontSize: 10, letterSpacing: 1),
                   ),
-                  const SizedBox(height: 6),
-                  Row(
-                    children: [
-                      const Icon(Icons.rate_review, size: 12, color: Colors.white38),
-                      const SizedBox(width: 4),
-                      Text(
-                        "${spot.reviews.length} avis",
-                        style: const TextStyle(color: Colors.white38, fontSize: 11),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             ),
-            // Arrow
             const Icon(Icons.chevron_right, color: Colors.white38),
           ],
         ),
@@ -756,11 +864,11 @@ class _UserReviewCardState extends State<_UserReviewCard> {
   String _formatDate(DateTime date) {
     final diff = DateTime.now().difference(date);
     if (diff.inDays == 0) {
-      if (diff.inHours == 0) return "Il y a ${diff.inMinutes} min";
-      return "Il y a ${diff.inHours}h";
+      if (diff.inHours == 0) return "${diff.inMinutes} min";
+      return "${diff.inHours}h";
     } else if (diff.inDays == 1) return "Hier";
-    else if (diff.inDays < 7) return "Il y a ${diff.inDays} jours";
-    return "${date.day}/${date.month}/${date.year}";
+    else if (diff.inDays < 7) return "${diff.inDays} j";
+    return "${date.day}/${date.month}";
   }
 
   IconData _getCategoryIcon(String category) {

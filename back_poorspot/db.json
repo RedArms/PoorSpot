@@ -10,6 +10,32 @@
                 "family"
             ],
             "favorites": [],
+            "history": [
+                {
+                    "spotId": "c8d9e0f1-0005-43c5-8e05-000000000005",
+                    "spotName": "Place Rogier",
+                    "timestamp": "2025-11-23T00:00:27.699237",
+                    "durationSeconds": 135
+                },
+                {
+                    "spotId": "89abcdef-0021-5f71-aa21-000000000021",
+                    "spotName": "Espace Louise (Place Stéphanie)",
+                    "timestamp": "2025-11-22T23:51:34.252665",
+                    "durationSeconds": 180
+                },
+                {
+                    "spotId": "44444444-000e-4c4e-970e-00000000000e",
+                    "spotName": "Place Sainte-Catherine",
+                    "timestamp": "2025-11-22T23:42:14.832394",
+                    "durationSeconds": 12
+                },
+                {
+                    "spotId": "01234567-0009-4709-9209-000000000009",
+                    "spotName": "Rue Neuve",
+                    "timestamp": "2025-11-22T23:40:57.139900",
+                    "durationSeconds": 319
+                }
+            ],
             "createdAt": "2025-01-01T12:00:00"
         },
         {
@@ -23,8 +49,51 @@
             ],
             "favorites": [
                 "89012345-003b-7908-c43b-00000000003b",
-                "01234567-0009-4709-9209-000000000009",
                 "456789ab-001d-5b3d-a61d-00000000001d"
+            ],
+            "history": [
+                {
+                    "spotId": "12345678-001a-580a-a31a-00000000001a",
+                    "spotName": "Marché du Midi",
+                    "timestamp": "2025-11-23T00:00:49.325382",
+                    "durationSeconds": 107
+                },
+                {
+                    "spotId": "01234567-0033-7100-bc33-000000000033",
+                    "spotName": "Place du Châtelain (marché)",
+                    "timestamp": "2025-11-22T23:46:27.268833",
+                    "durationSeconds": 232
+                },
+                {
+                    "spotId": "55555555-000f-4d5f-980f-00000000000f",
+                    "spotName": "Place Flagey",
+                    "timestamp": "2025-11-22T23:45:50.612227",
+                    "durationSeconds": 36
+                },
+                {
+                    "spotId": "c8d9e0f1-0005-43c5-8e05-000000000005",
+                    "spotName": "Place Rogier",
+                    "timestamp": "2025-11-22T23:40:45.775783",
+                    "durationSeconds": 165
+                },
+                {
+                    "spotId": "01234567-0009-4709-9209-000000000009",
+                    "spotName": "Rue Neuve",
+                    "timestamp": "2025-11-22T23:33:06.884324",
+                    "durationSeconds": 77
+                },
+                {
+                    "spotId": "01234567-0009-4709-9209-000000000009",
+                    "spotName": "Rue Neuve",
+                    "timestamp": "2025-11-22T23:26:33.967738",
+                    "durationSeconds": 66
+                },
+                {
+                    "spotId": "01234567-0009-4709-9209-000000000009",
+                    "spotName": "Rue Neuve",
+                    "timestamp": "2025-11-22T23:26:02.708512",
+                    "durationSeconds": 10
+                }
             ],
             "createdAt": "2025-11-22T21:31:57.581454"
         },
@@ -37,6 +106,7 @@
                 "music"
             ],
             "favorites": [],
+            "history": [],
             "createdAt": "2025-02-14T10:22:00"
         },
         {
@@ -48,6 +118,7 @@
                 "student"
             ],
             "favorites": [],
+            "history": [],
             "createdAt": "2025-04-03T09:00:00"
         },
         {
@@ -60,6 +131,7 @@
                 "music"
             ],
             "favorites": [],
+            "history": [],
             "createdAt": "2025-05-01T18:15:00"
         }
     ],
