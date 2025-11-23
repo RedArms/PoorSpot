@@ -13,13 +13,11 @@ class LeaderboardScreen extends StatefulWidget {
 class _LeaderboardScreenState extends State<LeaderboardScreen> {
   final ApiService _api = ApiService();
   
-  // États
   String _selectedPeriod = "forever"; // daily, weekly, monthly, forever
-  String _sortBy = "points"; // 'points' (défaut) ou 'time'
+  String _sortBy = "points"; // 'points' or 'time'
   List<Map<String, dynamic>> _users = [];
   bool _isLoading = true;
 
-  // Configuration des filtres
   final List<String> _periods = ["daily", "weekly", "monthly", "forever"];
   final Map<String, String> _periodLabels = {
     "daily": "24H",
@@ -36,7 +34,6 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
 
   Future<void> _loadData() async {
     setState(() => _isLoading = true);
-    // On appelle l'API avec la période et le mode de tri
     final data = await _api.fetchLeaderboard(_selectedPeriod, _sortBy);
     if (mounted) {
       setState(() {
@@ -48,9 +45,7 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
 
   void _onPeriodChanged(String period) {
     if (_selectedPeriod == period) return;
-    setState(() {
-      _selectedPeriod = period;
-    });
+    setState(() => _selectedPeriod = period);
     _loadData();
   }
 
@@ -67,11 +62,11 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
       ),
       body: Column(
         children: [
-          // --- TOGGLE TYPE (Points vs Temps) ---
+          // SWITCH MODE
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
             child: Container(
-              decoration: BoxDecoration(color: Colors.white10, borderRadius: BorderRadius.circular(30)),
+              decoration: BoxDecoration(color: Colors.white.withOpacity(0.05), borderRadius: BorderRadius.circular(30)),
               child: Row(
                 children: [
                   _buildToggleBtn("POINTS", "points"),
@@ -81,11 +76,10 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
             ),
           ),
 
-          // --- FILTRES (Seulement si Temps, car Points c'est global) ---
-          // On cache les filtres de temps si on est en mode Points pour simplifier l'interface
+          // FILTRES (Uniquement pour le temps)
           if (_sortBy == "time")
             Container(
-              height: 50,
+              height: 40,
               margin: const EdgeInsets.only(bottom: 10),
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
@@ -101,17 +95,13 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 0),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                        color: isSelected ? const Color(0xFF00C853) : Colors.white.withOpacity(0.05),
+                        color: isSelected ? const Color(0xFF00C853) : Colors.transparent,
                         borderRadius: BorderRadius.circular(20),
-                        border: Border.all(color: isSelected ? const Color(0xFF00C853) : Colors.white10),
+                        border: Border.all(color: isSelected ? const Color(0xFF00C853) : Colors.white24),
                       ),
                       child: Text(
                         _periodLabels[p]!,
-                        style: TextStyle(
-                          color: isSelected ? Colors.black : Colors.white54,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 12
-                        ),
+                        style: TextStyle(color: isSelected ? Colors.black : Colors.white54, fontWeight: FontWeight.bold, fontSize: 11),
                       ),
                     ),
                   );
@@ -142,19 +132,13 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
           }
         },
         child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 12),
+          padding: const EdgeInsets.symmetric(vertical: 10),
           decoration: BoxDecoration(
             color: isSelected ? const Color(0xFF00C853) : Colors.transparent,
             borderRadius: BorderRadius.circular(30),
           ),
           alignment: Alignment.center,
-          child: Text(
-            label, 
-            style: TextStyle(
-              color: isSelected ? Colors.black : Colors.white54, 
-              fontWeight: FontWeight.bold
-            )
-          ),
+          child: Text(label, style: TextStyle(color: isSelected ? Colors.black : Colors.white54, fontWeight: FontWeight.bold, fontSize: 12)),
         ),
       ),
     );
@@ -181,23 +165,25 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
 
     return CustomScrollView(
       slivers: [
-        // --- PODIUM ---
+        // Podium
         SliverToBoxAdapter(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(20, 20, 20, 40),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                if (top3.length >= 2) _buildPodiumItem(top3[1], 2, 140, const Color(0xFFC0C0C0)), // Silver
-                if (top3.isNotEmpty) _buildPodiumItem(top3[0], 1, 180, const Color(0xFFFFD700)), // Gold
-                if (top3.length >= 3) _buildPodiumItem(top3[2], 3, 120, const Color(0xFFCD7F32)), // Bronze
-              ],
+            padding: const EdgeInsets.fromLTRB(20, 30, 20, 40),
+            child: SizedBox(
+              height: 220,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  if (top3.length >= 2) _buildPodiumItem(top3[1], 2, 140, const Color(0xFFC0C0C0)),
+                  if (top3.isNotEmpty) _buildPodiumItem(top3[0], 1, 180, const Color(0xFFFFD700)),
+                  if (top3.length >= 3) _buildPodiumItem(top3[2], 3, 110, const Color(0xFFCD7F32)),
+                ],
+              ),
             ),
           ),
         ),
-
-        // --- LISTE ---
+        // Liste
         SliverList(
           delegate: SliverChildBuilderDelegate(
             (context, index) {
@@ -216,21 +202,17 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                 ),
                 child: Row(
                   children: [
-                    Text(
-                      "#$rank",
-                      style: const TextStyle(color: Colors.white38, fontWeight: FontWeight.bold, fontSize: 16),
-                    ),
-                    const SizedBox(width: 15),
+                    SizedBox(width: 30, child: Text("#$rank", style: const TextStyle(color: Colors.white38, fontWeight: FontWeight.bold, fontSize: 14))),
                     CircleAvatar(
-                      backgroundColor: Colors.white10,
-                      child: Text(user['name'][0].toUpperCase(), style: const TextStyle(color: Colors.white)),
+                      radius: 18, backgroundColor: Colors.white10,
+                      child: Text(user['name'].isNotEmpty ? user['name'][0].toUpperCase() : "?", style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
                     ),
                     const SizedBox(width: 15),
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(user['name'], style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
+                          Text(user['name'], style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 14)),
                           if (isMe) const Text("C'est vous !", style: TextStyle(color: Color(0xFF00C853), fontSize: 10)),
                         ],
                       ),
@@ -243,7 +225,6 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
             childCount: rest.length,
           ),
         ),
-        
         const SliverToBoxAdapter(child: SizedBox(height: 50)),
       ],
     );
@@ -257,7 +238,6 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          // Avatar
           Stack(
             alignment: Alignment.topRight,
             children: [
@@ -265,103 +245,50 @@ class _LeaderboardScreenState extends State<LeaderboardScreen> {
                 padding: const EdgeInsets.all(3),
                 decoration: BoxDecoration(shape: BoxShape.circle, border: Border.all(color: color, width: 2)),
                 child: CircleAvatar(
-                  radius: rank == 1 ? 35 : 25,
-                  backgroundColor: Colors.white10,
-                  child: Text(user['name'][0].toUpperCase(), style: TextStyle(color: Colors.white, fontSize: rank == 1 ? 24 : 18, fontWeight: FontWeight.bold)),
+                  radius: rank == 1 ? 30 : 22, backgroundColor: Colors.white10,
+                  child: Text(user['name'].isNotEmpty ? user['name'][0].toUpperCase() : "?", style: TextStyle(color: Colors.white, fontSize: rank == 1 ? 20 : 16, fontWeight: FontWeight.bold)),
                 ),
               ),
-              if (rank == 1) 
-                const Positioned(
-                  right: 0,
-                  child: Icon(Icons.verified, color: Color(0xFF00C853), size: 20),
-                )
+              if (rank == 1) const Positioned(right: -5, top: -5, child: Icon(Icons.emoji_events, color: Color(0xFFFFD700), size: 24))
             ],
           ),
           const SizedBox(height: 8),
-          
-          // Name
-          Text(
-            user['name'], 
-            maxLines: 1, 
-            overflow: TextOverflow.ellipsis, 
-            style: TextStyle(color: isMe ? const Color(0xFF00C853) : Colors.white, fontWeight: FontWeight.bold, fontSize: 12)
-          ),
+          Text(user['name'], maxLines: 1, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center, style: TextStyle(color: isMe ? const Color(0xFF00C853) : Colors.white, fontWeight: FontWeight.bold, fontSize: 12)),
           const SizedBox(height: 4),
-          
-          // Score / Time Badge
-          _buildScoreBadge(score),
-          
-          const SizedBox(height: 10),
-          
-          // Bar
+          _buildScoreBadge(score, small: true),
+          const SizedBox(height: 8),
           Container(
-            width: double.infinity,
-            height: height,
-            margin: const EdgeInsets.symmetric(horizontal: 5),
+            width: double.infinity, height: height, margin: const EdgeInsets.symmetric(horizontal: 4),
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                colors: [color.withOpacity(0.8), color.withOpacity(0.3)]
-              ),
+              gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [color.withOpacity(0.4), color.withOpacity(0.1)]),
               borderRadius: const BorderRadius.vertical(top: Radius.circular(8)),
-              boxShadow: [BoxShadow(color: color.withOpacity(0.2), blurRadius: 10, spreadRadius: 1)]
+              border: Border(top: BorderSide(color: color.withOpacity(0.5), width: 2)),
             ),
-            child: Column(
-              children: [
-                const SizedBox(height: 10),
-                Text("$rank", style: TextStyle(color: Colors.white.withOpacity(0.8), fontSize: 40, fontWeight: FontWeight.bold)),
-              ],
-            ),
+            child: Column(children: [const SizedBox(height: 10), Text("$rank", style: TextStyle(color: Colors.white.withOpacity(0.5), fontSize: 32, fontWeight: FontWeight.bold))]),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildScoreBadge(int score) {
+  Widget _buildScoreBadge(int score, {bool small = false}) {
     if (_sortBy == "time") {
-      // Mode Temps
-      return _buildTimeBadgeDisplay(score);
-    } else {
-      // Mode Points
+      final h = score ~/ 3600;
+      final m = (score % 3600) ~/ 60;
       return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-        decoration: BoxDecoration(
-          color: Colors.amber.withOpacity(0.2),
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: Colors.amber),
-        ),
-        child: Text(
-          "$score pts", 
-          style: const TextStyle(color: Colors.amber, fontWeight: FontWeight.bold, fontSize: 10)
-        ),
+        padding: EdgeInsets.symmetric(horizontal: small ? 8 : 12, vertical: 4),
+        decoration: BoxDecoration(color: Colors.white.withOpacity(0.1), borderRadius: BorderRadius.circular(20), border: Border.all(color: Colors.white24)),
+        child: Row(mainAxisSize: MainAxisSize.min, children: [
+          Icon(Icons.timer, size: small ? 10 : 12, color: const Color(0xFF00C853)), const SizedBox(width: 4),
+          Text(h > 0 ? "${h}h ${m.toString().padLeft(2,'0')}" : "${m}m", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: small ? 10 : 12)),
+        ]),
+      );
+    } else {
+      return Container(
+        padding: EdgeInsets.symmetric(horizontal: small ? 8 : 12, vertical: 4),
+        decoration: BoxDecoration(color: Colors.amber.withOpacity(0.15), borderRadius: BorderRadius.circular(20), border: Border.all(color: Colors.amber.withOpacity(0.6))),
+        child: Text("$score pts", style: TextStyle(color: Colors.amber, fontWeight: FontWeight.bold, fontSize: small ? 10 : 12)),
       );
     }
-  }
-
-  Widget _buildTimeBadgeDisplay(int seconds) {
-    final h = seconds ~/ 3600;
-    final m = (seconds % 3600) ~/ 60;
-    String text;
-    if (h > 0) text = "${h}h ${m}m";
-    else text = "${m} min";
-
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(color: Colors.white24),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Icon(Icons.timer, size: 10, color: Color(0xFF00C853)),
-          const SizedBox(width: 6),
-          Text(text, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 10)),
-        ],
-      ),
-    );
   }
 }

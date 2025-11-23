@@ -3,14 +3,14 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import '../models/spot_models.dart';
 
-class PoorSpotMap extends StatelessWidget {
+class MapView extends StatelessWidget {
   final List<Spot> spots;
   final String? selectedSpotId;
   final LatLng? tempPosition;
   final Function(Spot) onSpotTap;
   final Function(LatLng) onMapLongPress;
 
-  const PoorSpotMap({
+  const MapView({
     super.key,
     required this.spots,
     this.selectedSpotId,
@@ -28,7 +28,7 @@ class PoorSpotMap extends StatelessWidget {
 
     return FlutterMap(
       options: MapOptions(
-        initialCenter: const LatLng(50.8466, 4.3528), // Bruxelles centre
+        initialCenter: const LatLng(50.8503, 4.3517),
         initialZoom: 13.0,
         onLongPress: (_, latlng) => onMapLongPress(latlng),
         interactionOptions: const InteractionOptions(
@@ -37,9 +37,11 @@ class PoorSpotMap extends StatelessWidget {
       ),
       children: [
         TileLayer(
+          // Style Voyager (Clair et coloré juste ce qu'il faut)
           urlTemplate: 'https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png',
           subdomains: const ['a', 'b', 'c', 'd'],
           userAgentPackageName: 'com.poorspot.app',
+          retinaMode: true,
         ),
         MarkerLayer(markers: allMarkers),
       ],
@@ -66,7 +68,7 @@ class PoorSpotMap extends StatelessWidget {
           child: Stack(
             alignment: Alignment.topCenter,
             children: [
-              // A. Le PING (Forme de goutte)
+              // A. Le PING (Goutte)
               Icon(
                 Icons.location_on, 
                 color: pinColor, 
@@ -76,7 +78,7 @@ class PoorSpotMap extends StatelessWidget {
                 ],
               ),
               
-              // B. Le PICTOGRAMME (Catégorie) à l'intérieur
+              // B. Le PICTOGRAMME (Catégorie)
               Positioned(
                 top: size * 0.15,
                 child: Icon(
@@ -85,8 +87,6 @@ class PoorSpotMap extends StatelessWidget {
                   color: Colors.white,
                 ),
               ),
-              
-              // ZÉRO badge de notification ici. C'est clean.
             ],
           ),
         ),
@@ -102,14 +102,12 @@ class PoorSpotMap extends StatelessWidget {
     );
   }
 
-  // Graduat Rouge -> Jaune -> VERT (Correction appliquée)
+  // Graduat Rouge -> Jaune -> Vert
   Color _getGraduatedColor(double rating) {
     double t = (rating / 5.0).clamp(0.0, 1.0);
     if (t < 0.5) {
-      // De Rouge à Jaune
       return Color.lerp(const Color(0xFFFF3D00), const Color(0xFFFFEA00), t * 2)!;
     } else {
-      // De Jaune à Vert Vif (0xFF00C853)
       return Color.lerp(const Color(0xFFFFEA00), const Color(0xFF00C853), (t - 0.5) * 2)!;
     }
   }

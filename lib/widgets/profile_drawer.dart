@@ -3,6 +3,7 @@ import '../models/spot_models.dart';
 import '../models/user_model.dart';
 import '../data/current_session.dart';
 import '../services/api_service.dart';
+import '../screens/leaderboard_screen.dart'; // IMPORTANT: Import du classement
 
 class ProfileDrawer extends StatefulWidget {
   final VoidCallback onLoginSuccess;
@@ -216,7 +217,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // HEADER
+          // HEADER AVEC LE BOUTON CLASSEMENT
           Container(
             padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
             decoration: BoxDecoration(
@@ -235,10 +236,24 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
                       children: [
                         Text(user.name, style: const TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold)),
                         const SizedBox(height: 4),
-                        const Text("MEMBRE ACTIF", style: TextStyle(color: Color(0xFF00C853), fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 1)),
+                        // Affichage des points
+                        Text("RÔDEUR • ${user.points} PTS", style: const TextStyle(color: Color(0xFF00C853), fontSize: 10, fontWeight: FontWeight.bold, letterSpacing: 1)),
                       ],
                     ),
+                  ),
+                  // --- BOUTON CLASSEMENT ---
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context); // Ferme le drawer
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => const LeaderboardScreen())
+                      );
+                    }, 
+                    icon: const Icon(Icons.emoji_events, color: Color(0xFFFFD700), size: 28),
+                    tooltip: "Voir le classement",
                   )
+                  // -------------------------
                 ],
               ),
             ),
@@ -278,7 +293,7 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
             ),
           ),
 
-          // LOGOUT
+          // LOGOUT BUTTON
           Container(
             padding: const EdgeInsets.all(16),
             decoration: const BoxDecoration(border: Border(top: BorderSide(color: Colors.white10))),
@@ -393,12 +408,35 @@ class _ProfileDrawerState extends State<ProfileDrawer> with TickerProviderStateM
       case 'footprint': return Icons.directions_walk;
       case 'compass': return Icons.explore;
       case 'map': return Icons.map;
+      case 'public': return Icons.public;
+      case 'category': return Icons.category;
       case 'hourglass_bottom': return Icons.hourglass_bottom;
       case 'hourglass_top': return Icons.hourglass_top;
+      case 'hourglass_full': return Icons.hourglass_full;
+      case 'history': return Icons.history;
+      case 'infinity': return Icons.all_inclusive;
       case 'fire': return Icons.local_fire_department;
       case 'bedtime': return Icons.bedtime;
+      case 'sunny': return Icons.wb_sunny;
+      case 'restaurant': return Icons.restaurant;
+      case 'weekend': return Icons.weekend;
       case 'business_center': return Icons.business_center;
       case 'camera_alt': return Icons.camera_alt;
+      case 'celebration': return Icons.celebration;
+      case 'shopping_bag': return Icons.shopping_bag;
+      case 'train': return Icons.train;
+      case 'add_location': return Icons.add_location_alt;
+      case 'domain': return Icons.domain;
+      case 'rate_review': return Icons.rate_review;
+      case 'campaign': return Icons.campaign;
+      case 'home': return Icons.home;
+      case 'timer': return Icons.timer;
+      case 'bolt': return Icons.bolt;
+      case 'attach_money': return Icons.attach_money;
+      case 'shield': return Icons.shield;
+      case 'groups': return Icons.groups;
+      case 'waving_hand': return Icons.waving_hand;
+      case 'hourglass_empty': return Icons.hourglass_empty;
       default: return Icons.emoji_events;
     }
   }

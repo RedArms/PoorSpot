@@ -6,7 +6,7 @@ import '../models/user_model.dart';
 
 class ApiService {
   static String get baseUrl {
-    if (Platform.isAndroid) return 'http://10.0.2.2:8000';
+    if (Platform.isAndroid) return 'http://10.30.64.204:8000';
     return 'http://127.0.0.1:8000'; 
   }
 
