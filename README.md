@@ -2,6 +2,7 @@
 **Odoo Hackathon 2025 Entry**  
 **Theme :** *“What Could Possibly Go Wrong?”*  
 **Slogan :** *Challenge Accepted.*
+**Ranking :** *1er🏆* 
 
 ---
 
